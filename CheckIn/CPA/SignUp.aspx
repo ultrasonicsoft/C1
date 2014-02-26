@@ -32,71 +32,67 @@
                                 </td>
                             </tr>
                             <tr>
-                                <td style="padding-left: 20px;" >
+                                <td style="padding-left: 20px;">
                                     <table width="100%">
                                         <tr>
-                                            <td width="10%">
+                                            <td width="20%">
                                                 <asp:Label ID="Label2" runat="server" Text="Email"></asp:Label>
                                             </td>
                                             <td>
-                                                <asp:TextBox ID="txtEmail" Width="50%" runat="server"></asp:TextBox>
-                                    <asp:RequiredFieldValidator ID="RequiredFieldValidator3" runat="server" ErrorMessage="Email can not be empty" SetFocusOnError="true" Text="*"
-                                        ControlToValidate="txtEmail" ForeColor="Red" ValidationGroup="signUpValidation"></asp:RequiredFieldValidator>
+                                                <asp:TextBox ID="txtEmail"  runat="server"></asp:TextBox>
+                                                <asp:RequiredFieldValidator ID="RequiredFieldValidator3" runat="server" ErrorMessage="Email can not be empty" SetFocusOnError="true" Text="*"
+                                                    ControlToValidate="txtEmail" ForeColor="Red" ValidationGroup="signUpValidation"></asp:RequiredFieldValidator>
 
-                                    <asp:RegularExpressionValidator ID="RegularExpressionValidator3" runat="server" ErrorMessage="Invalid Email Address" Text="*" ControlToValidate="txtEmail"
-                                        ValidationExpression="\w+([-+.']\w+)*@\w+([-.]\w+)*\.\w+([-.]\w+)*" ValidationGroup="signUpValidation" ForeColor="Red"></asp:RegularExpressionValidator>
+                                                <asp:RegularExpressionValidator ID="RegularExpressionValidator3" runat="server" ErrorMessage="Invalid Email Address" Text="*" ControlToValidate="txtEmail"
+                                                    ValidationExpression="\w+([-+.']\w+)*@\w+([-.]\w+)*\.\w+([-.]\w+)*" ValidationGroup="signUpValidation" ForeColor="Red"></asp:RegularExpressionValidator>
 
-                                    <asp:CustomValidator ID="CustomValidator1" runat="server" ForeColor="Red" ErrorMessage="Email not Exist" ValidationGroup="signUpValidation" Text="*"></asp:CustomValidator>
-                               
+                                                <asp:CustomValidator ID="CustomValidator1" runat="server" ForeColor="Red" ErrorMessage="Email not Exist" ValidationGroup="signUpValidation" Text="*"></asp:CustomValidator>
+
                                             </td>
                                         </tr>
                                     </table>
                                 </td>
                             </tr>
-                            <%--<tr>
-                                <td style="padding-left: 20px;" colspan="2">
-                                    <asp:TextBox ID="txtEmail" Width="50%" runat="server"></asp:TextBox>
-                                    <asp:RequiredFieldValidator ID="RequiredFieldValidator1" runat="server" ErrorMessage="Email can not be empty" SetFocusOnError="true" Text="*"
-                                        ControlToValidate="txtEmail" ForeColor="Red" ValidationGroup="signUpValidation"></asp:RequiredFieldValidator>
-
-                                    <asp:RegularExpressionValidator ID="RegularExpressionValidator1" runat="server" ErrorMessage="Invalid Email Address" Text="*" ControlToValidate="txtEmail"
-                                        ValidationExpression="\w+([-+.']\w+)*@\w+([-.]\w+)*\.\w+([-.]\w+)*" ValidationGroup="signUpValidation" ForeColor="Red"></asp:RegularExpressionValidator>
-
-                                    <asp:CustomValidator ID="CustomValidator2" runat="server" ForeColor="Red" ErrorMessage="Email not Exist" ValidationGroup="signUpValidation" Text="*"></asp:CustomValidator>
-                                </td>
-
-                            </tr>--%>
                             <tr>
                                 <td style="padding-left: 20px;">
-                                    <asp:Label ID="Label3" runat="server" Text="Generate Password"></asp:Label>
-                                </td>
-                            </tr>
-                            <tr>
-                                <td style="padding-left: 20px;" colspan="2">
-                                    <asp:TextBox ID="txtPassword" TextMode="Password" Width="40%" runat="server"></asp:TextBox>
-
-                                    <asp:RequiredFieldValidator ID="RequiredFieldValidator2" runat="server" ErrorMessage="Password can not be empty" Text="*"
-                                        ControlToValidate="txtPassword" ValidationGroup="signUpValidation" ForeColor="Red"></asp:RequiredFieldValidator>
-
-                                    <asp:RegularExpressionValidator ID="RegularExpressionValidator2" runat="server" ForeColor="Red" ControlToValidate="txtPassword"
-                                        ValidationExpression="(?!^[0-9]*$)(?!^[a-zA-Z]*$)^([a-zA-Z0-9]{8,10})$" ValidationGroup="signUpValidation" Text="*"
-                                        ErrorMessage="Contain 8 and 10 characters, one digit and one alphabetic character, and must not contain special characters."></asp:RegularExpressionValidator>
-                                </td>
-                            </tr>
-                            <tr>
-                                <td width="100%">
                                     <table width="100%">
                                         <tr>
-                                            <td style="padding-left: 20px;">
+                                            <td width="20%">
+                                                <asp:Label ID="Label3" runat="server" Text="Generate Password"></asp:Label>
+                                            </td>
+                                            <td>
+                                                <asp:TextBox ID="txtPassword" TextMode="Password"  runat="server"></asp:TextBox>
+
+                                                <asp:RequiredFieldValidator ID="RequiredFieldValidator2" runat="server" ErrorMessage="Password can not be empty" Text="*"
+                                                    ControlToValidate="txtPassword" ValidationGroup="signUpValidation" ForeColor="Red"></asp:RequiredFieldValidator>
+
+                                                <asp:RegularExpressionValidator ID="RegularExpressionValidator2" runat="server" ForeColor="Red" ControlToValidate="txtPassword"
+                                                    ValidationExpression="(?!^[0-9]*$)(?!^[a-zA-Z]*$)^([a-zA-Z0-9]{8,10})$" ValidationGroup="signUpValidation" Text="*"
+                                                    ErrorMessage="Contain 8 and 10 characters, one digit and one alphabetic character, and must not contain special characters."></asp:RegularExpressionValidator>
+
+
+                                            </td>
+                                        </tr>
+                                    </table>
+
+                                </td>
+
+                            </tr>
+
+                            <tr>
+                                <td width="100%" style="padding-left: 20px;">
+                                    <table width="100%">
+                                        <tr>
+                                            <td width="20%">
                                                 <asp:Label ID="Label13" runat="server" Text="First Name"></asp:Label>
                                             </td>
                                             <td>
-                                                <asp:TextBox ID="txtFirstName"  runat="server"></asp:TextBox>
+                                                <asp:TextBox ID="txtFirstName" runat="server"></asp:TextBox>
                                                 <asp:CustomValidator ID="CustValFisrtName" ValidationGroup="signUpValidation" runat="server" ForeColor="Red" ControlToValidate="txtFirstName" Text="*"></asp:CustomValidator>
                                             </td>
                                         </tr>
                                         <tr>
-                                            <td style="padding-left: 20px;">
+                                            <td width="20%">
                                                 <asp:Label ID="Label16" runat="server" Text="Last Name"></asp:Label>
                                             </td>
                                             <td>
@@ -109,19 +105,25 @@
                             </tr>
                             <tr>
                                 <td style="padding-left: 20px;">
-                                    <asp:Label ID="Label6" runat="server" Text="Date Of Birth"></asp:Label>
+                                    <table width="100%">
+                                        <tr>
+                                            <td width="20%">
+                                                <asp:Label ID="Label6" runat="server" Text="Date Of Birth"></asp:Label>
+                                            </td>
+                                            <td>
+                                                <asp:TextBox ID="txtDateOfBirth" runat="server"></asp:TextBox>
+                                                <ajaxToolkit:CalendarExtender
+                                                    ID="CalendarExtender1"
+                                                    TargetControlID="txtDateOfBirth"
+                                                    runat="server" />
 
+                                            </td>
+                                        </tr>
+                                    </table>
                                 </td>
-
                             </tr>
                             <tr>
-                                <td style="padding-left: 20px;" >
-                                    <ajaxToolkit:CalendarExtender
-                                        ID="CalendarExtender1"
-                                        TargetControlID="txtDateOfBirth"
-                                        runat="server" />
-                                    <asp:TextBox ID="txtDateOfBirth" runat="server"></asp:TextBox>
-                                </td>
+                                <td style="padding-left: 20px;"></td>
                             </tr>
                             <tr>
                                 <td style="padding-left: 20px;">
@@ -129,9 +131,35 @@
                                 </td>
                             </tr>
                             <tr>
-                                <td style="padding-left: 20px;" >
+                                <td style="padding-left: 20px;">
                                     <asp:RadioButton ID="rbtnMale" Checked="true" Text="Male" GroupName="Gender" runat="server" />
-                                     <asp:RadioButton ID="rbtnFemale" Text="Female" GroupName="Gender" runat="server" />
+                                    <asp:RadioButton ID="rbtnFemale" Text="Female" GroupName="Gender" runat="server" />
+                                </td>
+                            </tr>
+                            <tr>
+                                <td style="padding-left: 20px;">
+                                    <table width="100%">
+                                        <tr>
+                                            <td width="20%">
+                                                <asp:Label ID="Label15" runat="server" Text="Phone Number"></asp:Label>
+                                            </td>
+                                            <td>
+                                                <asp:TextBox ID="txtPhNumberPart1" Width="150" MaxLength="3" runat="server" Height="22px"></asp:TextBox>
+                                                <ajaxToolkit:MaskedEditExtender ID="MaskedEditExtender2" runat="server"
+                                                    TargetControlID="txtPhNumberPart1"
+                                                    Mask="999-999-9999"
+                                                    ClearMaskOnLostFocus="false"
+                                                    MessageValidatorTip="true"
+                                                    OnFocusCssClass="MaskedEditFocus"
+                                                    OnInvalidCssClass="MaskedEditError"
+                                                    MaskType="None"
+                                                    InputDirection="LeftToRight"
+                                                    AcceptNegative="Left"
+                                                    DisplayMoney="Left" Filtered="-"
+                                                    ErrorTooltipEnabled="True" />
+                                            </td>
+                                        </tr>
+                                    </table>
                                 </td>
                             </tr>
                             <tr>
@@ -142,47 +170,6 @@
                             <tr>
                                 <td style="padding-left: 20px;">
                                     <asp:FileUpload ID="ImageUpload" runat="server" Width="319px" />
-
-                                </td>
-                            </tr>
-
-
-                            <tr>
-                                <td style="padding-left: 20px;">
-                                    <asp:Label ID="Label8" runat="server" Text="Phone Number"></asp:Label>
-
-                                </td>
-                            </tr>
-
-                            <tr>
-                                <td style="padding-left: 20px;">
-                                    <table>
-                                        <tr>
-                                            <td align="right">
-                                                <asp:TextBox ID="txtPhNumberPart1" Width="40" MaxLength="3" runat="server" Height="22px"></asp:TextBox>
-
-                                            </td>
-                                            <td align="center">
-                                                <asp:Label ID="Label12" runat="server" Text="Label" Width="40"> - </asp:Label>
-                                                <asp:TextBox ID="txtPhNumberPart2" Width="40" MaxLength="3" runat="server">  </asp:TextBox>
-                                                <asp:Label ID="Label11" runat="server" Width="40" Text="Label"> - </asp:Label>
-                                            </td>
-                                            <td align="center">
-                                                <asp:TextBox ID="txtPhNumberPart3" Width="40" MaxLength="4" runat="server"></asp:TextBox>
-
-                                            </td>
-
-                                        </tr>
-
-                                    </table>
-                                </td>
-                            </tr>
-                            <tr>
-                                <td style="padding-left: 20px;">
-
-
-                                    <asp:CustomValidator ID="CustPhoneNumber" runat="server" ForeColor="Red" ErrorMessage="All Character are digit"></asp:CustomValidator>
-
 
                                 </td>
                             </tr>

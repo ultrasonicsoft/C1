@@ -38,7 +38,6 @@ namespace CheckIn.CPA
                 imgCPA.ImageUrl = "Handler.ashx?QueryCPAID=" + cpid;
                 FillAllSpeciality();
                 RefreshBookingAppointments();
-                 pnlCalender.Visible = false;
 
             }
 
@@ -165,7 +164,7 @@ namespace CheckIn.CPA
             {
                 return;
             }
-            if (!ValidationSummary1.ShowMessageBox)
+            if (!signUpValidation.ShowMessageBox)
             {
                 
                 CustomerDetails newCustomer = new CustomerDetails();
@@ -175,7 +174,7 @@ namespace CheckIn.CPA
                 newCustomer.FirstName = txtFirstName.Text;
                 newCustomer.LastName = txtLastName.Text;
                 newCustomer.Password = txtPassword.Text;
-                newCustomer.PhoneNumber = txtPhNumberPart1.Text + "-" + txtPhNumberPart2.Text + "-" + txtPhNumberPart3.Text;
+                newCustomer.PhoneNumber = txtPhNumberPart1.Text;
                 newCustomer.Gender = rbtnMale.Checked ? "M" : "F";
                string local= HttpContext.Current.Request.Url.Port.ToString(); 
                 int len;
@@ -349,7 +348,7 @@ namespace CheckIn.CPA
             }
 
 
-            if (string.IsNullOrWhiteSpace(txtLastName.Text) || txtLastName.Text.Contains(' '))
+            if (false == string.IsNullOrEmpty(txtLastName.Text) || txtLastName.Text.Contains(' '))
             {
                 CustValLastName.IsValid = false;
                 CustValLastName.ErrorMessage = "Last name should not contain spaces";
@@ -371,16 +370,7 @@ namespace CheckIn.CPA
             }
 
 
-            if (System.Text.RegularExpressions.Regex.IsMatch(txtPhNumberPart1.Text + "-" + txtPhNumberPart2.Text + "-" + txtPhNumberPart3.Text, @"^[2-9]\d{2}-\d{3}-\d{4}$"))
-            {
-                CustPhoneNumber.IsValid = true;
-                result = true;
-            }
-            else
-            {
-                CustPhoneNumber.IsValid = false;
-                count = count + 1;
-            }
+           
             if (CaptchaUserControl.Text == txtCaptchaText.Text)//txtCaptchaText.Text.ToString()))
             {
                 lblStatus.Visible = true;
@@ -475,39 +465,12 @@ namespace CheckIn.CPA
 
         protected void Calendar1_SelectionChanged(object sender, EventArgs e)
         {
-            if (DateTime.Compare(DateTime.Today, Calendar1.SelectedDate.Date) >= 0)
-            {
-                txtDOB.Text = Calendar1.SelectedDate.ToShortDateString();
-                //Calendar1.Visible = false;
-
-                CustomValidator1.IsValid = true;
-                // pnlCalender.Visible = false;
-            }
-
-            else
-            {
-                txtDOB.Text = Calendar1.SelectedDate.ToShortDateString();
-                //Calendar1.Visible = false;
-                CustomValidator1.IsValid = false;
-
-            }
+          
         }
 
         protected void ImageButton1_Click(object sender, ImageClickEventArgs e)
         {
-            if (pnlCalender.Visible)
-            {
-
-                //Calendar1.Visible = true;
-                Calendar1.SelectedDate = DateTime.Today;
-                pnlCalender.Visible = false;
-            }
-            else
-            {
-                pnlCalender.Visible = true;
-                Calendar1.SelectedDate = DateTime.Today;
-
-            }
+           
         }
 
         protected void lnkBtnLoggedOut_Click(object sender, EventArgs e)
@@ -523,55 +486,13 @@ namespace CheckIn.CPA
 
         protected void btnPreYear_Click(object sender, EventArgs e)
         {
-            DateTime now = DateTime.Now;
-            TimeSpan span = now.AddYears(1) - now;
-
-
-            Calendar1.SelectedDate = Calendar1.SelectedDate.Subtract(span);
-
-            txtDOB.Text = Calendar1.SelectedDate.ToShortDateString();
-            Calendar1.VisibleDate = Calendar1.SelectedDate;
-            if (DateTime.Compare(DateTime.Today, Calendar1.SelectedDate.Date) >= 0)
-            {
-                txtDOB.Text = Calendar1.SelectedDate.ToShortDateString();
-                //Calendar1.Visible = false;
-
-                CustomValidator1.IsValid = true;
-                // pnlCalender.Visible = false;
-            }
-
-            else
-            {
-                txtDOB.Text = Calendar1.SelectedDate.ToShortDateString();
-                //Calendar1.Visible = false;
-                CustomValidator1.IsValid = false;
-
-            }
+           
+            
         }
 
         protected void btnNextYear_Click(object sender, EventArgs e)
         {
-            Calendar1.Visible = false;
-            Calendar1.SelectedDate = Calendar1.SelectedDate.AddYears(1);
-            Calendar1.Visible = true;
-            txtDOB.Text = Calendar1.SelectedDate.ToShortDateString();
-            Calendar1.VisibleDate = Calendar1.SelectedDate;
-            if (DateTime.Compare(DateTime.Today, Calendar1.SelectedDate.Date) >= 0)
-            {
-                txtDOB.Text = Calendar1.SelectedDate.ToShortDateString();
-                //Calendar1.Visible = false;
-
-                CustomValidator1.IsValid = true;
-                // pnlCalender.Visible = false;
-            }
-
-            else
-            {
-                txtDOB.Text = Calendar1.SelectedDate.ToShortDateString();
-                //Calendar1.Visible = false;
-                CustomValidator1.IsValid = false;
-
-            }
+            
         }
     }    
     

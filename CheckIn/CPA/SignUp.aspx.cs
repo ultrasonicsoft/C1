@@ -76,7 +76,7 @@ namespace CheckIn.Web_Pages
                 newCustomer.LastName = txtLastName.Text;
                 newCustomer.Password = txtPassword.Text;
                 // newCustomer.PhoneNumber = txtPhoneNumber.Text;
-                newCustomer.PhoneNumber = txtPhNumberPart1.Text + '-' + txtPhNumberPart2.Text + '-' + txtPhNumberPart3.Text;
+                newCustomer.PhoneNumber = txtPhNumberPart1.Text ;
                 newCustomer.Gender = rbtnMale.Checked ? "M" : "F";
                 if (ImageUpload.PostedFile != null)
                 {
@@ -184,16 +184,7 @@ namespace CheckIn.Web_Pages
                 count = count + 1;
             }
 
-            if (System.Text.RegularExpressions.Regex.IsMatch(txtPhNumberPart1.Text + "-" + txtPhNumberPart2.Text + "-" + txtPhNumberPart3.Text, @"^[2-9]\d{2}-\d{3}-\d{4}$"))
-            {
-                CustPhoneNumber.IsValid = true;
-                result = true;
-            }
-            else
-            {
-                CustPhoneNumber.IsValid = false;
-                count = count + 1;
-            }
+            
 
             if (count == 0)
                 return true;

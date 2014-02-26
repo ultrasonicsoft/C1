@@ -1,0 +1,5 @@
+﻿1. Clean Home page. Make control with space
+ <!--connectionString="Data Source=localhost;Initial Catalog=TestDB3;Integrated Security=True"-->
+ 
+ Ajax toolkit download url
+ http://www.asp.net/ajaxlibrary/act.ashx

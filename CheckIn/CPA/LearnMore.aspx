@@ -9,7 +9,7 @@
             <td>
                 &nbsp;</td>
             <td align="right">
-                <asp:Button ID="Button1" runat="server" Text="Sign Up Now" 
+                <asp:Button ID="Button1" runat="server" Text="Sign Up Now" CssClass="buttonPink" 
                     onclick="Button1_Click" />
             </td>
         </tr>

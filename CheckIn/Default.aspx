@@ -38,13 +38,9 @@
                 </tr>
                 <tr>
                     <td colspan="4" align="center">
-                        <asp:Button ID="btnSearchCPA" runat="server" Text="Search CPA"
-                            OnClick="btnSearchCPA_Click" />
-                        <%--<asp:Button ID="Button1" runat="server" Text="Calendar" onclick="Button1_Click" 
-                            />--%>
-                        <%--<asp:Button ID="Button2" runat="server" Text="Appointments" onclick="Button2_Click" 
-                            />
-                    </td>--%>
+                         <div class="form-actions">
+                                 <asp:Button ID="btnSearchCPA" runat="server" Text="Search CPA" CssClass="buttonPink"  OnClick="btnSearchCPA_Click" />
+                                </div>
                 </tr>
             </table>
         </ContentTemplate>

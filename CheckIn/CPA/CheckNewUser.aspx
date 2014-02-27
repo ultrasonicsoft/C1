@@ -123,7 +123,7 @@
 
                                         <tr>
                                             <td>
-                                                <asp:Button ID="btnContinue" runat="server" Text="Continue" OnClick="btnContinue_Click" />
+                                                <asp:Button ID="btnContinue" runat="server" Text="Continue" CssClass="buttonPink" OnClick="btnContinue_Click" />
                                             </td>
 
                                         </tr>
@@ -145,18 +145,18 @@
                                         </tr>
                                         <tr>
                                             <td>
-                                                <asp:Button ID="btnNewUser" runat="server" Text="I am new to this site" OnClick="btnNewUser_Click" />
+                                                <asp:Button ID="btnNewUser" runat="server" Text="I am new to this site" OnClick="btnNewUser_Click" CssClass="buttonPink" Width="222px"/>
                                             </td>
                                         </tr>
                                         <tr>
                                             <td class="auto-style1">
-                                                <asp:Button ID="btnRegisteredUser" runat="server" Text="I have used this site before"
+                                                <asp:Button ID="btnRegisteredUser" runat="server" Text="I have used this site before" CssClass="buttonPink"
                                                     OnClick="btnRegisteredUser_Click" />
                                             </td>
                                         </tr>
                                         <tr>
                                             <td>
-                                                <asp:Button ID="btnBack" runat="server" Text="<< Back"
+                                                <asp:Button ID="btnBack" runat="server" Text="<< Back" CssClass="buttonPink"
                                                     OnClick="btnBack_Click" />
                                             </td>
                                         </tr>
@@ -368,7 +368,7 @@
                                                         </tr>
                                                         <tr>
                                                             <td style="padding-left: 20px;">
-                                                                <asp:Button ID="btnSignUp" runat="server" Text="Sign Up"
+                                                                <asp:Button ID="btnSignUp" runat="server" Text="Sign Up" CssClass="buttonPink"
                                                                     OnClick="btnSignUp_Click" ValidationGroup="signUpValidation" />
                                                             </td>
                                                         </tr>
@@ -437,7 +437,7 @@
                                                                     </tr>
                                                                     <tr>
                                                                         <td style="padding-left: 20px;">
-                                                                            <asp:Button ID="btnSignIn" runat="server" Text="Sign In" OnClick="btnSignIn_Click" ValidationGroup="loginControl" />
+                                                                            <asp:Button ID="btnSignIn" runat="server" CssClass="buttonPink" Text="Sign In" OnClick="btnSignIn_Click" ValidationGroup="loginControl" />
                                                                         </td>
                                                                     </tr>
                                                                     <tr>

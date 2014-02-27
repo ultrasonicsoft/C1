@@ -157,7 +157,7 @@
 
                         </td>
                         <td style="padding-left: 20px;">
-                            <asp:Button runat="server" Text="Edit" ID="btnEdit" OnClick="btnEdit_Click" Width="60px"></asp:Button>
+                            <asp:Button runat="server" Text="Edit" ID="btnEdit" CssClass="buttonPink"  OnClick="btnEdit_Click" Width="60px"></asp:Button>
                         </td>
                     </tr>
                 </table>
@@ -508,9 +508,9 @@
 
                         <tr>
                             <td style="padding-left: 20px;">&nbsp;&nbsp;&nbsp;&nbsp; &nbsp;
-                <asp:Button ID="btnSave" runat="server" Text="Save" OnClick="btnSave_Click" Width="60px"  ValidationGroup="EditValidation"/>
+                <asp:Button ID="btnSave" runat="server" Text="Save" OnClick="btnSave_Click" Width="60px"  CssClass="buttonPink"  ValidationGroup="EditValidation"/>
                                 &nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;
-                <asp:Button ID="btnCancel" runat="server" Text="Cancel"
+                <asp:Button ID="btnCancel" runat="server" Text="Cancel" CssClass="buttonPink" 
                     OnClick="btnCancel_Click" />
                             </td>
                         </tr>

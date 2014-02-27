@@ -1,5 +1,5 @@
 ﻿.page {
-    width: 100%;
+    width: 1171px;
     background-color: #fff;
     margin: 0px auto 0px auto;
     /*border: 1px solid #496077;
@@ -150,13 +150,13 @@ form {
         margin-left: 15px;
     }
 
-    .tableAppointment tr:nth-child(odd) > td {
+    .tableAppointment tr:nth-child(2) > td {
         background-color: #FFF9F3;
         border-top: 1px solid #CCCCCC;
         border-bottom: 1px solid #CCCCCC;
     }
 
-.DocTable  tr:nth-child(odd) > td {
+.DocTable  tr:nth-child(2) > td {
     border: none !important;
     background-color:transparent;
 }
@@ -210,8 +210,8 @@ form {
         border-color: #aaa !important;
         color:#A3A3A3!important;
         background-color:#F1F1F1 !important;
+        margin-left:5px;
     }
-    
     a{color:#0C4783}
 /*-----------------------------------*/
 
@@ -419,4 +419,35 @@ h1 {
                 background: url(../images/next-btn.png)right -18px no-repeat;
                 color: #acacac;
             }
-
+input[type="text"],input[type="password"] {
+border-radius:5px !important;
+}
+.buttonPink {
+  background-position: 0% 0%;
+    background-image: linear-gradient(to bottom, #FF4D76, #FB8DA6);
+    border-radius: 5px;
+    border-color:#FF4D76;
+    color: #ffffff;
+    text-decoration: none;
+    text-align:center;
+    display:block;
+    border-width:0px;
+    background-color: #FF4D76;
+    background-repeat: repeat;
+    background-attachment: scroll;
+}
+.buttonPink:hover {
+  background: #FF4D76;
+  background-image: -webkit-linear-gradient(top, #FF4D76, #FF4D76);
+  background-image: -moz-linear-gradient(top, #FF4D76, #FF4D76);
+  background-image: -ms-linear-gradient(top, #FF4D76, #FF4D76);
+  background-image: -o-linear-gradient(top, #FF4D76, #FF4D76);
+  background-image: linear-gradient(to bottom, #FF4D76, #FF4D76);
+  text-decoration: none;
+}
+.Current {
+        background-color:#FFE4C4;
+border: none;
+font-weight: normal;
+text-align: center;
+        }

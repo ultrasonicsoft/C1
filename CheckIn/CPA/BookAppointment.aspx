@@ -9,29 +9,6 @@
     </asp:ScriptManager>
     <asp:UpdatePanel ID="UpdatePanel1" runat="server">
         <ContentTemplate>
-         <%--<table width="100%" style="background-color: #e6e6f5" cellpadding="10px">
-                <tr>
-                    <td width="10%">
-                        <asp:Image ID="Image1" runat="server" ImageUrl="~/Images/CompanyLogo.jpg" Height="40" />
-                    </td>
-                    
-                     <td width="15%">
-                       <%-- <asp:DropDownList ID="ddlSpeciality" runat="server" Width="100%">
-                        </asp:DropDownList>--%><%-- 
-                       <input type="text" id="txtCity" runat="server" value="Enter City" onclick="if (this.value == 'Enter City') { this.value = '' }" 
-                            onblur="if(this.value==''){this.value='Enter City'}">
-                    </td>
-                    <td width="45%">--%>
-                       <%-- <asp:TextBox ID="txtZipCode" runat="server" Width="160px" Text="Enter Zip Code\City"></asp:TextBox>--%>  <%-- 
-                      <input type="text" id="txtZipCode" runat="server" value="Enter Zip Code" onclick="if (this.value == 'Enter Zip Code') { this.value = '' }" 
-                            onblur="if(this.value==''){this.value='Enter Zip Code'}">
-                        &nbsp;
-                        <asp:Button ID="btnRefineSearch" runat="server" Text="Refine Search" OnClick="btnRefineSearch_Click" />
-                    </td>
-                    <td width="25%">
-                    </td>
-                </tr>
-            </table>--%>
             <div class="breadcrumbs" id="Div1">
                 <ul class="breadcrumb">
                     <li>
@@ -129,7 +106,7 @@
                             </tr>
                             <tr>
                                 <td>
-                                    <asp:Button ID="btnNext" runat="server" Text="Next >>" 
+                                    <asp:Button ID="btnNext" runat="server" Text="Next >>" CssClass="buttonPink"
                                         onclick="btnNext_Click" />
                                 </td>
                             </tr>

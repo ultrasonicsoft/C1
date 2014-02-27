@@ -75,7 +75,7 @@
                                                         </tr>
                                                         <tr>
                                                             <td style="padding-left: 20px;">
-                                                                <asp:Button ID="btnSignIn" runat="server" Text="Sign In" OnClick="btnSignIn_Click"  ValidationGroup="loginControl" />
+                                                                <asp:Button ID="btnSignIn" runat="server" CssClass="buttonPink"  Text="Sign In" OnClick="btnSignIn_Click"  ValidationGroup="loginControl" />
                                                             </td>
                                                         </tr>
                                                         <tr>

@@ -118,7 +118,7 @@
                                         </tr>
                                         <tr>
                                             <td>
-                                                <asp:Button ID="btnEditContact" runat="server" Text="Edit Contact Information"
+                                                <asp:Button ID="btnEditContact" runat="server" Text="Edit Contact Information" CssClass="buttonPink" 
                                                     OnClick="btnEditContact_Click" />
                                             </td>
                                         </tr>
@@ -127,7 +127,7 @@
                                                
                                                 <asp:UpdatePanel runat="server" ID="Panel">
                                                     <ContentTemplate>
-                                                        <asp:Button ID="btnBookAppointment" runat="server" Text="Book Appointment"
+                                                        <asp:Button ID="btnBookAppointment" runat="server" Text="Book Appointment" CssClass="buttonPink" 
                                                             OnClick="btnBookAppointment_Click" Width="163px" />
                                                         <asp:Label ID="lblEmail" runat="server" Visible="false"></asp:Label>
                                                     </ContentTemplate>
@@ -162,7 +162,7 @@
                                         </tr>
                                         <tr>
                                             <td>
-                                                <asp:Button ID="BtnOK" runat="server" Text="OK" Height="23px" OnClick="BtnOK_Click" Width="75px" />
+                                                <asp:Button ID="BtnOK" runat="server" Text="OK" Height="23px" OnClick="BtnOK_Click" Width="75px"  CssClass="buttonPink" />
                                             </td>
                                         </tr>
                                         <tr>
@@ -199,7 +199,7 @@
                                         </tr>
                                         <tr>
                                             <td>
-                                                <asp:Button ID="btnAlreadyBook" runat="server" Text="OK" Height="23px" Width="75px" OnClick="btnAlreadyBook_Click" />
+                                                <asp:Button ID="btnAlreadyBook" runat="server" CssClass="buttonPink"  Text="OK" Height="23px" Width="75px" OnClick="btnAlreadyBook_Click" />
                                             </td>
                                         </tr>
                                         <tr>
@@ -304,11 +304,11 @@
                                         </tr>
                                         <tr>
                                             <td>
-                                                <asp:Button ID="btnSaveContactInformation" runat="server"
+                                                <asp:Button ID="btnSaveContactInformation" runat="server" CssClass="buttonPink" 
                                                     Text="Save Contact Information" OnClick="btnSaveContactInformation_Click" />
                                             </td>
                                             <td>
-                                                <asp:Button ID="btnCancel" runat="server" Text="Cancel"
+                                                <asp:Button ID="btnCancel" runat="server" Text="Cancel" CssClass="buttonPink" 
                                                     OnClick="btnCancel_Click" />
                                             </td>
                                         </tr>

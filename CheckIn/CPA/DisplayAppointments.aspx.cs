@@ -497,18 +497,19 @@ namespace CheckIn.Web_Pages
 
         protected void btnPrevWeek_Click(object sender, EventArgs e)
         {
+            if (IsPastWeek())
+            {
+                LinkButton btnPrev = (LinkButton)gvCPASearchResult.HeaderRow.FindControl("btnPrevWeek");
+                btnPrev.Enabled = false;
+                return;
+            }
             LinkButton btnNext = (LinkButton)gvCPASearchResult.HeaderRow.FindControl("btnNextWeek");
             btnNext.Enabled = true;
             UpdateWeekDays(-7);
            // GetCurrentSearchFilter();
             GetCurrentCityZipCode();
             RefreshSearchResult();
-            //if (IsPastWeek())
-            //{
-            //    Button btnPrev = (Button)gvCPASearchResult.HeaderRow.FindControl("btnPrevWeek");
-            //    btnPrev.Enabled = false;
-            //    return;
-            //}
+           
             
            
 

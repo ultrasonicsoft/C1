@@ -109,7 +109,7 @@
                     </tr>
                       <tr>
                         <td style="padding-left: 20px;" colspan=2 align="center">
-                            <asp:Button ID="btnMakePayment" runat="server" Text="Make a Payment" 
+                            <asp:Button ID="btnMakePayment" runat="server" Text="Make a Payment" CssClass="buttonPink" 
                                 onclick="btnMakePayment_Click" />
                         </td>
                     </tr>

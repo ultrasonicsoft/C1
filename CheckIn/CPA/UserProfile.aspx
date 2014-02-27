@@ -205,7 +205,7 @@
                             <br /></td>
                         <td style="padding-left: 20px;" class="auto-style1">   
                             <br />      
-                                   <asp:Button ID="btnEdit" runat="server" Text="Edit" OnClick="btnEdit_Click" Width="60px" 
+                                   <asp:Button ID="btnEdit" runat="server" Text="Edit" OnClick="btnEdit_Click" CssClass="buttonPink"  Width="60px" 
                    />
                 </td>
                     </tr>
@@ -446,10 +446,10 @@
                 
 
                 &nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp; &nbsp;
-                <asp:Button ID="btnSave" runat="server"  ValidationGroup="signUpValidation"  Text="Save" OnClick="btnSave_Click" Width="60px" 
+                <asp:Button ID="btnSave" runat="server" CssClass="buttonPink"  ValidationGroup="signUpValidation"  Text="Save" OnClick="btnSave_Click" Width="60px" 
                    />
             &nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;
-                <asp:Button ID="btnCancel" runat="server" Text="Cancel" 
+                <asp:Button ID="btnCancel" runat="server" Text="Cancel" CssClass="buttonPink" 
                     OnClick="btnCancel_Click" />
             </td>
         </tr>

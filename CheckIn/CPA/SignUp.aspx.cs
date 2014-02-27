@@ -151,45 +151,60 @@ namespace CheckIn.Web_Pages
         }
         private bool IsTermsAccepted()
         {
-            valTermsConditions.IsValid = cbTermCondition.Checked;
+            return cbTermCondition.Checked;
+            //valTermsConditions.IsValid = cbTermCondition.Checked;
 
-            return valTermsConditions.IsValid;
+            //return valTermsConditions.IsValid;
         }
-        protected bool Isvalididate()
+
+        protected void checkCheckBox(object source, ServerValidateEventArgs args)
         {
-            bool result;
-            int count = 0;
-            valTermsConditions.IsValid = cbTermCondition.Checked;
-
-            if (!valTermsConditions.IsValid)
+            if (cbTermCondition.Checked == true)
             {
-                count = count + 1;
-            }
-
-            if (CaptchaUserControl.Text == txtCaptchaText.Text)//txtCaptchaText.Text.ToString()))
-            {
-                lblStatus.Visible = true;
-
-                lblStatus.Text = "Success";
-                lblStatus.ForeColor = System.Drawing.Color.Green;
-                result = true;
+                args.IsValid = true;
             }
             else
             {
-                lblStatus.Visible = true;
-                lblStatus.Text = "Failure";
-                lblStatus.ForeColor = System.Drawing.Color.Red;
-
-                result = false;
-                count = count + 1;
+                args.IsValid = false;
             }
+        }
+
+        protected bool Isvalididate()
+        {
+            return true;
+            //bool result;
+            //int count = 0;
+            //valTermsConditions.IsValid = cbTermCondition.Checked;
+
+            //if (!valTermsConditions.IsValid)
+            //{
+            //    count = count + 1;
+            //}
+
+            //if (CaptchaUserControl.Text == txtCaptchaText.Text)//txtCaptchaText.Text.ToString()))
+            //{
+            //    lblStatus.Visible = true;
+
+            //    lblStatus.Text = "Success";
+            //    lblStatus.ForeColor = System.Drawing.Color.Green;
+            //    result = true;
+            //}
+            //else
+            //{
+            //    lblStatus.Visible = true;
+            //    lblStatus.Text = "Failure";
+            //    lblStatus.ForeColor = System.Drawing.Color.Red;
+
+            //    result = false;
+            //    count = count + 1;
+            //}
 
             
 
-            if (count == 0)
-                return true;
-            else
-                return false;
+            //if (count == 0)
+            //    return true;
+            //else
+            //    return false;
         }
 
         protected void cbTermCondition_CheckedChanged(object sender, EventArgs e)

@@ -398,7 +398,7 @@
                     <tr>
                         <td style="padding-left: 20px;">
                       
-                            <asp:Button ID="btnSignUpCPA" runat="server" ValidationGroup="signUpValidation" Text="Sign Up" OnClick="btnSignUp_Click" />
+                            <asp:Button ID="btnSignUpCPA" runat="server" CssClass="buttonPink"  ValidationGroup="signUpValidation" Text="Sign Up" OnClick="btnSignUp_Click" />
                         </td>
                     </tr>
                     <tr>

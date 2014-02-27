@@ -10,25 +10,12 @@
                 <tr>
                     <td width="10%">
                         &nbsp;</td>
-                    <%--<td width="15%">
-                        <asp:DropDownList ID="ddlSpeciality" runat="server" Width="100%">
-                        </asp:DropDownList>
-                    </td>
-                    <td width="45%">
-                        <asp:TextBox ID="txtZipCode" runat="server" Width="160px" Text="Enter Zip Code\City"></asp:TextBox>
-                        &nbsp;
-                        <asp:Button ID="btnRefineSearch" runat="server" Text="Refine Search" OnClick="btnRefineSearch_Click" />
-                    </td>
-                    <td width="25%">
-                    </td>--%>
                     <td width="15%">
-                       <%-- <asp:DropDownList ID="ddlSpeciality" runat="server" Width="100%">
-                        </asp:DropDownList>--%>
+                      
                         <input type="text" id="txtCity" runat="server" value="Enter City" onclick="if (this.value == 'Enter City') { this.value = '' }" 
                             onblur="if(this.value==''){this.value='Enter City'}">
                     </td>
                     <td width="45%">
-                       <%-- <asp:TextBox ID="txtZipCode" runat="server" Width="160px" Text="Enter Zip Code\City"></asp:TextBox>--%>
                          <input type="text" id="txtZipCode" runat="server" value="Enter Zip Code" onclick="if (this.value == 'Enter Zip Code') { this.value = '' }" 
                             onblur="if(this.value==''){this.value='Enter Zip Code'}">
                         &nbsp;

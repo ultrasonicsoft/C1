@@ -447,6 +447,8 @@
     <Content Include="assets\font\fontawesome-webfont.ttf" />
     <Content Include="assets\font\fontawesome-webfont.woff" />
     <Content Include="assets\font\FontAwesome.otf" />
+    <Content Include="Images\progress.gif" />
+    <Content Include="Images\progress1.gif" />
     <Content Include="packages.config" />
     <None Include="Properties\DataSources\System.Data.DataSet.datasource" />
     <Content Include="CPA\About.aspx" />

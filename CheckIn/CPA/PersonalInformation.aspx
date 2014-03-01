@@ -79,6 +79,7 @@
                 <%-- <asp:LinkButton class="search_btn" ID="LinkButton2" runat="server" Text="" OnClick="btnRefineSearch_Click" />--%>
             </div>
 
+
             <br />
             <div class="page-content">
                 <!--PAGE CONTENT BEGINS-->
@@ -118,24 +119,32 @@
                                         </tr>
                                         <tr>
                                             <td>
-                                                <asp:Button ID="btnEditContact" runat="server" Text="Edit Contact Information" CssClass="buttonPink" 
+                                                <asp:Button ID="btnEditContact" runat="server" Text="Edit Contact Information" CssClass="buttonPink"
                                                     OnClick="btnEditContact_Click" />
                                             </td>
                                         </tr>
                                         <tr>
                                             <td>
-                                               
+
                                                 <asp:UpdatePanel runat="server" ID="Panel">
                                                     <ContentTemplate>
-                                                        <asp:Button ID="btnBookAppointment" runat="server" Text="Book Appointment" CssClass="buttonPink" 
+                                                        <asp:Button ID="btnBookAppointment" runat="server" Text="Book Appointment" CssClass="buttonPink"
                                                             OnClick="btnBookAppointment_Click" Width="163px" />
                                                         <asp:Label ID="lblEmail" runat="server" Visible="false"></asp:Label>
                                                     </ContentTemplate>
                                                 </asp:UpdatePanel>
 
-                                                 <asp:UpdateProgress runat="server" ID="PageUpdateProgress">
+                                                <%--  <asp:UpdateProgress runat="server" ID="PageUpdateProgress">
                                                     <ProgressTemplate>
                                                         Please wait while we are booking appointment for you...
+                                                    </ProgressTemplate>
+                                                </asp:UpdateProgress>--%>
+                                                <asp:UpdateProgress ID="updProgress"
+                                                    AssociatedUpdatePanelID="UpdatePanel1"
+                                                    runat="server">
+                                                    <ProgressTemplate>
+                                                        <img alt="progress" src="../Images/progress.gif" />
+                                                        Please wait while we are booking appointment for you...          
                                                     </ProgressTemplate>
                                                 </asp:UpdateProgress>
                                             </td>
@@ -162,7 +171,7 @@
                                         </tr>
                                         <tr>
                                             <td>
-                                                <asp:Button ID="BtnOK" runat="server" Text="OK" Height="23px" OnClick="BtnOK_Click" Width="75px"  CssClass="buttonPink" />
+                                                <asp:Button ID="BtnOK" runat="server" Text="OK" Height="23px" OnClick="BtnOK_Click" Width="75px" CssClass="buttonPink" />
                                             </td>
                                         </tr>
                                         <tr>
@@ -199,7 +208,7 @@
                                         </tr>
                                         <tr>
                                             <td>
-                                                <asp:Button ID="btnAlreadyBook" runat="server" CssClass="buttonPink"  Text="OK" Height="23px" Width="75px" OnClick="btnAlreadyBook_Click" />
+                                                <asp:Button ID="btnAlreadyBook" runat="server" CssClass="buttonPink" Text="OK" Height="23px" Width="75px" OnClick="btnAlreadyBook_Click" />
                                             </td>
                                         </tr>
                                         <tr>
@@ -304,11 +313,11 @@
                                         </tr>
                                         <tr>
                                             <td>
-                                                <asp:Button ID="btnSaveContactInformation" runat="server" CssClass="buttonPink" 
+                                                <asp:Button ID="btnSaveContactInformation" runat="server" CssClass="buttonPink"
                                                     Text="Save Contact Information" OnClick="btnSaveContactInformation_Click" />
                                             </td>
                                             <td>
-                                                <asp:Button ID="btnCancel" runat="server" Text="Cancel" CssClass="buttonPink" 
+                                                <asp:Button ID="btnCancel" runat="server" Text="Cancel" CssClass="buttonPink"
                                                     OnClick="btnCancel_Click" />
                                             </td>
                                         </tr>

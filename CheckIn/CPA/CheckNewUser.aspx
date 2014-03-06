@@ -145,13 +145,12 @@
                                         </tr>
                                         <tr>
                                             <td>
-                                                <asp:Button ID="btnNewUser" runat="server" Text="I am new to this site" OnClick="btnNewUser_Click" CssClass="buttonPink" Width="222px"/>
+                                                <asp:Button ID="btnNewUser" runat="server" Text="I am new to this site" CssClass="buttonPink" Width="222px" OnClick="btnNewUser_Click1" />
                                             </td>
                                         </tr>
                                         <tr>
                                             <td class="auto-style1">
-                                                <asp:Button ID="btnRegisteredUser" runat="server" Text="I have used this site before" CssClass="buttonPink"
-                                                    OnClick="btnRegisteredUser_Click" />
+                                                <asp:Button ID="btnRegisteredUser" runat="server" Text="I have used this site before" CssClass="buttonPink" OnClick="btnRegisteredUser_Click1" />
                                             </td>
                                         </tr>
                                         <tr>
@@ -162,137 +161,83 @@
                                         </tr>
                                         <tr>
                                             <td>
-
-
                                                 <asp:Panel ID="pnlNewUser" runat="server" Visible="false">
-                                                    <table style="background-color: #e6e6f5" width="100%" cellpadding-left="10">
-                                                        <tr>
-                                                            <td style="padding-left: 20px;">
-                                                                <asp:Label ID="Label2" runat="server" Text="Create an account!" Font-Bold="True"></asp:Label>
-                                                                <br />
-                                                                <asp:Label ID="Label9" runat="server" Text="It only takes few minutes"></asp:Label>
-                                                            </td>
-                                                        </tr>
-                                                        <tr>
-                                                            <td style="padding-left: 20px;">
-                                                                <table width="100%">
-                                                                    <tr>
-                                                                        <td width="15%">
-                                                                            <asp:Label ID="Label10" runat="server" Text="Email"></asp:Label>
-                                                                        </td>
-                                                                        <td valign="middle">
-                                                                            <asp:TextBox ID="txtEmail" runat="server"></asp:TextBox>
-                                                                            <asp:RequiredFieldValidator ID="RequiredFieldValidator3" runat="server" ErrorMessage="Email can not be empty" Text="*" SetFocusOnError="true"
-                                                                                ControlToValidate="txtEmail" ValidationGroup="signUpValidation" ForeColor="Red"></asp:RequiredFieldValidator>
-                                                                            <asp:RegularExpressionValidator ID="RegularExpressionValidator1" runat="server" ErrorMessage="Invalid Email Address " ControlToValidate="txtEmail"
-                                                                                Text="*" ValidationExpression="\w+([-+.']\w+)*@\w+([-.]\w+)*\.\w+([-.]\w+)*" ValidationGroup="signUpValidation" ForeColor="Red"></asp:RegularExpressionValidator>
+                                                    <div class="page-content">
+                                                        <div class="page_border">
+                                                            <div class="form-horizontal">
+                                                                <h1>Create New Account </h1>
+                                                                <%--   <asp:Label ID="Label1" runat="server" Text="It only takes few minutes"></asp:Label>    --%>
+                                                                <div class="tabbable">
+                                                                    <div class="control-group">
+                                                                        <label class="control-label" for="txtEmail">Email</label>
+                                                                        <div class="controls">
+                                                                            <asp:TextBox ID="txtEmail" CssClass="input-xlarge" runat="server"></asp:TextBox>
+                                                                            <asp:RequiredFieldValidator ID="RequiredFieldValidator3" runat="server" ErrorMessage="Email can not be empty" SetFocusOnError="true" Text="*"
+                                                                                ControlToValidate="txtEmail" ForeColor="Red" ValidationGroup="signUpValidation"></asp:RequiredFieldValidator>
 
-                                                                            <asp:CustomValidator ID="CustomValidator2" Text="*" runat="server" ForeColor="Red" ValidationGroup="signUpValidation" ErrorMessage="Email not Exist"></asp:CustomValidator>
+                                                                            <asp:RegularExpressionValidator ID="RegularExpressionValidator3" runat="server" ErrorMessage="Invalid Email Address" Text="*" ControlToValidate="txtEmail"
+                                                                                ValidationExpression="\w+([-+.']\w+)*@\w+([-.]\w+)*\.\w+([-.]\w+)*" ValidationGroup="signUpValidation" ForeColor="Red"></asp:RegularExpressionValidator>
 
-                                                                        </td>
-                                                                    </tr>
-                                                                </table>
-                                                            </td>
-                                                        </tr>
-                                                        <tr>
-                                                            <td style="padding-left: 20px;">
-                                                                <table width="100%">
-                                                                    <tr>
-                                                                        <td width="15%">
-                                                                            <asp:Label ID="Label11" runat="server" Text="Generate a Password"></asp:Label>
-                                                                        </td>
-                                                                        <td>
-                                                                            <asp:TextBox ID="txtPassword" TextMode="Password" runat="server"></asp:TextBox>
-                                                                            <asp:RequiredFieldValidator ID="RequiredFieldValidator4" runat="server" ErrorMessage="Password can not be empty" SetFocusOnError="true" Text="*"
+                                                                            <asp:CustomValidator ID="CustomValidator2" runat="server" ForeColor="Red" ErrorMessage="Email not Exist" ValidationGroup="signUpValidation" Text="*"></asp:CustomValidator>
+
+                                                                        </div>
+                                                                    </div>
+                                                                    <div class="control-group">
+                                                                        <label class="control-label" for="txtPassword">Generate Password</label>
+                                                                        <div class="controls">
+                                                                            <asp:TextBox ID="txtPassword" CssClass="input-xlarge" TextMode="Password" runat="server"></asp:TextBox>
+                                                                            <asp:RequiredFieldValidator ID="RequiredFieldValidator4" runat="server" ErrorMessage="Password can not be empty" Text="*"
                                                                                 ControlToValidate="txtPassword" ValidationGroup="signUpValidation" ForeColor="Red"></asp:RequiredFieldValidator>
+
                                                                             <asp:RegularExpressionValidator ID="RegularExpressionValidator2" runat="server" ForeColor="Red" ControlToValidate="txtPassword"
-                                                                                ValidationExpression="(?!^[0-9]*$)(?!^[a-zA-Z]*$)^([a-zA-Z0-9]{8,10})$" ValidationGroup="signUpValidation" SetFocusOnError="true" Text="*"
-                                                                                ErrorMessage="Contain 8 to 10 characters, one digit and one alphabetic character and must not contain special characters."></asp:RegularExpressionValidator></td>
-                                                                    </tr>
-                                                                </table>
-
-                                                            </td>
-                                                        </tr>
-
-                                                        <tr>
-                                                            <td style="padding-left: 20px;">
-                                                                <table width="100%">
-                                                                    <tr>
-                                                                        <td width="15%">
-                                                                            <asp:Label ID="Label12" runat="server" Text="First Name"></asp:Label>
-                                                                        </td>
-                                                                        <td>
-                                                                            <asp:TextBox ID="txtFirstName"  runat="server"></asp:TextBox>
-                                                                            <asp:CustomValidator ID="CustValFisrtName" runat="server" ValidationGroup="signUpValidation" Text="*" ForeColor="Red" ControlToValidate="txtFirstName"></asp:CustomValidator>
-                                                                        </td>
-                                                                    </tr>
-                                                                </table>
-                                                            </td>
-                                                        </tr>
-
-                                                        <tr>
-                                                            <td style="padding-left: 20px;">
-                                                                <table width="100%">
-                                                                    <tr>
-                                                                        <td width="15%">
-                                                                            <asp:Label ID="Label20" runat="server" Text="Last Name"></asp:Label>
-                                                                        </td>
-                                                                        <td>
-                                                                            <asp:TextBox ID="txtLastName" runat="server"></asp:TextBox>
+                                                                                ValidationExpression="(?!^[0-9]*$)(?!^[a-zA-Z]*$)^([a-zA-Z0-9]{8,10})$" ValidationGroup="signUpValidation" Text="*"
+                                                                                ErrorMessage="Password should contain 8 and 10 characters, one digit and one alphabetic character, and must not contains any special character."></asp:RegularExpressionValidator>
+                                                                        </div>
+                                                                    </div>
+                                                                    <div class="control-group">
+                                                                        <label class="control-label">Name</label>
+                                                                        <div class="controls">
+                                                                            <asp:TextBox ID="txtFirstName" Style="width: 35%" runat="server" class="input-medium"></asp:TextBox>
+                                                                            <asp:CustomValidator ID="CustValFisrtName" ValidationGroup="signUpValidation" runat="server" ForeColor="Red" ControlToValidate="txtFirstName" Text="*"></asp:CustomValidator>
+                                                                            <asp:TextBox ID="txtLastName" Style="width: 35%" runat="server" class="input-medium"></asp:TextBox>
                                                                             <asp:CustomValidator ID="CustValLastName" ValidationGroup="signUpValidation" Text="*" runat="server" ForeColor="Red" ControlToValidate="txtLastName"></asp:CustomValidator>
-                                                                        </td>
-                                                                    </tr>
-                                                                </table>
-                                                            </td>
-                                                        </tr>
-                                                        <tr>
-                                                            <td style="padding-left: 20px;">
-                                                                <table width="100%">
-                                                                    <tr>
-                                                                        <td width="15%">
-                                                                            <asp:Label ID="Label13" runat="server" Text="Date of Birth"></asp:Label>
-                                                                        </td>
-                                                                        <td>
-                                                                            <asp:TextBox ID="txtDOB" runat="server"></asp:TextBox>
+                                                                        </div>
+
+                                                                    </div>
+                                                                    <div class="control-group">
+                                                                        <label class="control-label">Date Of Birth</label>
+                                                                        <div class="controls">
+                                                                            <asp:TextBox ID="txtDateOfBirth" runat="server" class="input-medium"></asp:TextBox>
                                                                             <ajaxToolkit:CalendarExtender
                                                                                 ID="CalendarExtender1"
-                                                                                TargetControlID="txtDOB"
+                                                                                TargetControlID="txtDateOfBirth"
                                                                                 runat="server" />
-                                                                        </td>
-                                                                    </tr>
-                                                                </table>
-                                                            </td>
-                                                        </tr>
+                                                                        </div>
+                                                                    </div>
+                                                                    <div class="control-group">
+                                                                        <label class="control-label">Gender</label>
 
-                                                        <tr>
-                                                            <td style="padding-left: 20px;">
-                                                                <asp:Label ID="Label14" runat="server" Text="Gender"></asp:Label>
-                                                            </td>
-                                                        </tr>
-                                                        <tr>
-                                                            <td style="padding-left: 20px;">
-                                                                <table width="90%">
-                                                                    <tr>
-                                                                        <td align="left" width="50%">
-                                                                            <asp:RadioButton ID="rbtnMale" Checked="true" GroupName="rgrpGendar" runat="server" Text="Male" />
-                                                                            &nbsp;&nbsp;
-                                                                <asp:RadioButton ID="rbtnFemale" GroupName="rgrpGendar" runat="server" Text="Female" />
-                                                                        </td>
-                                                                    </tr>
-                                                                </table>
-                                                            </td>
-                                                        </tr>
-                                                        <tr>
-                                                            <td style="padding-left: 20px;">
-                                                                <table width="100%">
-                                                                    <tr>
-                                                                        <td width="15%">
-                                                                            <asp:Label ID="Label15" runat="server" Text="Phone Number"></asp:Label>
-                                                                        </td>
-                                                                        <td>
-                                                                            <asp:TextBox ID="txtPhNumberPart1" Width="150" MaxLength="3" runat="server" Height="22px"></asp:TextBox>
+                                                                        <div class="controls">
+                                                                            <div class="space-2"></div>
+
+                                                                            <label class="inline">
+                                                                                <asp:RadioButton ID="rbtnMale" Checked="true" GroupName="Gender" runat="server" />
+                                                                                <span class="lbl">Male</span>
+                                                                            </label>
+                                                                            &nbsp; &nbsp; &nbsp;
+							<label class="inline">
+                                <asp:RadioButton ID="rbtnFemale" GroupName="Gender" runat="server" />
+                                <span class="lbl">Female</span>
+
+                            </label>
+                                                                        </div>
+                                                                    </div>
+                                                                    <div class="control-group">
+                                                                        <label class="control-label">Phone Number</label>
+                                                                        <div class="controls">
+                                                                            <asp:TextBox ID="txtDOB" runat="server" class="input-small"></asp:TextBox>
                                                                             <ajaxToolkit:MaskedEditExtender ID="MaskedEditExtender2" runat="server"
-                                                                                TargetControlID="txtPhNumberPart1"
+                                                                                TargetControlID="txtDOB"
                                                                                 Mask="999-999-9999"
                                                                                 ClearMaskOnLostFocus="false"
                                                                                 MessageValidatorTip="true"
@@ -303,152 +248,112 @@
                                                                                 AcceptNegative="Left"
                                                                                 DisplayMoney="Left" Filtered="-"
                                                                                 ErrorTooltipEnabled="True" />
-                                                                        </td>
-                                                                    </tr>
-                                                                </table>
-                                                            </td>
-                                                        </tr>
-                                                        <tr>
-                                                            <td style="padding-left: 20px;">
-                                                                <asp:Label ID="Label21" runat="server" Text="Image"></asp:Label>
-                                                            </td>
-                                                        </tr>
-                                                        <tr>
-                                                            <td style="padding-left: 20px;">
-                                                                <table width="90%">
-                                                                    <tr>
-                                                                        <td align="left" width="50%">
-                                                                            <asp:FileUpload ID="ImageUpload" runat="server" Width="325px" />
+                                                                        </div>
+                                                                    </div>
+                                                                    <div class="control-group">
+                                                                        <label class="control-label">Image</label>
+                                                                        <div class="controls">
+                                                                            <asp:FileUpload ID="ImageUpload" runat="server" Width="320px" />
                                                                             <asp:Label ID="lblFile" runat="server" Visible="false"></asp:Label>
-                                                                        </td>
-                                                                    </tr>
-                                                                </table>
-                                                            </td>
-                                                        </tr>
+                                                                        </div>
+                                                                    </div>
+                                                                    <div class="control-group">
+                                                                        <div class="controls">
+                                                                            <asp:CheckBox ID="cbAcceptTerms" Text="" runat="server" />
+                                                                            <label class="lbl" for="cbAcceptTerms">I accept Terms and Conditions</label>
+                                                                            <asp:CustomValidator runat="server" ID="CheckBoxRequired" ErrorMessage="Please accept terms and condition." ValidationGroup="signUpValidation" Text="*" />
+                                                                        </div>
+                                                                    </div>
+                                                                    <div class="control-group">
+                                                                        <div class="controls">
+                                                                            <asp:ValidationSummary ID="signUpValidation" runat="server" CssClass="validationSummary" DisplayMode="BulletList" ForeColor="Red" ValidationGroup="signUpValidation" />
+                                                                        </div>
+                                                                    </div>
+                                                                    <asp:Label ID="lblStatus" runat="server"></asp:Label>
+                                                                    <div class="form-actions">
+                                                                        <asp:Button ID="btnSignUp" CssClass="buttonPink" runat="server" Text="Sign Up" OnClick="btnSignUp_Click" ValidationGroup="signUpValidation" CausesValidation="true" />
 
-                                                        <tr>
-                                                            <td style="padding-left: 20px;">
+                                                                    </div>
+                                                                </div>
 
-                                                                <%--<asp:Image  ImageUrl="~/CPA/GenerateCaptcha.ashx"  runat="server"/>
-                            <asp:Button ID="btnReGenerate" runat="server"
-                                text=" Regenrate captch" OnClick="btnReGenerate_Click" />--%>
-                                                                <uc1:CaptchaUserControl runat="server" ID="CaptchaUserControl" />
+                                                            </div>
 
-                                                            </td>
-                                                        </tr>
-                                                        <tr>
-                                                            <td style="padding-left: 20px;">
+                                                        </div>
 
-                                                                <asp:TextBox ID="txtCaptchaText" runat="server" Width="250px" Height="28px"></asp:TextBox>
-
-                                                            </td>
-                                                        </tr>
-                                                        <tr>
-                                                            <td style="padding-left: 20px;">
-
-                                                                <asp:Label ID="lblStatus" runat="server"></asp:Label>
-
-                                                            </td>
-                                                        </tr>
-
-                                                        <tr>
-                                                            <td style="padding-left: 20px;">
-                                                                <asp:CheckBox ID="cbAcceptTerms" runat="server" Text="I accept Terms and Conditions" ValidationGroup="signUpValidation" />
-                                                                <br />
-                                                                <asp:CustomValidator ID="valTermsConditions" runat="server" ForeColor="Red" ErrorMessage="Please accept Terms And Condition!"
-                                                                    ValidationGroup="signUpValidation" Visible="false"></asp:CustomValidator>
-                                                                <asp:ValidationSummary ID="signUpValidation" ValidationGroup="signUpValidation" runat="server"
-                                                                    DisplayMode="BulletList" CssClass="validationSummary" ForeColor="Red"></asp:ValidationSummary>
-                                                            </td>
-                                                        </tr>
-                                                        <tr>
-                                                            <td>
-                                                                <br />
-                                                            </td>
-                                                        </tr>
-                                                        <tr>
-                                                            <td style="padding-left: 20px;">
-                                                                <asp:Button ID="btnSignUp" runat="server" Text="Sign Up" CssClass="buttonPink"
-                                                                    OnClick="btnSignUp_Click" ValidationGroup="signUpValidation" />
-                                                            </td>
-                                                        </tr>
-                                                        <tr>
-                                                            <td>
-                                                                <br />
-                                                            </td>
-                                                        </tr>
-                                                    </table>
+                                                    </div>
                                                 </asp:Panel>
                                             </td>
                                         </tr>
                                         <tr>
                                             <td>
                                                 <asp:Panel ID="pnlRegisteredUser" runat="server" Visible="false">
-                                                    <table width="100%">
-                                                        <tr>
-                                                            <td align="left">
-                                                                <table style="background-color: #e6e6f5" width="100%" cellpadding-left="10">
-                                                                    <tr>
-                                                                        <td style="padding-left: 20px;">
-                                                                            <asp:Label ID="Label16" runat="server" Text="Sign In" Font-Bold="True"></asp:Label>
-                                                                        </td>
-                                                                    </tr>
-                                                                    <tr>
-                                                                        <td style="padding-left: 20px;">
-                                                                            <asp:Label ID="Label17" runat="server" Text="Email"></asp:Label>
-                                                                        </td>
-                                                                    </tr>
-                                                                    <tr>
-                                                                        <td style="padding-left: 20px;">
-                                                                            <asp:TextBox ID="txtLoginEmail" Width="30%" runat="server"></asp:TextBox>
-                                                                            <asp:RequiredFieldValidator ID="RequiredFieldValidator1" runat="server" ErrorMessage="Email can not be empty" SetFocusOnError="true"
-                                                                                Text="*" ControlToValidate="txtLoginEmail" ForeColor="Red" ValidationGroup="loginControl"></asp:RequiredFieldValidator>
-                                                                            <asp:RegularExpressionValidator ID="RegularExpressionValidator6" runat="server" ErrorMessage="Invalid Email Address "
-                                                                                Text="*" SetFocusOnError="true" ControlToValidate="txtLoginEmail" ValidationGroup="loginControl"
-                                                                                ValidationExpression="\w+([-+.']\w+)*@\w+([-.]\w+)*\.\w+([-.]\w+)*" ForeColor="Red"></asp:RegularExpressionValidator>
+                                                    <div class="page-content">
+                                                        <div class="page_border">
+                                                            <div class="form-horizontal">
+                                                                <h1>Sign In </h1>
+                                                                <%--   <asp:Label ID="Label1" runat="server" Text="It only takes few minutes"></asp:Label>    --%>
+                                                                <div class="tabbable">
+                                                                    <div class="control-group">
+                                                                        <label class="control-label" for="txtEmail">Email</label>
+                                                                        <div class="controls">
+                                                                            <span class="input-icon input-icon-right">
+                                                                                <asp:TextBox ID="txtLoginEmail" CssClass="input-xlarge" runat="server"></asp:TextBox>
+                                                                               <%-- <asp:RequiredFieldValidator ID="RequiredFieldValidator1" runat="server"
+                                                                                    ErrorMessage="Email can not be empty" ControlToValidate="txtLoginEmail" Text="*"
+                                                                                    ForeColor="Red"></asp:RequiredFieldValidator>--%>
+                                                                                <asp:RegularExpressionValidator ID="RegularExpressionValidator1" runat="server"
+                                                                                    ControlToValidate="txtLoginEmail" Text="*" ForeColor="Red" ErrorMessage="Invalid Email Address " ValidationExpression="\w+([-+.']\w+)*@\w+([-.]\w+)*\.\w+([-.]\w+)*">
+                              
+                                                                                </asp:RegularExpressionValidator>
 
-                                                                        </td>
-                                                                    </tr>
-                                                                    <tr>
-                                                                        <td style="padding-left: 20px;">
-                                                                            <asp:Label ID="Label18" runat="server" Text="Password"></asp:Label>
-                                                                        </td>
-                                                                    </tr>
-                                                                    <tr>
-                                                                        <td style="padding-left: 20px;">
-                                                                            <asp:TextBox ID="txtLoginPassword" TextMode="Password" Width="30%" runat="server"></asp:TextBox>
-                                                                            <asp:RequiredFieldValidator ID="RequiredFieldValidator2" runat="server" ErrorMessage="Password can not be empty"
-                                                                                Text="*" ControlToValidate="txtLoginPassword" ForeColor="Red" ValidationGroup="loginControl" SetFocusOnError="true"></asp:RequiredFieldValidator>
-                                                                        </td>
-                                                                    </tr>
-                                                                    <tr>
-                                                                        <td style="padding-left: 20px;">
-                                                                            <asp:Label ID="Label19" runat="server" Text="Forgot your password?"></asp:Label>
-                                                                        </td>
-                                                                    </tr>
-                                                                    <tr>
-                                                                        <td>
-                                                                            <asp:CustomValidator ID="loginValidation" runat="server" ForeColor="Red" ErrorMessage="Login failed. Please check your username and password."
-                                                                                ValidationGroup="loginControl" Visible="false" SetFocusOnError="true"></asp:CustomValidator>
-                                                                            <asp:ValidationSummary ID="ValidationSummary" ValidationGroup="loginControl" runat="server"
-                                                                                DisplayMode="BulletList" CssClass="validationSummary" ForeColor="Red"></asp:ValidationSummary>
-                                                                            <br />
-                                                                        </td>
-                                                                    </tr>
-                                                                    <tr>
-                                                                        <td style="padding-left: 20px;">
-                                                                            <asp:Button ID="btnSignIn" runat="server" CssClass="buttonPink" Text="Sign In" OnClick="btnSignIn_Click" ValidationGroup="loginControl" />
-                                                                        </td>
-                                                                    </tr>
-                                                                    <tr>
-                                                                        <td>
-                                                                            <br />
-                                                                        </td>
-                                                                    </tr>
-                                                                </table>
-                                                            </td>
-                                                        </tr>
-                                                    </table>
+                                                                            </span>
+                                                                        </div>
+                                                                    </div>
+                                                                    <%--<div class="control-group">
+                                    <label class="control-label" for="txtPassword">Password</label>
+                                    <div class="controls">
+                                        <asp:TextBox ID="txtPassword" CssClass="input-xlarge"  TextMode="Password" Width="80%" runat="server"></asp:TextBox>
+                                        <br />
+                                        <asp:RequiredFieldValidator ID="RequiredFieldValidator2" runat="server" 
+                                            ErrorMessage="Password can not be empty" ControlToValidate="txtPassword"
+                                            ForeColor="Red"></asp:RequiredFieldValidator>
+                                    </div>
+                                </div>--%>
+                                                                    <div class="control-group">
+                                                                        <label class="control-label" for="txtPassword">Password</label>
+                                                                        <div class="controls">
+                                                                            <asp:TextBox ID="txtLoginPassword" CssClass="input-xlarge" TextMode="Password" runat="server"></asp:TextBox>
+                                                                            <asp:RequiredFieldValidator ID="RequiredFieldValidator2" runat="server" ErrorMessage="Password can not be empty" Text="*"
+                                                                                ControlToValidate="txtLoginPassword" ValidationGroup="signUpValidation" ForeColor="Red"></asp:RequiredFieldValidator>
+
+                                                                            <asp:RegularExpressionValidator ID="RegularExpressionValidator4" runat="server" ForeColor="Red" ControlToValidate="txtLoginPassword"
+                                                                                ValidationExpression="(?!^[0-9]*$)(?!^[a-zA-Z]*$)^([a-zA-Z0-9]{8,10})$" ValidationGroup="signUpValidation" Text="*"
+                                                                                ErrorMessage="Password should contain 8 and 10 characters, one digit and one alphabetic character, and must not contains any special character."></asp:RegularExpressionValidator>
+                                                                        </div>
+                                                                    </div>
+                                                                    <div class="control-group">
+                                                                        <asp:CustomValidator ID="loginValidation" runat="server"
+                                                                            ForeColor="Red" ErrorMessage="Login failed. Please check your username and password." ValidationGroup="loginControl" Visible="false"></asp:CustomValidator>
+                                                                        <asp:ValidationSummary ID="ValidationSummary"
+                                                                            ValidationGroup="loginControl" runat="server" DisplayMode="BulletList"
+                                                                            CssClass="validationSummary"
+                                                                            ForeColor="Red"></asp:ValidationSummary>
+                                                                    </div>
+                                                                    <div class="control-group">
+                                                                        <a class="control-label">Forgot your password?</a>
+                                                                    </div>
+                                                                    <div class="form-actions">
+                                                                        <asp:Button ID="btnSignIn" runat="server" Text="Sign In" CssClass="buttonPink" ValidationGroup="loginControl" CausesValidation="true"
+                                                                            OnClick="btnSignIn_Click" />
+
+                                                                    </div>
+                                                                </div>
+
+                                                            </div>
+
+                                                        </div>
+
+                                                    </div>
                                                 </asp:Panel>
                                             </td>
                                         </tr>
@@ -457,47 +362,6 @@
                                 </asp:Panel>
                             </td>
                             <td valign="top">
-                                <%--<table width="100%">
-                    <tr>
-                        <td width="30%">
-                            <a href="CPADetailsInfo.aspx">
-                                <asp:Image ID="imgCPA" Height="150" Width="150" runat="server"></asp:Image></a>
-                        </td>
-                        <td>
-                            <asp:HyperLink ID="lnkCPADetail" runat="server">CPA Company Name</asp:HyperLink>
-                            <br />
-                            <asp:Label ID="lblName" runat="server" Text="CPA Name"></asp:Label>
-                            <br />
-                            <asp:Label ID="lblAddress1" runat="server" Text="Address 1"></asp:Label>
-                            <br />
-                            <asp:Label ID="lblAddress2" runat="server" Text="Address 2"></asp:Label>
-                            <br />
-                            <asp:Label ID="lblState" runat="server" Text="State"></asp:Label>
-                            <br />
-                            <asp:Label ID="lblZipCode" runat="server" Text="Zip Code"></asp:Label>
-                        </td>
-                    </tr>
-                    <tr>
-                        <td>
-                            <asp:Label ID="Label7" runat="server" Text="Schedule" Font-Bold="True"></asp:Label>
-                        </td>
-                    </tr>
-                    <tr>
-                        <td colspan="2">
-                            <asp:Label ID="lblScheduleDate" runat="server" Text="[Schedule Date]"></asp:Label>
-                        </td>
-                    </tr>
-                    <tr>
-                        <td colspan="2">
-                            <asp:Label ID="Label8" runat="server" Text="Purpose of Visit" Font-Bold="True"></asp:Label>
-                        </td>
-                    </tr>
-                    <tr>
-                        <td colspan="2">
-                            <asp:Label ID="lblPurposeOfVisit" runat="server" Text="[Purpose of Visit]"></asp:Label>
-                        </td>
-                    </tr>
-                </table>--%>
                                 <table class="DocTable">
                                     <tr>
                                         <td rowspan="1">

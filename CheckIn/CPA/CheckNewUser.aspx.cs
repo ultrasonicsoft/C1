@@ -109,28 +109,29 @@ namespace CheckIn.CPA
 
         }
 
-        protected void btnNewUser_Click(object sender, EventArgs e)
-        {
-            pnlNewUser.Visible = true;
-            pnlRegisteredUser.Visible = false;
-            btnBack.Visible = false;
-        }
+        //protected void btnNewUser_Click(object sender, EventArgs e)
+        //{
+        //    pnlNewUser.Visible = true;
+        //    pnlRegisteredUser.Visible = false;
+        //    btnBack.Visible = false;
+        //}
 
-        protected void btnRegisteredUser_Click(object sender, EventArgs e)
-        {
-            pnlNewUser.Visible = false;
-            pnlRegisteredUser.Visible = true;
-            btnBack.Visible = false;
-        }
+        //protected void btnRegisteredUser_Click(object sender, EventArgs e)
+        //{
+        //    pnlNewUser.Visible = false;
+        //    pnlRegisteredUser.Visible = true;
+        //    btnBack.Visible = false;
+        //}
 
         protected void btnSignIn_Click(object sender, EventArgs e)
         {
             bool result;
-            if ((result = BusinessLogic.IsLoginSuccessful(txtLoginEmail.Text, txtLoginPassword.Text)) && ((role=BusinessLogic.GetRoleID(txtLoginEmail.Text, txtLoginPassword.Text)) == 1))
+            if ((BusinessLogic.IsLoginSuccessful(txtLoginEmail.Text, txtLoginPassword.Text)) && ((BusinessLogic.GetRoleID(txtLoginEmail.Text, txtLoginPassword.Text)) == 1))
             {
                 //if ((role = BusinessLogic.GetRoleID(txtLoginEmail.Text, txtLoginPassword.Text)) > 0)
                 //{
                     string user;
+                    role = BusinessLogic.GetRoleID(txtLoginEmail.Text, txtLoginPassword.Text);
                     if ((user = BusinessLogic.GetLoggedInUserName(txtLoginEmail.Text, txtLoginPassword.Text)) != null)
                     {
                         Session["userName"] = user;
@@ -174,7 +175,7 @@ namespace CheckIn.CPA
                 newCustomer.FirstName = txtFirstName.Text;
                 newCustomer.LastName = txtLastName.Text;
                 newCustomer.Password = txtPassword.Text;
-                newCustomer.PhoneNumber = txtPhNumberPart1.Text;
+                newCustomer.PhoneNumber = txtDOB.Text;
                 newCustomer.Gender = rbtnMale.Checked ? "M" : "F";
                string local= HttpContext.Current.Request.Url.Port.ToString(); 
                 int len;
@@ -348,14 +349,20 @@ namespace CheckIn.CPA
             }
 
 
-            if (false == string.IsNullOrEmpty(txtLastName.Text) || txtLastName.Text.Contains(' '))
+            if (false == string.IsNullOrEmpty(txtLastName.Text))
+            {
+                CustValLastName.IsValid = false;
+                CustValLastName.ErrorMessage = "Last name must not be empty!";
+                result = false;
+                count = count + 1;
+            }
+            else if(txtLastName.Text.Contains(' '))
             {
                 CustValLastName.IsValid = false;
                 CustValLastName.ErrorMessage = "Last name should not contain spaces";
                 result = false;
                 count = count + 1;
             }
-
             else if (System.Text.RegularExpressions.Regex.IsMatch(txtLastName.Text, @"^[a-zA-Z]{1,25}$"))
             {
                 CustValLastName.IsValid = true;
@@ -368,36 +375,33 @@ namespace CheckIn.CPA
                 result = false;
                 count = count + 1;
             }
+            //if (CaptchaUserControl.Text == txtCaptchaText.Text)//txtCaptchaText.Text.ToString()))
+            //{
+            //    lblStatus.Visible = true;
 
+            //    lblStatus.Text = "Success";
+            //    lblStatus.ForeColor = System.Drawing.Color.Green;
+            //    result = true;
+            //}
+            //else
+            //{
+            //    lblStatus.Visible = true;
+            //    lblStatus.Text = "Failure";
+            //    lblStatus.ForeColor = System.Drawing.Color.Red;
 
-           
-            if (CaptchaUserControl.Text == txtCaptchaText.Text)//txtCaptchaText.Text.ToString()))
+            //    result = false;
+            //    count = count + 1;
+            //}
+            if (cbAcceptTerms.Checked)
             {
-                lblStatus.Visible = true;
-
-                lblStatus.Text = "Success";
-                lblStatus.ForeColor = System.Drawing.Color.Green;
+                CheckBoxRequired.IsValid = cbAcceptTerms.Checked;
                 result = true;
             }
             else
             {
-                lblStatus.Visible = true;
-                lblStatus.Text = "Failure";
-                lblStatus.ForeColor = System.Drawing.Color.Red;
-
-                result = false;
+                CheckBoxRequired.IsValid = false;
                 count = count + 1;
-            }
-            if (cbAcceptTerms.Checked)
-            {
-                valTermsConditions.IsValid = cbAcceptTerms.Checked;
-                result=true;
-            }
-            else
-            {
-                valTermsConditions.IsValid=false;
-                count=count+1;
-                result =false;
+                result = false;
             }
             if (count == 0)
                 return true;
@@ -406,8 +410,8 @@ namespace CheckIn.CPA
         }
         private bool IsTermsAccepted()
         {
-            valTermsConditions.IsValid = cbAcceptTerms.Checked;
-            return valTermsConditions.IsValid;
+            CheckBoxRequired.IsValid = cbAcceptTerms.Checked;
+            return CheckBoxRequired.IsValid;
         }
 
         protected void btnContinue_Click(object sender, EventArgs e)
@@ -440,29 +444,6 @@ namespace CheckIn.CPA
             Response.Redirect(redirectQuery);
             //Response.Redirect("~/Default.aspx");
         }
-
-        //protected void cbAcceptTerms_CheckedChanged(object sender, EventArgs e)
-        //{
-
-        //    Page.Validate("signUpValidation");
-
-        //    if (!IsTermsAccepted())
-        //        return;
-
-        //    if (!ValidationSummary1.ShowMessageBox)
-        //    {
-        //        btnSignUp.Enabled = cbAcceptTerms.Checked;
-        //        txtPassword.Focus();
-        //    }
-        //    else
-        //    {
-        //        btnSignUp.Enabled = false;
-        //        cbAcceptTerms.Checked = false;
-        //    }
-        //    txtPassword.Text = txtPassword.Text;
-
-        //}
-
         protected void Calendar1_SelectionChanged(object sender, EventArgs e)
         {
           
@@ -493,6 +474,20 @@ namespace CheckIn.CPA
         protected void btnNextYear_Click(object sender, EventArgs e)
         {
             
+        }
+
+        protected void btnRegisteredUser_Click1(object sender, EventArgs e)
+        {
+            pnlNewUser.Visible = false;
+            pnlRegisteredUser.Visible = true;
+            btnBack.Visible = false;
+        }
+
+        protected void btnNewUser_Click1(object sender, EventArgs e)
+        {
+            pnlNewUser.Visible = true;
+            pnlRegisteredUser.Visible = false;
+            btnBack.Visible = false;
         }
     }    
     

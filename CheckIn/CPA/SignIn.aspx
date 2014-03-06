@@ -22,7 +22,7 @@
                                             <i class="icon-envelope"></i>
                                             <br />
                                             <asp:RequiredFieldValidator ID="RequiredFieldValidator1" runat="server"
-                                                ErrorMessage="Email can not be empty" ControlToValidate="txtEmail" 
+                                                ErrorMessage="Email can not be empty" ControlToValidate="txtEmail"
                                                 ForeColor="Red"></asp:RequiredFieldValidator>
                                             <asp:RegularExpressionValidator ID="RegularExpressionValidator1" runat="server"
                                                 ControlToValidate="txtEmail" ForeColor="Red" ErrorMessage="Invalid Email Address " ValidationExpression="\w+([-+.']\w+)*@\w+([-.]\w+)*\.\w+([-.]\w+)*">
@@ -42,18 +42,18 @@
                                             ForeColor="Red"></asp:RequiredFieldValidator>
                                     </div>
                                 </div>--%>
-                                 <div class="control-group">
-                                            <label class="control-label" for="txtPassword">Password</label>
-                                            <div class="controls">
-                                                <asp:TextBox ID="txtPassword" CssClass="input-xlarge" TextMode="Password" runat="server"></asp:TextBox>
-                                                <asp:RequiredFieldValidator ID="RequiredFieldValidator3" runat="server" ErrorMessage="Password can not be empty" Text="*"
-                                                    ControlToValidate="txtPassword" ValidationGroup="signUpValidation" ForeColor="Red"></asp:RequiredFieldValidator>
+                                <div class="control-group">
+                                    <label class="control-label" for="txtPassword">Password</label>
+                                    <div class="controls">
+                                        <asp:TextBox ID="txtPassword" CssClass="input-xlarge" TextMode="Password" runat="server"></asp:TextBox>
+                                        <asp:RequiredFieldValidator ID="RequiredFieldValidator3" runat="server" ErrorMessage="Password can not be empty" Text="*"
+                                            ControlToValidate="txtPassword" ValidationGroup="signUpValidation" ForeColor="Red"></asp:RequiredFieldValidator>
 
-                                                <asp:RegularExpressionValidator ID="RegularExpressionValidator2" runat="server" ForeColor="Red" ControlToValidate="txtPassword"
-                                                    ValidationExpression="(?!^[0-9]*$)(?!^[a-zA-Z]*$)^([a-zA-Z0-9]{8,10})$" ValidationGroup="signUpValidation" Text="*"
-                                                    ErrorMessage="Password should contain 8 and 10 characters, one digit and one alphabetic character, and must not contains any special character."></asp:RegularExpressionValidator>
-                                            </div>
-                                        </div>
+                                        <asp:RegularExpressionValidator ID="RegularExpressionValidator2" runat="server" ForeColor="Red" ControlToValidate="txtPassword"
+                                            ValidationExpression="(?!^[0-9]*$)(?!^[a-zA-Z]*$)^([a-zA-Z0-9]{8,10})$" ValidationGroup="signUpValidation" Text="*"
+                                            ErrorMessage="Password should contain 8 and 10 characters, one digit and one alphabetic character, and must not contains any special character."></asp:RegularExpressionValidator>
+                                    </div>
+                                </div>
                                 <div class="control-group">
                                     <asp:CustomValidator ID="loginValidation" runat="server"
                                         ForeColor="Red" ErrorMessage="Login failed. Please check your username and password." ValidationGroup="loginControl" Visible="false"></asp:CustomValidator>

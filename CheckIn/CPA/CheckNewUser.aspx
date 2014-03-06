@@ -235,9 +235,9 @@
                                                                     <div class="control-group">
                                                                         <label class="control-label">Phone Number</label>
                                                                         <div class="controls">
-                                                                            <asp:TextBox ID="txtDOB" runat="server" class="input-small"></asp:TextBox>
+                                                                            <asp:TextBox ID="txtPhNumberPart1" runat="server" class="input-small"></asp:TextBox>
                                                                             <ajaxToolkit:MaskedEditExtender ID="MaskedEditExtender2" runat="server"
-                                                                                TargetControlID="txtDOB"
+                                                                                TargetControlID="txtPhNumberPart1"
                                                                                 Mask="999-999-9999"
                                                                                 ClearMaskOnLostFocus="false"
                                                                                 MessageValidatorTip="true"
@@ -272,7 +272,14 @@
                                                                     <asp:Label ID="lblStatus" runat="server"></asp:Label>
                                                                     <div class="form-actions">
                                                                         <asp:Button ID="btnSignUp" CssClass="buttonPink" runat="server" Text="Sign Up" OnClick="btnSignUp_Click" ValidationGroup="signUpValidation" CausesValidation="true" />
-
+                                                                        <asp:UpdateProgress ID="updProgress"
+                                                    AssociatedUpdatePanelID="UpdatePanel1"
+                                                    runat="server">
+                                                    <ProgressTemplate>
+                                                        <img alt="progress" src="../Images/progress.gif" />
+                                                        Please wait while we are processing your request...          
+                                                    </ProgressTemplate>
+                                                </asp:UpdateProgress>
                                                                     </div>
                                                                 </div>
 

@@ -170,12 +170,12 @@ namespace CheckIn.CPA
                 
                 CustomerDetails newCustomer = new CustomerDetails();
                 //TODO: use calendar control
-                newCustomer.DateOfBirth = DateTime.Parse(txtDOB.Text);//Exact(txtDD.Text + "/" + txtMM.Text + "/" + txtYYYY.Text, "M/d/yyyy", CultureInfo.InvariantCulture);
+                newCustomer.DateOfBirth = DateTime.Parse(txtDateOfBirth.Text);//Exact(txtDD.Text + "/" + txtMM.Text + "/" + txtYYYY.Text, "M/d/yyyy", CultureInfo.InvariantCulture);
                 newCustomer.Email = txtEmail.Text;
                 newCustomer.FirstName = txtFirstName.Text;
                 newCustomer.LastName = txtLastName.Text;
                 newCustomer.Password = txtPassword.Text;
-                newCustomer.PhoneNumber = txtDOB.Text;
+                newCustomer.PhoneNumber = txtPhNumberPart1.Text;
                 newCustomer.Gender = rbtnMale.Checked ? "M" : "F";
                string local= HttpContext.Current.Request.Url.Port.ToString(); 
                 int len;
@@ -349,7 +349,7 @@ namespace CheckIn.CPA
             }
 
 
-            if (false == string.IsNullOrEmpty(txtLastName.Text))
+            if (true == string.IsNullOrEmpty(txtLastName.Text))
             {
                 CustValLastName.IsValid = false;
                 CustValLastName.ErrorMessage = "Last name must not be empty!";

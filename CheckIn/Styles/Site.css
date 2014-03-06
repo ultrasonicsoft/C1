@@ -88,6 +88,7 @@ form {
     .breadcrumb, a.pink:hover {
         color: rgb(255,88,127) !important;
         font-weight: bold;
+     text-align:left;
     }
 
 .pink-Icon {

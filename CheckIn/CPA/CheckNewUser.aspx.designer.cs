@@ -283,13 +283,13 @@ namespace CheckIn.CPA {
         protected global::System.Web.UI.WebControls.RadioButton rbtnFemale;
         
         /// <summary>
-        /// txtDOB control.
+        /// txtPhNumberPart1 control.
         /// </summary>
         /// <remarks>
         /// Auto-generated field.
         /// To modify move field declaration from designer file to code-behind file.
         /// </remarks>
-        protected global::System.Web.UI.WebControls.TextBox txtDOB;
+        protected global::System.Web.UI.WebControls.TextBox txtPhNumberPart1;
         
         /// <summary>
         /// MaskedEditExtender2 control.
@@ -362,6 +362,15 @@ namespace CheckIn.CPA {
         /// To modify move field declaration from designer file to code-behind file.
         /// </remarks>
         protected global::System.Web.UI.WebControls.Button btnSignUp;
+        
+        /// <summary>
+        /// updProgress control.
+        /// </summary>
+        /// <remarks>
+        /// Auto-generated field.
+        /// To modify move field declaration from designer file to code-behind file.
+        /// </remarks>
+        protected global::System.Web.UI.UpdateProgress updProgress;
         
         /// <summary>
         /// pnlRegisteredUser control.

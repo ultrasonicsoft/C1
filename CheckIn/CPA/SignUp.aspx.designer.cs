@@ -229,22 +229,13 @@ namespace CheckIn.Web_Pages {
         protected global::System.Web.UI.WebControls.CheckBox cbTermCondition;
         
         /// <summary>
-        /// CustomValidator1 control.
+        /// CheckBoxRequired control.
         /// </summary>
         /// <remarks>
         /// Auto-generated field.
         /// To modify move field declaration from designer file to code-behind file.
         /// </remarks>
-        protected global::System.Web.UI.WebControls.CustomValidator CustomValidator1;
-        
-        /// <summary>
-        /// valTermsConditions control.
-        /// </summary>
-        /// <remarks>
-        /// Auto-generated field.
-        /// To modify move field declaration from designer file to code-behind file.
-        /// </remarks>
-        protected global::System.Web.UI.WebControls.CustomValidator valTermsConditions;
+        protected global::System.Web.UI.WebControls.CustomValidator CheckBoxRequired;
         
         /// <summary>
         /// signUpValidation control.

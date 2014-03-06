@@ -3,13 +3,12 @@
 
 <%@ Register Src="~/CaptchaUserControl.ascx" TagPrefix="uc1" TagName="CaptchaUserControl" %>
 
-
-
 <asp:Content ID="Content1" ContentPlaceHolderID="HeadContent" runat="server">
 </asp:Content>
 <asp:Content ID="Content2" ContentPlaceHolderID="MainContent" runat="server">
     <%-- <asp:ScriptManager ID="ScriptManager1" runat="server">
     </asp:ScriptManager>--%>
+
     <ajaxToolkit:ToolkitScriptManager ID="ToolkitScriptManager1" runat="server"></ajaxToolkit:ToolkitScriptManager>
     <asp:UpdatePanel ID="UpdatePanel1" runat="server">
         <ContentTemplate>
@@ -68,7 +67,7 @@
                                         <div class="control-group">
                                             <label class="control-label">Date Of Birth</label>
                                             <div class="controls">
-                                               <asp:TextBox ID="txtDateOfBirth" runat="server" class="input-medium"></asp:TextBox>
+                                                <asp:TextBox ID="txtDateOfBirth" runat="server" class="input-medium"></asp:TextBox>
                                                 <ajaxToolkit:CalendarExtender
                                                     ID="CalendarExtender1"
                                                     TargetControlID="txtDateOfBirth"
@@ -111,7 +110,7 @@
                                                     ErrorTooltipEnabled="True" />
                                             </div>
                                         </div>
-                                         <div class="control-group">
+                                        <div class="control-group">
                                             <label class="control-label">Image</label>
                                             <div class="controls">
                                                 <asp:FileUpload ID="ImageUpload" runat="server" Width="320px" />
@@ -121,18 +120,16 @@
                                             <div class="controls">
                                                 <asp:CheckBox ID="cbTermCondition" Text="" runat="server" />
                                                 <label class="lbl" for="cbTermCondition">I accept Terms and Conditions</label>
-                                                <asp:CustomValidator ID="CustomValidator1" runat="server"
-                                                    ErrorMessage="Accept terms and condition" OnServerValidate="checkCheckBox"></asp:CustomValidator>
-                                                <asp:CustomValidator ID="valTermsConditions" runat="server" ErrorMessage="Please accept Terms And Condition!" ForeColor="Red" ValidationGroup="signUpValidation" Visible="false"></asp:CustomValidator>
+                                                <asp:CustomValidator runat="server" ID="CheckBoxRequired" ErrorMessage="Please accept terms and condition." ValidationGroup="signUpValidation" Text="*" />
                                             </div>
                                         </div>
                                         <div class="control-group">
                                             <div class="controls">
-                                               <asp:ValidationSummary ID="signUpValidation" runat="server" CssClass="validationSummary" DisplayMode="BulletList" ForeColor="Red" ValidationGroup="signUpValidation" />
+                                                <asp:ValidationSummary ID="signUpValidation" runat="server" CssClass="validationSummary" DisplayMode="BulletList" ForeColor="Red" ValidationGroup="signUpValidation" />
                                             </div>
                                         </div>
                                         <div class="form-actions">
-                                            <asp:Button ID="btnSignUp" CssClass="buttonPink" runat="server" Text="Sign Up" OnClick="btnSignUp_Click" ValidationGroup="signUpValidation" CausesValidation="true"/>
+                                            <asp:Button ID="btnSignUp" CssClass="buttonPink" runat="server" Text="Sign Up" OnClick="btnSignUp_Click" ValidationGroup="signUpValidation" CausesValidation="true" />
 
                                         </div>
                                     </div>

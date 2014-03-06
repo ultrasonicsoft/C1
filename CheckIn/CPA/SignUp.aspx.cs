@@ -55,11 +55,19 @@ namespace CheckIn.Web_Pages
         //        ddlDay.Items.Add(i.ToString());
         //    }
         //}
+        protected void CheckBoxRequired_ServerValidate(object sender, ServerValidateEventArgs e)
+        {
+            e.IsValid = cbTermCondition.Checked;
+        }
 
         protected void btnSignUp_Click(object sender, EventArgs e)
         {
-            if (!Isvalididate())
+            if (cbTermCondition.Checked == false)
+            //if (!Isvalididate())
+            {
+                CheckBoxRequired.IsValid = false;
                 return;
+            }
             if (!signUpValidation.ShowMessageBox)
             {
                 Guid userGuid1 = Guid.NewGuid();
@@ -130,8 +138,8 @@ namespace CheckIn.Web_Pages
                 mail.IsBodyHtml = true;
             }
             System.Net.Mail.SmtpClient client = new System.Net.Mail.SmtpClient(result1.Tables[0].Rows[0]["EmailServerHost"].ToString(), int.Parse(result1.Tables[0].Rows[0]["EmailServerPort"].ToString()));
-            client.Credentials = new NetworkCredential(FromAddress, result1.Tables[0].Rows[0]["EmailPassword"].ToString());
-            client.EnableSsl = true;
+            //client.Credentials = new NetworkCredential(FromAddress, result1.Tables[0].Rows[0]["EmailPassword"].ToString());
+            //client.EnableSsl = true;
             try
             {
                
@@ -171,9 +179,8 @@ namespace CheckIn.Web_Pages
 
         protected bool Isvalididate()
         {
-            return true;
-            //bool result;
-            //int count = 0;
+            bool result;
+            int count = 0;
             //valTermsConditions.IsValid = cbTermCondition.Checked;
 
             //if (!valTermsConditions.IsValid)
@@ -199,12 +206,10 @@ namespace CheckIn.Web_Pages
             //    count = count + 1;
             //}
 
-            
-
-            //if (count == 0)
-            //    return true;
-            //else
-            //    return false;
+            if (count == 0)
+                return true;
+            else
+                return false;
         }
 
         protected void cbTermCondition_CheckedChanged(object sender, EventArgs e)

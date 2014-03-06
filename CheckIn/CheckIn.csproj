@@ -489,7 +489,7 @@
     <Content Include="Scripts\jquery-1.4.1.min.js" />
     <Content Include="CPA\ImageCSharp.aspx" />
     <Content Include="CPA\SignIn.aspx" />
-    <Content Include="TODO.txt" />
+    <Content Include="Info.txt" />
     <Content Include="CPA\VerifyEmail.aspx" />
     <Content Include="Web.config">
       <SubType>Designer</SubType>

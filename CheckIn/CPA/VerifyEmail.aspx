@@ -13,4 +13,17 @@
     <br />
     Please click on the Activation Link to Activate your account
      </p>
+
+     <div class="breadcrumbs" id="Div1">
+                <ul class="breadcrumb">
+                    <li>
+                        <i class="icon-home home-icon"></i>
+                        <a href="../Default.aspx" class="pink">Home</a>
+
+                        <span class="divider">
+                            <i class="icon-angle-right arrow-icon pink-Icon"></i>
+                        </span>
+                    </li>
+                </ul>
+                </div>
 </asp:Content>

@@ -29,6 +29,7 @@
                         </span>
                     </li>
                 </ul>
+                </div>
                 <!--.breadcrumb-->
 
                 <div class="nav-search" id="nav-search">

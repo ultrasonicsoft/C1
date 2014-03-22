@@ -460,3 +460,10 @@ input[type="text"], input[type="password"] {
     font-weight: normal;
     text-align: center;
 }
+
+.gvwCasesPager a
+            {
+                margin-left:5px;
+                margin-right:5px;
+                align-items:center;
+            }

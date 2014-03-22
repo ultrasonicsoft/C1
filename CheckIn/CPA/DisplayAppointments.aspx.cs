@@ -108,6 +108,8 @@ namespace CheckIn.Web_Pages
         }
         private void RefreshSearchResult()
         {
+            city = Session["city"].ToString();
+            zipCode = Session["zipCode"].ToString();
             var result = BusinessLogic.GetAllCPA(city, zipCode);
             //if (result == null || result.Tables[0].Rows.Count == 0)
             //    return;
@@ -150,7 +152,8 @@ namespace CheckIn.Web_Pages
 
         protected void gvCPASearchResult_PageIndexChanging(object sender, GridViewPageEventArgs e)
         {
-            //gvCPASearchResult.PageIndex = e.NewPageIndex;
+            gvCPASearchResult.PageIndex = e.NewPageIndex;
+            RefreshSearchResult();
             //RefreshSearchResult("Price", SortOrder.Ascending, whereCluas);
         }
 

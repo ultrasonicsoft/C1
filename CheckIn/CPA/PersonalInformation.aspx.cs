@@ -275,9 +275,6 @@ namespace CheckIn.CPA
 
         protected void txtFirstName_TextChanged(object sender, EventArgs e)
         {
-
-
-
             if (string.IsNullOrWhiteSpace(txtFirstName.Text) || txtFirstName.Text.Contains(' '))
             {
                 CustValFisrtName.IsValid = false;

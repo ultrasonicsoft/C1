@@ -287,8 +287,19 @@ namespace CheckIn.Web_Pages
             Repeater tempRepeater = (Repeater)e.Row.FindControl(repeaterName);
             if (tempRepeater != null && index < result.Length && result[index] != null)
             {
-                tempRepeater.DataSource = result[index];
-                tempRepeater.DataBind();
+                DateTime inputDate = DateTime.Parse(result[index].Tables[0].Rows[0][1].ToString());
+                if(inputDate.Date== DateTime.Now.Date)
+                {
+                    string currentTime = DateTime.Now.Hour.ToString() + ":" + DateTime.Now.Minute + ":00";
+                    result[index].Tables[0].DefaultView.RowFilter= "Time>='" +  currentTime+ "'" ;
+                    tempRepeater.DataSource = result[index].Tables[0];
+                    tempRepeater.DataBind();
+                }
+                else
+                {
+                    tempRepeater.DataSource = result[index];
+                    tempRepeater.DataBind();
+                }
             }
             return tempRepeater;
         }

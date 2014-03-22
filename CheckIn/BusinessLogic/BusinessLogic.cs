@@ -476,6 +476,11 @@ namespace CheckIn
             string format = string.Format("Select * from EmailSpecification where EmailSpecificationId={0}",EmailSpecificationId);
             return DBHelper.GetSelectDataSet(format);
         }
+        internal static DataSet GetPassword(string EmailSpecificationId, string email)
+        {
+            string format = string.Format("Select e.*, u.Password from EmailSpecification e, Users u where EmailSpecificationId={0} AND Email ='{1}'", EmailSpecificationId, email);
+            return DBHelper.GetSelectDataSet(format);
+        }
         internal static int ReScheduleAppointment(string ID)
         { 
             string format=string.Format(" UPDATE [CPAAppointment] SET [CustomerID] = null,[CustomerName] = '',[PurposeOfVisit] ='',[ContactNumber] = '',[Note] = '',[IsOpen] = 'true' WHERE ID= {0}",ID);
@@ -520,6 +525,16 @@ namespace CheckIn
                 throw ex;
             }
             return result;
+        }
+
+        internal static bool IsValidEmail(string email)
+        {
+            string strQuery = string.Format(Constants.IS_VALID_EMAIL, email);
+
+            var result = DBHelper.GetScalarValue(strQuery);
+            if (result == DBNull.Value || result==null)
+                return false;
+            return result.ToString().Equals("1");
         }
     }
 }

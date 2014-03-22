@@ -150,7 +150,7 @@ namespace CheckIn.Web_Pages
             }
             catch (SmtpException se)
             {
-
+                throw se;
                 //CustomValidator2.IsValid = false;
                 result = false;
             }

@@ -38,9 +38,9 @@
                 </tr>
                 <tr>
                     <td colspan="4" align="center">
-                         <div class="form-actions">
-                                 <asp:Button ID="btnSearchCPA" runat="server" Text="Search CPA" CssClass="buttonPink"  OnClick="btnSearchCPA_Click" />
-                                </div>
+                        <br />
+                        <asp:Button ID="btnSearchCPA" runat="server" Text="Search CPA" CssClass="buttonPink" OnClick="btnSearchCPA_Click" />
+                        <br />
                 </tr>
             </table>
         </ContentTemplate>

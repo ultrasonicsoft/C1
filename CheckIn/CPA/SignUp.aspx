@@ -19,7 +19,7 @@
                         <br />
                         <asp:Label ID="Label10" runat="server" Text="This website can help your business Grow"></asp:Label>
                         <br />
-                        <asp:HyperLink ID="lnkLearnMore" NavigateUrl="~/Doc/LearnMore.aspx" runat="server">Learn More</asp:HyperLink>
+                        <asp:HyperLink ID="lnkLearnMore" NavigateUrl="~/CPA/LearnMore.aspx" runat="server">Learn More</asp:HyperLink>
                     </td>
                     <td align="left">
                         <div class="page-content">
@@ -128,12 +128,11 @@
                                                 <asp:ValidationSummary ID="signUpValidation" runat="server" CssClass="validationSummary" DisplayMode="BulletList" ForeColor="Red" ValidationGroup="signUpValidation" />
                                             </div>
                                         </div>
-                                        <div class="form-actions">
+                                        <div align="center">
                                             <asp:Button ID="btnSignUp" CssClass="buttonPink" runat="server" Text="Sign Up" OnClick="btnSignUp_Click" ValidationGroup="signUpValidation" CausesValidation="true" />
-
                                         </div>
                                     </div>
-
+                                <br />
                                 </div>
 
                             </div>

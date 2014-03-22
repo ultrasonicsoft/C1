@@ -10,7 +10,7 @@
         <ContentTemplate>
             <div class="breadcrumbs" id="Div1">
                 <ul class="breadcrumb">
-                    <li>
+                    <li class="breadcrumb">
                         <i class="icon-home home-icon"></i>
                         <a href="../Default.aspx" class="pink">Home</a>
 

@@ -63,13 +63,14 @@
                                         ForeColor="Red"></asp:ValidationSummary>
                                 </div>
                                 <div class="control-group">
-                                    <a class="control-label">Forgot your password?</a>
+                                    <a class="control-label" href="ForgotPassword.aspx">Forgot your password?</a>
                                 </div>
-                                <div class="form-actions">
+                                <div align="center">
                                     <asp:Button ID="btnSignIn" runat="server" Text="Sign In" CssClass="buttonPink" ValidationGroup="loginControl" CausesValidation="true"
                                         OnClick="btnSignIn_Click" />
-
                                 </div>
+                                    <br />
+
                             </div>
 
                         </div>

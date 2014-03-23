@@ -20,7 +20,7 @@
         <ContentTemplate>
             <div class="breadcrumbs" id="Div1">
                 <ul class="breadcrumb">
-                    <li>
+                    <li class="breadcrumb">
                         <i class="icon-home home-icon"></i>
                         <a href="../Default.aspx" class="pink">Home</a>
 
@@ -29,19 +29,20 @@
                         </span>
                     </li>
                 </ul>
+                <!--.breadcrumb-->
+
+                <div class="nav-search" id="nav-search">
+
+                    <input type="text" id="txtCity" runat="server" value="Enter City" autocomplete="off" class="input-small nav-search-input" onclick="if (this.value == 'Enter City') { this.value = '' }"
+                        onblur="if(this.value==''){this.value='Enter City'}">
+
+                    <input type="text" id="txtZipCode" runat="server" value="Enter Zip Code" autocomplete="off" class="input-small nav-search-input" onclick="if (this.value == 'Enter Zip Code') { this.value = '' }"
+                        onblur="if(this.value==''){this.value='Enter Zip Code'}">
+                    <asp:LinkButton class="search_btn" ID="btnRefineSearch" runat="server" Text="" OnClick="btnRefineSearch_Click" />
+                </div>
             </div>
             <!--.breadcrumb-->
 
-            <div class="nav-search" id="nav-search">
-
-                <input type="text" id="txtCity" runat="server" value="Enter City" autocomplete="off" class="input-small nav-search-input" onclick="if (this.value == 'Enter City') { this.value = '' }"
-                    onblur="if(this.value==''){this.value='Enter City'}">
-
-                <input type="text" id="txtZipCode" runat="server" value="Enter Zip Code" autocomplete="off" class="input-small nav-search-input" onclick="if (this.value == 'Enter Zip Code') { this.value = '' }"
-                    onblur="if(this.value==''){this.value='Enter Zip Code'}">
-                <asp:LinkButton class="search_btn" ID="btnRefineSearch" runat="server" Text="" OnClick="btnRefineSearch_Click" />
-                <%--  <asp:Button ID="Button1" class="search_btn" runat="server" Text="" OnClick="btnRefineSearch_Click" />--%>
-            </div>
 
             <%-- <asp:LinkButton class="search_btn" ID="LinkButton2" runat="server" Text="" OnClick="btnRefineSearch_Click" />--%>
             </div>

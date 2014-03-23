@@ -48,7 +48,11 @@
 
     <asp:ScriptManager ID="ScriptManager1" runat="server">
     </asp:ScriptManager>
-    <asp:UpdatePanel ID="UpdatePanel1" runat="server">
+    <asp:UpdatePanel ID="UpdatePanel1" runat="server" UpdateMode="Always">
+        <Triggers>
+            <asp:PostBackTrigger ControlID="btnSaveContactInformation" />
+            <asp:PostBackTrigger ControlID="btnCancel" />
+        </Triggers>
         <ContentTemplate>
 
 
@@ -236,7 +240,7 @@
                                                 <%--<asp:RequiredFieldValidator ID="RequiredFieldValidator4" runat="server" ErrorMessage="FirstName not Empty"></asp:RequiredFieldValidator>
                                         <asp:RegularExpressionValidator ID="RegularExpressionValidator1" runat="server" ErrorMessage="Allow Only 1-25 Alphabet " ControlToValidate="txtFirstName"
                                             ValidationExpression="^[a-zA-Z]{1,25}$"  ForeColor="Red"></asp:RegularExpressionValidator>--%>
-                                                <asp:CustomValidator ID="CustValFisrtName" runat="server" ForeColor="Red" ControlToValidate="txtFirstName"></asp:CustomValidator>
+                                                <%--<asp:CustomValidator ID="CustValFisrtName" runat="server" ForeColor="Red" ControlToValidate="txtFirstName" Text="Invalid First Name."></asp:CustomValidator>--%>
                                             </td>
                                         </tr>
                                         <tr>
@@ -251,7 +255,7 @@
                                                 <%-- <asp:RequiredFieldValidator ID="RequiredFieldValidator5" runat="server" ErrorMessage="LastName Not Empty"></asp:RequiredFieldValidator>
                                         <asp:RegularExpressionValidator ValidationExpression="^[a-zA-z]{1,25}$"
                                             ID="RegularExpressionValidator2" runat="server" ForeColor="Red" ErrorMessage="Allow Only 1-25 Alphabet" ControlToValidate="txtLastName"></asp:RegularExpressionValidator></td>--%>
-                                                <asp:CustomValidator ID="CustValLastName" runat="server" ForeColor="Red" ControlToValidate="txtLastName"></asp:CustomValidator>
+                                                <%--<asp:CustomValidator ID="CustValLastName" runat="server" ForeColor="Red" ControlToValidate="txtLastName" Text="Invalid Last Name."></asp:CustomValidator>--%>
                                         </tr>
                                         <tr>
                                             <td>
@@ -263,19 +267,20 @@
                                                 <table>
                                                     <tr>
                                                         <td align="right">
-                                                            <asp:TextBox ID="txtPhNumberPart1" Width="40" MaxLength="3" runat="server" Height="22px"></asp:TextBox>
-
+                                                            <asp:TextBox ID="txtPhNumberPart1" runat="server" class="input-small"></asp:TextBox>
+                                                            <ajaxToolkit:MaskedEditExtender ID="MaskedEditExtender2" runat="server"
+                                                                TargetControlID="txtPhNumberPart1"
+                                                                Mask="999-999-9999"
+                                                                ClearMaskOnLostFocus="false"
+                                                                MessageValidatorTip="true"
+                                                                OnFocusCssClass="MaskedEditFocus"
+                                                                OnInvalidCssClass="MaskedEditError"
+                                                                MaskType="None"
+                                                                InputDirection="LeftToRight"
+                                                                AcceptNegative="Left"
+                                                                DisplayMoney="Left" Filtered="-"
+                                                                ErrorTooltipEnabled="True" />
                                                         </td>
-                                                        <td align="center">
-                                                            <asp:Label ID="Label12" runat="server" Text="Label" Width="40"> - </asp:Label>
-                                                            <asp:TextBox ID="txtPhNumberPart2" Width="40" MaxLength="3" runat="server">  </asp:TextBox>
-                                                            <asp:Label ID="Label11" runat="server" Width="40" Text="Label"> - </asp:Label>
-                                                        </td>
-                                                        <td align="center">
-                                                            <asp:TextBox ID="txtPhNumberPart3" Width="40" MaxLength="4" runat="server"></asp:TextBox>
-
-                                                        </td>
-
                                                     </tr>
                                                     <tr>
                                                         <%--                                                <td align="center">
@@ -304,16 +309,12 @@
                                         </tr>
                                         <tr>
                                             <td>
-
-
-                                                <asp:CustomValidator ID="CustPhoneNumber" runat="server" ForeColor="Red" ErrorMessage="All Character are digit"></asp:CustomValidator>
-
-
+                                                <%--<asp:CustomValidator ID="CustPhoneNumber" runat="server" ForeColor="Red" ErrorMessage="All Character are digit"></asp:CustomValidator>--%>
                                             </td>
                                         </tr>
                                         <tr>
                                             <td>
-                                                <asp:Button ID="btnSaveContactInformation" runat="server" CssClass="buttonPink"
+                                                <asp:Button ID="btnSaveContactInformation" runat="server" CssClass="buttonPink" 
                                                     Text="Save Contact Information" OnClick="btnSaveContactInformation_Click" />
                                             </td>
                                             <td>

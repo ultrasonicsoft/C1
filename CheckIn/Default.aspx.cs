@@ -15,7 +15,7 @@ namespace CheckIn
             {
                 FillAllSpeciality();
             }
-           // RegZipCode.ValidationExpression=
+            // RegZipCode.ValidationExpression=
         }
 
         private void FillAllSpeciality()
@@ -26,19 +26,20 @@ namespace CheckIn
             //ddlSpeciality.DataValueField = result.Tables[0].Columns["ID"].ColumnName.ToString();
             //ddlSpeciality.DataBind();
 
-           
+
             var result = BusinessLogic.GetAllStateList();
             ddlState.DataSource = result.Tables[0];
             ddlState.Items.Clear();
             ddlState.Items.Add("Please Select State");
-           
+
             ddlState.DataTextField = result.Tables[0].Columns["StateName"].ColumnName.ToString();
             ddlState.DataValueField = result.Tables[0].Columns["State_Code"].ColumnName.ToString();
             ddlState.DataBind();
-           
+
         }
         protected bool validateZipCode()
-        { CustomValidator1.IsValid=false;
+        {
+            CustomValidator1.IsValid = false;
 
             if (txtZipCode.Value.Equals("Enter Zip Code"))
             {
@@ -47,21 +48,21 @@ namespace CheckIn
             }
             else
             {
-               if( System.Text.RegularExpressions.Regex.IsMatch(txtZipCode.Value,@"^(\d{5}-\d{4}|\d{5}|\d{9})$"))
-               {
-                   CustomValidator1.IsValid=true;
-               }
-            
+                if (System.Text.RegularExpressions.Regex.IsMatch(txtZipCode.Value, @"^(\d{5}-\d{4}|\d{5}|\d{9})$"))
+                {
+                    CustomValidator1.IsValid = true;
+                }
+
             }
             return CustomValidator1.IsValid;
         }
         protected void btnSearchCPA_Click(object sender, EventArgs e)
         {
             bool isCityOrZipProvided = true;
-           
-            if(!validateZipCode())
+
+            if (!validateZipCode())
                 return;
-           
+
             if (string.IsNullOrEmpty(txtZipCode.Value) && string.IsNullOrEmpty(ddlCity.DataTextField))
             {
 
@@ -82,10 +83,10 @@ namespace CheckIn
             }
             if (txtZipCode.Value.Equals("Enter Zip Code") && ddlCity.SelectedItem.Text.Equals("--Please Select city--"))
             {
-                 ScriptManager.RegisterStartupScript(this.Page, this.Page.GetType(),
-          "err_msg",
-          "alert('Please enter zip code or city to search CPA!');",
-          true);
+                ScriptManager.RegisterStartupScript(this.Page, this.Page.GetType(),
+         "err_msg",
+         "alert('Please enter zip code or city to search CPA!');",
+         true);
                 return;
             }
 
@@ -95,7 +96,7 @@ namespace CheckIn
             if (ddlCity.SelectedItem != null)
             {
                 city = ddlCity.SelectedItem.Text;
-            } 
+            }
 
             string redirectQuery = string.Format("~/CPA/DisplayAppointments.aspx?City={0}&ZipCode={1}", city, zipCode);
             Response.Redirect(redirectQuery);
@@ -120,7 +121,7 @@ namespace CheckIn
 
             Session["city"] = ddlCity.SelectedItem.Text;
 
-            
+
         }
     }
 }

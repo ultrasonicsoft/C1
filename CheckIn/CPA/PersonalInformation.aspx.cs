@@ -82,12 +82,7 @@ namespace CheckIn.CPA
             txtFirstName.Text = result.Tables[0].Rows[0]["FirstName"].ToString();
             txtLastName.Text = result.Tables[0].Rows[0]["LastName"].ToString();
             string phone = result.Tables[0].Rows[0]["Phone"].ToString();
-            string[] ph = phone.Split('-');
-            txtPhNumberPart1.Text = ph[0];
-            txtPhNumberPart2.Text = ph[1];
-            txtPhNumberPart3.Text = ph[2];
-
-
+            txtPhNumberPart1.Text = phone;
             pnlEditCustomerDetails.Visible = true;
             pnlCustomerDetails.Visible = false;
         }
@@ -102,58 +97,42 @@ namespace CheckIn.CPA
             bool result;
             int count = 0;
 
-            if (string.IsNullOrWhiteSpace(txtFirstName.Text) || txtFirstName.Text.Contains(' '))
+            if (System.Text.RegularExpressions.Regex.IsMatch(txtFirstName.Text, @"^[a-zA-Z]{1,25}$"))
             {
-                CustValFisrtName.IsValid = false;
-                CustValFisrtName.ErrorMessage = "First name should not contain spaces";
-                result = false;
-                count = count + 1;
-            }
-
-            else if (System.Text.RegularExpressions.Regex.IsMatch(txtFirstName.Text, @"^[a-zA-Z]{1,25}$"))
-            {
-                CustValFisrtName.IsValid = true;
+                //CustValFisrtName.IsValid = true;
                 result = true;
             }
             else
             {
-                CustValFisrtName.IsValid = false;
-                CustValFisrtName.ErrorMessage = "Only Alphabet allowed here";
+                //CustValFisrtName.IsValid = false;
+                ScriptManager.RegisterStartupScript(UpdatePanel1, UpdatePanel1.GetType(), "Invalid First Name", "alert('Only Alphabet allowed in First Name!');", true);
+                //CustValFisrtName.ErrorMessage = "Only Alphabet allowed here";
                 result = false;
                 count = count + 1;
             }
 
-
-            if (string.IsNullOrWhiteSpace(txtLastName.Text) || txtLastName.Text.Contains(' '))
+            if (System.Text.RegularExpressions.Regex.IsMatch(txtLastName.Text, @"^[a-zA-Z]{1,25}$"))
             {
-                CustValLastName.IsValid = false;
-                CustValLastName.ErrorMessage = "Last name should not contain spaces";
-                result = false;
-                count = count + 1;
-            }
-
-            else if (System.Text.RegularExpressions.Regex.IsMatch(txtLastName.Text, @"^[a-zA-Z]{1,25}$"))
-            {
-                CustValLastName.IsValid = true;
+                //CustValLastName.IsValid = true;
                 result = true;
             }
             else
             {
-                CustValFisrtName.IsValid = false;
-                CustValFisrtName.ErrorMessage = "Only Alphabet allowed here";
+                //CustValLastName.IsValid = false;
+                ScriptManager.RegisterStartupScript(UpdatePanel1, UpdatePanel1.GetType(), "Invalid Last Name", "alert('Only Alphabet allowed in Last Name!');", true);
+                //CustValFisrtName.ErrorMessage = "Only Alphabet allowed here";
                 result = false;
                 count = count + 1;
             }
 
-
-            if (System.Text.RegularExpressions.Regex.IsMatch(txtPhNumberPart1.Text + "-" + txtPhNumberPart2.Text + "-" + txtPhNumberPart3.Text, @"^[2-9]\d{2}-\d{3}-\d{4}$"))
+            if (System.Text.RegularExpressions.Regex.IsMatch(txtPhNumberPart1.Text , @"^[2-9]\d{2}-\d{3}-\d{4}$"))
             {
-                CustPhoneNumber.IsValid = true;
+                //CustPhoneNumber.IsValid = true;
                 result = true;
             }
             else
             {
-                CustPhoneNumber.IsValid = false;
+                //CustPhoneNumber.IsValid = false;
                 count = count + 1;
             }
 
@@ -169,7 +148,7 @@ namespace CheckIn.CPA
             pnlEditCustomerDetails.Visible = false;
             pnlCustomerDetails.Visible = true;
 
-            string phoneNumber = txtPhNumberPart1.Text + "-" + txtPhNumberPart2.Text + "-" + txtPhNumberPart3.Text;
+            string phoneNumber = txtPhNumberPart1.Text ;
             string updateQuery = string.Format("UPDATE Customer SET FirstName='{0}', LastName='{1}',Phone='{2}' WHERE CustomerID={3}", txtFirstName.Text, txtLastName.Text, phoneNumber, Request.QueryString["UserID"]);
 
             DBHelper.ExecuteNonQuery(updateQuery);
@@ -277,22 +256,22 @@ namespace CheckIn.CPA
         {
             if (string.IsNullOrWhiteSpace(txtFirstName.Text) || txtFirstName.Text.Contains(' '))
             {
-                CustValFisrtName.IsValid = false;
-                CustValFisrtName.ErrorMessage = "First name should not contain spaces";
+                //CustValFisrtName.IsValid = false;
+                //CustValFisrtName.ErrorMessage = "First name should not contain spaces";
                 return;
 
             }
 
             else if (System.Text.RegularExpressions.Regex.IsMatch(txtFirstName.Text, @"^[a-zA-Z]{1,25}$"))
             {
-                CustValFisrtName.IsValid = true;
+                //CustValFisrtName.IsValid = true;
 
 
             }
             else
             {
-                CustValFisrtName.IsValid = false;
-                CustValFisrtName.ErrorMessage = "Only Alphabet allowed here";
+                //CustValFisrtName.IsValid = false;
+                //CustValFisrtName.ErrorMessage = "Only Alphabet allowed here";
                 return;
 
 
@@ -306,22 +285,22 @@ namespace CheckIn.CPA
 
             if (string.IsNullOrWhiteSpace(txtLastName.Text) || txtFirstName.Text.Contains(' '))
             {
-                CustValLastName.IsValid = false;
-                CustValLastName.ErrorMessage = "Last name should not contain spaces";
+                //CustValLastName.IsValid = false;
+                //CustValLastName.ErrorMessage = "Last name should not contain spaces";
 
                 return;
             }
 
             else if (System.Text.RegularExpressions.Regex.IsMatch(txtLastName.Text, @"^[a-zA-Z]{1,25}$"))
             {
-                CustValLastName.IsValid = true;
+                //CustValLastName.IsValid = true;
 
 
             }
             else
             {
-                CustValFisrtName.IsValid = false;
-                CustValFisrtName.ErrorMessage = "Only Alphabet allowed here";
+                //CustValFisrtName.IsValid = false;
+                //CustValFisrtName.ErrorMessage = "Only Alphabet allowed here";
                 return;
 
             }

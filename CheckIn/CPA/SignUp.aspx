@@ -62,7 +62,6 @@
                                                 <asp:TextBox ID="txtLastName" Style="width: 35%" runat="server" class="input-medium"></asp:TextBox>
                                                 <asp:CustomValidator ID="CustValLastName" ValidationGroup="signUpValidation" Text="*" runat="server" ForeColor="Red" ControlToValidate="txtLastName"></asp:CustomValidator>
                                             </div>
-
                                         </div>
                                         <div class="control-group">
                                             <label class="control-label">Date Of Birth</label>
@@ -130,6 +129,14 @@
                                         </div>
                                         <div align="center">
                                             <asp:Button ID="btnSignUp" CssClass="buttonPink" runat="server" Text="Sign Up" OnClick="btnSignUp_Click" ValidationGroup="signUpValidation" CausesValidation="true" />
+                                            <asp:UpdateProgress ID="updProgress"
+                                                    AssociatedUpdatePanelID="UpdatePanel1"
+                                                    runat="server">
+                                                    <ProgressTemplate>
+                                                        <img alt="progress" src="../Images/progress.gif" />
+                                                        Please wait while we are creating your account...          
+                                                    </ProgressTemplate>
+                                                </asp:UpdateProgress>
                                         </div>
                                     </div>
                                 <br />

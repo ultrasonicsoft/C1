@@ -293,7 +293,9 @@ namespace CheckIn.Web_Pages
                 DateTime inputDate = DateTime.Parse(result[index].Tables[0].Rows[0][1].ToString());
                 if(inputDate.Date== DateTime.Now.Date)
                 {
-                    string currentTime = DateTime.Now.Hour.ToString() + ":" + DateTime.Now.Minute + ":00";
+                    string hour = DateTime.Now.Hour.ToString().Length == 1 ? "0" + DateTime.Now.Hour.ToString() : DateTime.Now.Hour.ToString();
+                    string minute = DateTime.Now.Minute.ToString().Length == 1 ? "0" + DateTime.Now.Minute.ToString() : DateTime.Now.Minute.ToString();
+                    string currentTime =hour + ":" + minute + ":00";
                     result[index].Tables[0].DefaultView.RowFilter= "Time>='" +  currentTime+ "'" ;
                     tempRepeater.DataSource = result[index].Tables[0];
                     tempRepeater.DataBind();

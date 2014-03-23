@@ -29,21 +29,21 @@
                         </span>
                     </li>
                 </ul>
-                </div>
-                <!--.breadcrumb-->
+            </div>
+            <!--.breadcrumb-->
 
-                <div class="nav-search" id="nav-search">
+            <div class="nav-search" id="nav-search">
 
-                    <input type="text" id="txtCity" runat="server" value="Enter City" autocomplete="off" class="input-small nav-search-input" onclick="if (this.value == 'Enter City') { this.value = '' }"
-                        onblur="if(this.value==''){this.value='Enter City'}">
+                <input type="text" id="txtCity" runat="server" value="Enter City" autocomplete="off" class="input-small nav-search-input" onclick="if (this.value == 'Enter City') { this.value = '' }"
+                    onblur="if(this.value==''){this.value='Enter City'}">
 
-                    <input type="text" id="txtZipCode" runat="server" value="Enter Zip Code" autocomplete="off" class="input-small nav-search-input" onclick="if (this.value == 'Enter Zip Code') { this.value = '' }"
-                        onblur="if(this.value==''){this.value='Enter Zip Code'}">
-                    <asp:LinkButton class="search_btn" ID="btnRefineSearch" runat="server" Text="" OnClick="btnRefineSearch_Click" />
-                    <%--  <asp:Button ID="Button1" class="search_btn" runat="server" Text="" OnClick="btnRefineSearch_Click" />--%>
-                </div>
+                <input type="text" id="txtZipCode" runat="server" value="Enter Zip Code" autocomplete="off" class="input-small nav-search-input" onclick="if (this.value == 'Enter Zip Code') { this.value = '' }"
+                    onblur="if(this.value==''){this.value='Enter Zip Code'}">
+                <asp:LinkButton class="search_btn" ID="btnRefineSearch" runat="server" Text="" OnClick="btnRefineSearch_Click" />
+                <%--  <asp:Button ID="Button1" class="search_btn" runat="server" Text="" OnClick="btnRefineSearch_Click" />--%>
+            </div>
 
-                <%-- <asp:LinkButton class="search_btn" ID="LinkButton2" runat="server" Text="" OnClick="btnRefineSearch_Click" />--%>
+            <%-- <asp:LinkButton class="search_btn" ID="LinkButton2" runat="server" Text="" OnClick="btnRefineSearch_Click" />--%>
             </div>
             <br />
             <%--<table width="100%" style="background-color: #e6e6f5" cellpadding="10px">
@@ -271,16 +271,16 @@
                                                                         </div>
                                                                     </div>
                                                                     <asp:Label ID="lblStatus" runat="server"></asp:Label>
-                                                                    <div class="form-actions">
+                                                                    <div align="center">
                                                                         <asp:Button ID="btnSignUp" CssClass="buttonPink" runat="server" Text="Sign Up" OnClick="btnSignUp_Click" ValidationGroup="signUpValidation" CausesValidation="true" />
                                                                         <asp:UpdateProgress ID="updProgress"
-                                                    AssociatedUpdatePanelID="UpdatePanel1"
-                                                    runat="server">
-                                                    <ProgressTemplate>
-                                                        <img alt="progress" src="../Images/progress.gif" />
-                                                        Please wait while we are processing your request...          
-                                                    </ProgressTemplate>
-                                                </asp:UpdateProgress>
+                                                                            AssociatedUpdatePanelID="UpdatePanel1"
+                                                                            runat="server">
+                                                                            <ProgressTemplate>
+                                                                                <img alt="progress" src="../Images/progress.gif" />
+                                                                                Please wait while we are processing your request...          
+                                                                            </ProgressTemplate>
+                                                                        </asp:UpdateProgress>
                                                                     </div>
                                                                 </div>
 
@@ -306,7 +306,7 @@
                                                                         <div class="controls">
                                                                             <span class="input-icon input-icon-right">
                                                                                 <asp:TextBox ID="txtLoginEmail" CssClass="input-xlarge" runat="server"></asp:TextBox>
-                                                                               <%-- <asp:RequiredFieldValidator ID="RequiredFieldValidator1" runat="server"
+                                                                                <%-- <asp:RequiredFieldValidator ID="RequiredFieldValidator1" runat="server"
                                                                                     ErrorMessage="Email can not be empty" ControlToValidate="txtLoginEmail" Text="*"
                                                                                     ForeColor="Red"></asp:RequiredFieldValidator>--%>
                                                                                 <asp:RegularExpressionValidator ID="RegularExpressionValidator1" runat="server"
@@ -348,9 +348,11 @@
                                                                             ForeColor="Red"></asp:ValidationSummary>
                                                                     </div>
                                                                     <div class="control-group">
-                                                                        <a class="control-label">Forgot your password?</a>
+                                                                        <div class="controls">
+                                                                            <a href="ForgotPassword.aspx">Forgot your password?</a>
+                                                                        </div>
                                                                     </div>
-                                                                    <div class="form-actions">
+                                                                    <div align="center">
                                                                         <asp:Button ID="btnSignIn" runat="server" Text="Sign In" CssClass="buttonPink" ValidationGroup="loginControl" CausesValidation="true"
                                                                             OnClick="btnSignIn_Click" />
 

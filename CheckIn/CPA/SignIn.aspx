@@ -66,18 +66,18 @@
                                     <div class="controls">
                                         <a href="ForgotPassword.aspx">Forgot your password?</a>
                                     </div>
+                                </div>
+                                <div align="center">
+                                    <asp:Button ID="btnSignIn" runat="server" Text="Sign In" CssClass="buttonPink" ValidationGroup="loginControl" CausesValidation="true"
+                                        OnClick="btnSignIn_Click" />
+                                </div>
+                                <br />
+
                             </div>
-                            <div align="center">
-                                <asp:Button ID="btnSignIn" runat="server" Text="Sign In" CssClass="buttonPink" ValidationGroup="loginControl" CausesValidation="true"
-                                    OnClick="btnSignIn_Click" />
-                            </div>
-                            <br />
 
                         </div>
 
                     </div>
-
-                </div>
 
                 </div>
 

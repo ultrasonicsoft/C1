@@ -20,18 +20,6 @@ namespace CheckIn.CPA
         {
             if(!IsPostBack )
             {
-
-                //if (Request.QueryString.Count == 1)
-                //{
-                //    specialityID = Request.QueryString["SpecialityID"];
-
-                //}
-
-                //if (Request.QueryString.Count == 2)
-                //{
-                //    specialityID = Request.QueryString["SpecialityID"];
-                //    zipCode = Request.QueryString["ZipCode"];
-                //}
                 if (Request.QueryString["UserID"] != null)
                 {
                     userID = Request.QueryString["UserID"];
@@ -43,92 +31,18 @@ namespace CheckIn.CPA
                 }
                  FillAllSpeciality();
                  RefreshUserProfile();
-                // DisableTextBox();
-                 pnlUserProfile.Visible = true;
-                 pnlEditUserProfile.Visible = false;
-                pnlCalender.Visible = false;
-            
             }
         }
         private void RefreshUserProfile()
         {
-           // var result = BusinessLogic.GetuserProfileDetail(int.Parse(Session["userID"].ToString()));
             var result = BusinessLogic.GetuserProfileDetail(int.Parse(Session["userID"].ToString()));
-            //var result = BusinessLogic.GetuserProfileDetail(int.Parse("19"));
-            //var result = BusinessLogic.GetuserProfileDetail(int.Parse("3"));
-            if (result == null || result.Tables[0].Rows.Count == 0)
-                return;
-            lblEmail.Text = result.Tables[0].Rows[0]["Email"].ToString();
-           
-            lblFirstName.Text = result.Tables[0].Rows[0]["FirstName"].ToString();
-            lblLastName.Text = result.Tables[0].Rows[0]["LastName"].ToString();
-            lblDOB.Text = result.Tables[0].Rows[0]["Month"].ToString() + "/" + result.Tables[0].Rows[0]["Date"].ToString() + "/" + result.Tables[0].Rows[0]["Year"].ToString();
-            if (result.Tables[0].Rows[0]["Gender"].ToString() == "M")
-            {
-                lblGender.Text = "Male";
-
-            }
-            else
-            {
-                lblGender.Text = "Female";
-            }
-
-            lblPhoneNumber.Text = result.Tables[0].Rows[0]["Phone"].ToString();
-            imgUser.ImageUrl = "UserHandler.ashx?UserID=" + Session["userID"];
-            
-           
-            // txtPassword.Text=re
-
-        }
-        //private void DisableTextBox()
-        //{
-        
-        //    txtEmail.Enabled = false;
-        //    txtPassword.Enabled = false;
-        //    txtFirstName.Enabled = false;
-        //    txtLastName.Enabled = false;
-        //    txtDOB.Enabled = false;
-        //    imgBtnCalender.Visible = false;
-        //    rbtnMale.Enabled = false;
-        //    rbtnFemale.Enabled = false;
-        //    txtPhoneNumber.Enabled = false;
-        //}
-
-        //private void EnableTextBox()
-        //{
-
-        //    txtEmail.Enabled = true;
-        //    txtPassword.Enabled = true;
-        //    txtFirstName.Enabled = true;
-        //    txtLastName.Enabled = true;
-        //    txtDOB.Enabled = true;
-        //    imgBtnCalender.Visible = true;
-        //    rbtnMale.Enabled = true;
-        //    rbtnFemale.Enabled = true;
-        //    txtPhoneNumber.Enabled = true;
-        //}
-
-        private void FillAllSpeciality()
-        {
-            var result = BusinessLogic.GetAllSpecializationList();
-            //ddlSpeciality.DataSource = result.Tables[0];
-            //ddlSpeciality.DataTextField = result.Tables[0].Columns["Speciality"].ColumnName.ToString();
-            //ddlSpeciality.DataValueField = result.Tables[0].Columns["ID"].ColumnName.ToString();
-            //ddlSpeciality.DataBind();
-        }
-
-        private void UpdateUserProfile()
-        {
-            var result = BusinessLogic.GetuserProfileDetail(int.Parse(Session["userID"].ToString()));//(Session["userID"].ToString()));
-           //var result = BusinessLogic.GetuserProfileDetail(int.Parse("19"));
-           //var result = BusinessLogic.GetuserProfileDetail(int.Parse("3"));
             if (result == null || result.Tables[0].Rows.Count == 0)
                 return;
             txtEmail.Text = result.Tables[0].Rows[0]["Email"].ToString();
-            txtPassword.Text = result.Tables[0].Rows[0]["Password"].ToString();
+           
             txtFirstName.Text = result.Tables[0].Rows[0]["FirstName"].ToString();
             txtLastName.Text = result.Tables[0].Rows[0]["LastName"].ToString();
-            txtDOB.Text = result.Tables[0].Rows[0]["Month"].ToString() + "/" + result.Tables[0].Rows[0]["Date"].ToString() + "/" + result.Tables[0].Rows[0]["Year"].ToString();
+            txtDateOfBirth.Text = result.Tables[0].Rows[0]["Month"].ToString() + "/" + result.Tables[0].Rows[0]["Date"].ToString() + "/" + result.Tables[0].Rows[0]["Year"].ToString();
             if (result.Tables[0].Rows[0]["Gender"].ToString() == "M")
             {
                 rbtnMale.Checked = true;
@@ -139,16 +53,37 @@ namespace CheckIn.CPA
                 rbtnFemale.Checked = true;
             }
 
-            //txtPhoneNumber.Text = result.Tables[0].Rows[0]["Phone"].ToString();
+            txtPhNumberPart1.Text = result.Tables[0].Rows[0]["Phone"].ToString();
+            imgUser.ImageUrl = "UserHandler.ashx?UserID=" + Session["userID"];
+
+        }
+        private void FillAllSpeciality()
+        {
+            var result = BusinessLogic.GetAllSpecializationList();
+        }
+
+        private void UpdateUserProfile()
+        {
+            var result = BusinessLogic.GetuserProfileDetail(int.Parse(Session["userID"].ToString()));//(Session["userID"].ToString()));
+            if (result == null || result.Tables[0].Rows.Count == 0)
+                return;
+            txtEmail.Text = result.Tables[0].Rows[0]["Email"].ToString();
+            txtFirstName.Text = result.Tables[0].Rows[0]["FirstName"].ToString();
+            txtLastName.Text = result.Tables[0].Rows[0]["LastName"].ToString();
+            txtDateOfBirth.Text = result.Tables[0].Rows[0]["Month"].ToString() + "/" + result.Tables[0].Rows[0]["Date"].ToString() + "/" + result.Tables[0].Rows[0]["Year"].ToString();
+            if (result.Tables[0].Rows[0]["Gender"].ToString() == "M")
+            {
+                rbtnMale.Checked = true;
+
+            }
+            else
+            {
+                rbtnFemale.Checked = true;
+            }
             string phone = result.Tables[0].Rows[0]["Phone"].ToString();
-            string[] ph = phone.Split('-');
-            txtPhNumberPart1.Text = ph[0];
-            txtPhNumberPart2.Text = ph[1];
-            txtPhNumberPart3.Text = ph[2];
-
-
-            imgEditUser.ImageUrl = "UserHandler.ashx?UserID=" + Session["userID"]; 
-           // txtPassword.Text=re
+            txtPhNumberPart1.Text = phone;
+            //imgEditUser.ImageUrl = "UserHandler.ashx?UserID=" + Session["userID"]; 
+            imgUser.ImageUrl = "UserHandler.ashx?UserID=" + Session["userID"]; 
           
         }
         protected bool Isvalididate()
@@ -200,7 +135,7 @@ namespace CheckIn.CPA
             }
 
 
-            if (System.Text.RegularExpressions.Regex.IsMatch(txtPhNumberPart1.Text + "-" + txtPhNumberPart2.Text + "-" + txtPhNumberPart3.Text, @"^[2-9]\d{2}-\d{3}-\d{4}$"))
+            if (System.Text.RegularExpressions.Regex.IsMatch(txtPhNumberPart1.Text, @"^[2-9]\d{2}-\d{3}-\d{4}$"))
             {
                 CustPhoneNumber.IsValid = true;
                 result = true;
@@ -225,13 +160,12 @@ namespace CheckIn.CPA
             customer.UserID = Session["userID"].ToString();
             //customer.UserID = "3";
             customer.Email = txtEmail.Text;
-            customer.Password = txtPassword.Text;
             customer.FirstName = txtFirstName.Text;
             customer.LastName = txtLastName.Text;
 
-            customer.DateOfBirth = DateTime.Parse(txtDOB.Text);
+            customer.DateOfBirth = DateTime.Parse(txtDateOfBirth.Text);
             customer.Gender = rbtnMale.Checked ? "M" : "F";
-            customer.PhoneNumber = txtPhNumberPart1.Text + '-' + txtPhNumberPart2.Text + '-' + txtPhNumberPart3.Text;
+            customer.PhoneNumber = txtPhNumberPart1.Text ;
             if (ImageUpload.HasFile)
             {
                 int len = ImageUpload.PostedFile.ContentLength;
@@ -244,16 +178,17 @@ namespace CheckIn.CPA
             {
                 customer.Image = BusinessLogic.GetUserImage(int.Parse(Session["userID"].ToString()));
             }
-
+            if(customer.Image == null)
+            {
+                customer.Image = new byte[0];
+            }
              bool result=BusinessLogic.UpdateCustomerDetails(customer);
 
              if (result)
              {
                 Session["userName"] = txtFirstName.Text;
-                System.Web.HttpContext.Current.Response.Write("<SCRIPT LANGUAGE='JavaScript'>alert('Save Sucessful')</SCRIPT>");
-                pnlEditUserProfile.Visible = false;
+                ScriptManager.RegisterStartupScript(UpdatePanel1, UpdatePanel1.GetType(), "Account Details", "alert('Your account details has been updated successfully!');", true);
                 RefreshUserProfile();
-                pnlUserProfile.Visible = true;
              }
             
         }
@@ -261,8 +196,6 @@ namespace CheckIn.CPA
         protected void btnCancel_Click(object sender, EventArgs e)
         {
             RefreshUserProfile();
-            pnlEditUserProfile.Visible = false;
-            pnlUserProfile.Visible = true;
         
         }
 
@@ -271,109 +204,17 @@ namespace CheckIn.CPA
         protected void btnRefineSearch_Click(object sender, EventArgs e)
         {
             GetCurrentSearchFilter();
-
             RefreshUserProfile();
         }
 
         private void GetCurrentSearchFilter()
         {
-            //string specialityID = ddlSpeciality.SelectedItem.Value;
-            //string zipCode = string.IsNullOrEmpty(txtZipCode.Text) || txtZipCode.Text.Equals(@"Enter Zip Code\City") ? string.Empty : txtZipCode.Text;
-
-            //string redirectQuery = string.Format("~/CPA/DisplayAppointments.aspx?SpecialityID={0}&ZipCode={1}", specialityID, zipCode);
+            //string city = txtCity.Value;
+            //string zipCode = txtZipCode.Value;
+            //string redirectQuery = string.Format("~/CPA/DisplayAppointments.aspx?City={0}&ZipCode={1}", city, zipCode);
             //Response.Redirect(redirectQuery);
-            string city = txtCity.Value;
-            string zipCode = txtZipCode.Value;
-            string redirectQuery = string.Format("~/CPA/DisplayAppointments.aspx?City={0}&ZipCode={1}", city, zipCode);
-            Response.Redirect(redirectQuery);
         }
-
         #endregion
 
-        protected void btnEdit_Click(object sender, EventArgs e)
-        {
-            //EnableTextBox();
-            UpdateUserProfile();
-            //btnEdit.Visible = false;
-            pnlEditUserProfile.Visible = true;
-            pnlUserProfile.Visible = false;
-        }
-
-      
-
-        protected void Calendar1_SelectionChanged(object sender, EventArgs e)
-        {
-            if (DateTime.Compare(DateTime.Today, Calendar1.SelectedDate.Date) >= 0)
-            {
-                txtDOB.Text = Calendar1.SelectedDate.ToShortDateString();
-                Calendar1.Visible = false;
-                CustomValidator1.IsValid = true;
-            }
-
-            else
-            {
-                txtDOB.Text = Calendar1.SelectedDate.ToShortDateString();
-                Calendar1.Visible = false;
-                CustomValidator1.IsValid = false;
-            }
-        }
-
-        protected void imgBtnCalender_Click(object sender, ImageClickEventArgs e)
-        {
-            pnlCalender.Visible = true;
-        }
-
-        protected void btnPreYear_Click(object sender, EventArgs e)
-        {
-            DateTime now = DateTime.Now;
-            TimeSpan span = now.AddYears(1) - now;
-
-
-            Calendar1.SelectedDate = Calendar1.SelectedDate.Subtract(span);
-
-            txtDOB.Text = Calendar1.SelectedDate.ToShortDateString();
-            Calendar1.VisibleDate = Calendar1.SelectedDate;
-            if (DateTime.Compare(DateTime.Today, Calendar1.SelectedDate.Date) >= 0)
-            {
-                txtDOB.Text = Calendar1.SelectedDate.ToShortDateString();
-                //Calendar1.Visible = false;
-
-                CustomValidator1.IsValid = true;
-                // pnlCalender.Visible = false;
-            }
-
-            else
-            {
-                txtDOB.Text = Calendar1.SelectedDate.ToShortDateString();
-                //Calendar1.Visible = false;
-                CustomValidator1.IsValid = false;
-
-            }
-        }
-
-        protected void btnNextYear_Click(object sender, EventArgs e)
-        {
-            Calendar1.Visible = false;
-            Calendar1.SelectedDate = Calendar1.SelectedDate.AddYears(1);
-            Calendar1.Visible = true;
-            txtDOB.Text = Calendar1.SelectedDate.ToShortDateString();
-            Calendar1.VisibleDate = Calendar1.SelectedDate;
-            if (DateTime.Compare(DateTime.Today, Calendar1.SelectedDate.Date) >= 0)
-            {
-                txtDOB.Text = Calendar1.SelectedDate.ToShortDateString();
-                //Calendar1.Visible = false;
-
-                CustomValidator1.IsValid = true;
-                // pnlCalender.Visible = false;
-            }
-
-            else
-            {
-                txtDOB.Text = Calendar1.SelectedDate.ToShortDateString();
-                //Calendar1.Visible = false;
-                CustomValidator1.IsValid = false;
-
-            }
-        }
     }
 }

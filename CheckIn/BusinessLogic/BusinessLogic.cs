@@ -221,12 +221,11 @@ namespace CheckIn
                 SqlParameter dateOfBirth = new SqlParameter() { ParameterName = "DateOfBirth", Value = customer.DateOfBirth };
                 SqlParameter gender = new SqlParameter() { ParameterName = "Gender", Value = customer.Gender };
                 SqlParameter phoneNumber = new SqlParameter() { ParameterName = "PhoneNumber", Value = customer.PhoneNumber };
-                SqlParameter password = new SqlParameter() { ParameterName = "Password", Value = customer.Password };
                 SqlParameter userID= new SqlParameter() { ParameterName="UserID",Value=customer.UserID };
                 SqlParameter userImage = new SqlParameter() { ParameterName = "UserImage", Value = customer.Image };
 
 
-                DBHelper.ExecuteStoredProcedure(StoredProcedure.UpdateCustomer, email, firstName, lastName, dateOfBirth, gender, phoneNumber, password,userID,userImage);
+                DBHelper.ExecuteStoredProcedure(StoredProcedure.UpdateCustomer, email, firstName, lastName, dateOfBirth, gender, phoneNumber,userID,userImage);
             }
             catch (Exception ex)
             {

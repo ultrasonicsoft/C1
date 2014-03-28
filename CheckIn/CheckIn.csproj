@@ -353,7 +353,6 @@
     <Content Include="CPA\CheckNewUser.aspx" />
     <Content Include="CPA\CPADetailsInfo.aspx" />
     <Content Include="CPA\CPAProfile.aspx" />
-    <Content Include="CPA\CPASignUp - Copy.aspx" />
     <Content Include="CPA\ManageAppointment.aspx" />
     <Content Include="CPA\ProfilePage.aspx" />
     <Content Include="CPA\ForgotPassword.aspx" />
@@ -560,13 +559,6 @@
     </Compile>
     <Compile Include="CPA\CPAProfile.aspx.designer.cs">
       <DependentUpon>CPAProfile.aspx</DependentUpon>
-    </Compile>
-    <Compile Include="CPA\CPASignUp - Copy.aspx.cs">
-      <DependentUpon>CPASignUp - Copy.aspx</DependentUpon>
-      <SubType>ASPXCodeBehind</SubType>
-    </Compile>
-    <Compile Include="CPA\CPASignUp - Copy.aspx.designer.cs">
-      <DependentUpon>CPASignUp - Copy.aspx</DependentUpon>
     </Compile>
     <Compile Include="CPA\Dataset.cs" />
     <Compile Include="CPA\ManageAppointment.aspx.cs">

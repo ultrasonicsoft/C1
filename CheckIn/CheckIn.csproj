@@ -353,9 +353,9 @@
     <Content Include="CPA\CheckNewUser.aspx" />
     <Content Include="CPA\CPADetailsInfo.aspx" />
     <Content Include="CPA\CPAProfile.aspx" />
+    <Content Include="CPA\ForgotPassword.aspx" />
     <Content Include="CPA\ManageAppointment.aspx" />
     <Content Include="CPA\ProfilePage.aspx" />
-    <Content Include="CPA\ForgotPassword.aspx" />
     <Content Include="CPA\SignOut.aspx" />
     <Content Include="CPA\UserProfile.aspx" />
     <Content Include="CPA\UserReScheduleAppointment.aspx" />
@@ -392,6 +392,7 @@
     <Content Include="css\CalendarTheme\images\ui-icons_ff597f_256x240.png" />
     <Content Include="css\CalendarTheme\jquery-ui-1.9.2.custom.css" />
     <Content Include="css\CalendarTheme\jquery-ui-1.9.2.custom.min.css" />
+    <Content Include="ForgotPassword.aspx" />
     <Content Include="icon\Calendar.bmp" />
     <Content Include="icon\CalenderImageIcon.png" />
     <Content Include="icon\menuIcon.png" />
@@ -561,6 +562,13 @@
       <DependentUpon>CPAProfile.aspx</DependentUpon>
     </Compile>
     <Compile Include="CPA\Dataset.cs" />
+    <Compile Include="CPA\ForgotPassword.aspx.cs">
+      <DependentUpon>ForgotPassword.aspx</DependentUpon>
+      <SubType>ASPXCodeBehind</SubType>
+    </Compile>
+    <Compile Include="CPA\ForgotPassword.aspx.designer.cs">
+      <DependentUpon>ForgotPassword.aspx</DependentUpon>
+    </Compile>
     <Compile Include="CPA\ManageAppointment.aspx.cs">
       <DependentUpon>ManageAppointment.aspx</DependentUpon>
       <SubType>ASPXCodeBehind</SubType>
@@ -574,13 +582,6 @@
     </Compile>
     <Compile Include="CPA\ProfilePage.aspx.designer.cs">
       <DependentUpon>ProfilePage.aspx</DependentUpon>
-    </Compile>
-    <Compile Include="CPA\ForgotPassword.aspx.cs">
-      <DependentUpon>ForgotPassword.aspx</DependentUpon>
-      <SubType>ASPXCodeBehind</SubType>
-    </Compile>
-    <Compile Include="CPA\ForgotPassword.aspx.designer.cs">
-      <DependentUpon>ForgotPassword.aspx</DependentUpon>
     </Compile>
     <Compile Include="CPA\SignOut.aspx.cs">
       <DependentUpon>SignOut.aspx</DependentUpon>
@@ -744,6 +745,12 @@
     </Compile>
     <Compile Include="CPA\GenerateCaptcha.ashx.cs">
       <DependentUpon>GenerateCaptcha.ashx</DependentUpon>
+    </Compile>
+    <Compile Include="ForgotPassword.aspx.cs">
+      <DependentUpon>ForgotPassword.aspx</DependentUpon>
+    </Compile>
+    <Compile Include="ForgotPassword.aspx.designer.cs">
+      <DependentUpon>ForgotPassword.aspx</DependentUpon>
     </Compile>
     <Compile Include="Global.asax.cs">
       <DependentUpon>Global.asax</DependentUpon>

@@ -392,7 +392,6 @@
     <Content Include="css\CalendarTheme\images\ui-icons_ff597f_256x240.png" />
     <Content Include="css\CalendarTheme\jquery-ui-1.9.2.custom.css" />
     <Content Include="css\CalendarTheme\jquery-ui-1.9.2.custom.min.css" />
-    <Content Include="ForgotPassword.aspx" />
     <Content Include="icon\Calendar.bmp" />
     <Content Include="icon\CalenderImageIcon.png" />
     <Content Include="icon\menuIcon.png" />
@@ -745,12 +744,6 @@
     </Compile>
     <Compile Include="CPA\GenerateCaptcha.ashx.cs">
       <DependentUpon>GenerateCaptcha.ashx</DependentUpon>
-    </Compile>
-    <Compile Include="ForgotPassword.aspx.cs">
-      <DependentUpon>ForgotPassword.aspx</DependentUpon>
-    </Compile>
-    <Compile Include="ForgotPassword.aspx.designer.cs">
-      <DependentUpon>ForgotPassword.aspx</DependentUpon>
     </Compile>
     <Compile Include="Global.asax.cs">
       <DependentUpon>Global.asax</DependentUpon>

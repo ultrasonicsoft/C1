@@ -42,7 +42,7 @@ namespace CheckIn.CPA
             lblName.Text = result.Tables[0].Rows[0]["FirstName"].ToString()+" "+result.Tables[0].Rows[0]["LastName"].ToString();
             //string str = string.Format("~/Doc/ImageCSharp.aspx?CPAID={0}", Session["userID"]);
             Image1.ImageUrl = "Handler.ashx?QueryCPAID=" + cpaid.ToString();
-            lblDOB.Text = result.Tables[0].Rows[0]["Month"].ToString() + "/" + result.Tables[0].Rows[0]["Date"].ToString() + "/" +result.Tables[0].Rows[0]["Year"].ToString();
+            //lblDOB.Text = result.Tables[0].Rows[0]["Month"].ToString() + "/" + result.Tables[0].Rows[0]["Date"].ToString() + "/" +result.Tables[0].Rows[0]["Year"].ToString();
       
             if (result.Tables[0].Rows[0]["Gender"].ToString() == "M")
             {

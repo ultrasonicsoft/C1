@@ -23,12 +23,6 @@ namespace CheckIn.Web_Pages
         private string cityCriteria = string.Empty;
         private string zipCodeCriteria = string.Empty;
 
-        enum SortOrder
-        {
-            Ascending = 1,
-            Descending = 2
-        }
-
         #endregion
 
         #region Page Load
@@ -43,7 +37,6 @@ namespace CheckIn.Web_Pages
                     {
                         city = Request.QueryString["City"];
                         Session["city"] = city;
-                        //txtCity.Value = city;
                     }
                     else if(Request.QueryString["ZipCode"] != null)
                     {
@@ -58,19 +51,9 @@ namespace CheckIn.Web_Pages
                     zipCode = Request.QueryString["ZipCode"];
                     Session["city"] = city;
                     Session["zipCode"] = zipCode;
-                   // txtCity.Value = city ;
-                   // txtZipCode.Value =zipCode;
 
                     lblSerchCriteria.Text = "Showing result for ";
                 }
-                if (city == null || city=="")
-                {
-                    //specialityID = "0";
-                   
-                }
-              
-                //Button btn = (Button)gvCPASearchResult.HeaderRow.FindControl("btnPrevWeek");
-                //btn.Enabled = false;
                 FillSerchCriteria();
                 FillAllSpeciality();
                 RefreshSearchResult();

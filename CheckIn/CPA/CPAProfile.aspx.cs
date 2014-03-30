@@ -26,8 +26,16 @@ namespace CheckIn.CPA
             txtCompanyName.Text = result.Tables[0].Rows[0]["CompanyName"].ToString();
             txtOfficeAddress1.Text = result.Tables[0].Rows[0]["Address1"].ToString();
             txtOfficeAddress2.Text = result.Tables[0].Rows[0]["Address2"].ToString();
-            ddlCity.Text = result.Tables[0].Rows[0]["City"].ToString();
-            ddlState.Text = result.Tables[0].Rows[0]["State"].ToString();
+            string practicingCity = result.Tables[0].Rows[0]["City"].ToString();
+            string practingState = result.Tables[0].Rows[0]["State"].ToString();
+            
+            FillState(practingState);
+            FillCity(practicingCity);
+
+            string speciality = BusinessLogic.GetSpeciatityByID(result.Tables[0].Rows[0]["SpecialityID"].ToString());
+            txtSpeciality.Text = speciality;
+            FillSpeciality(speciality);
+
             txtZipCode.Text = result.Tables[0].Rows[0]["ZipCode"].ToString();
             txtEmail.Text = result.Tables[0].Rows[0]["Email"].ToString();
 
@@ -39,7 +47,6 @@ namespace CheckIn.CPA
             if (result.Tables[0].Rows[0]["Gender"].ToString() == "M")
             {
                 rbtnMale.Checked = true;
-
             }
             else
             {
@@ -51,46 +58,7 @@ namespace CheckIn.CPA
 
 
         }
-        private void EditUserDetails()
-        {
-            var result = BusinessLogic.GetCPAProfileDetail(int.Parse(Session["userID"].ToString()));
-            //var result = BusinessLogic.GetuserProfileDetail(int.Parse("3"));
-            if (result == null || result.Tables[0].Rows.Count == 0)
-                return;
-            txtCompanyName.Text = result.Tables[0].Rows[0]["CompanyName"].ToString();
-            txtOfficeAddress1.Text = result.Tables[0].Rows[0]["Address1"].ToString();
-            txtOfficeAddress2.Text = result.Tables[0].Rows[0]["Address2"].ToString();
-            string PractingState = result.Tables[0].Rows[0]["State"].ToString();
-            FillState(PractingState);
-            string Practingcity = result.Tables[0].Rows[0]["City"].ToString();
-
-            FillCity(Practingcity);
-
-            txtZipCode.Text = result.Tables[0].Rows[0]["ZipCode"].ToString();
-            txtEmail.Text = result.Tables[0].Rows[0]["Email"].ToString();
-            txtPassword.Text = result.Tables[0].Rows[0]["Password"].ToString();
-            txtFirstName.Text = result.Tables[0].Rows[0]["FirstName"].ToString();
-            txtLastName.Text = result.Tables[0].Rows[0]["LastName"].ToString();
-            imgCPA.ImageUrl = "Handler.ashx?QueryCPAID=" + Session["userID"];
-
-            txtDateOfBirth.Text = result.Tables[0].Rows[0]["Month"].ToString() + "/" + result.Tables[0].Rows[0]["Date"].ToString() + "/" + result.Tables[0].Rows[0]["Year"].ToString();
-            if (result.Tables[0].Rows[0]["Gender"].ToString() == "M")
-            {
-                rbtnMale.Checked = true;
-
-            }
-            else
-            {
-                rbtnFemale.Checked = true;
-            }
-
-            string phone = result.Tables[0].Rows[0]["Phone"].ToString();
-            txtPhoneNumber.Text = phone;
-
-            string speciality = BusinessLogic.GetSpeciatityByID(result.Tables[0].Rows[0]["SpecialityID"].ToString());
-            txtSpeciality.Text = speciality;
-            FillSpeciality(speciality);
-        }
+     
         protected bool Isvalididate()
         {
             bool result;
@@ -171,7 +139,7 @@ namespace CheckIn.CPA
             CPAUser.SpecialityID = ddlSpeciality.SelectedValue;
             CPAUser.Speciality = txtSpeciality.Text;
             CPAUser.Email = txtEmail.Text;
-            CPAUser.Password = txtPassword.Text;
+            //CPAUser.Password = txtPassword.Text;
 
             //Session["Image"] = "Handler.ashx?QueryCPAID=" + Session["userID"];
             if (ImageUpload.HasFile)
@@ -186,8 +154,10 @@ namespace CheckIn.CPA
             {
                 CPAUser.Image = BusinessLogic.GetCPAImage(int.Parse(Session["userID"].ToString()));
             }
-            //CPAUser.DateOfBirth = DateTime.Parse(txtDD.Text + "/" + txtMM.Text + "/" + txtYYYY.Text);
-
+            if(CPAUser.Image ==null)
+            {
+                CPAUser.Image = new byte[0];
+            }
 
             bool result = BusinessLogic.UpdateCPADetails(CPAUser);
 

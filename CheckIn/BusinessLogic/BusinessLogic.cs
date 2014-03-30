@@ -251,13 +251,13 @@ namespace CheckIn
                 SqlParameter Gender = new SqlParameter() { ParameterName = "Gender", Value = cpa.Gender };
                 SqlParameter SpecialityID = new SqlParameter() { ParameterName = "SpecialityID", Value = cpa.SpecialityID };
                 SqlParameter Email = new SqlParameter() { ParameterName = "Email", Value = cpa.Email };
-                SqlParameter Password = new SqlParameter() { ParameterName = "Password", Value = cpa.Password };
+                //SqlParameter Password = new SqlParameter() { ParameterName = "Password", Value = cpa.Password };
                 SqlParameter CPAImage = new SqlParameter() { ParameterName = "CPAImage", Value = cpa.Image };
                 SqlParameter UserID = new SqlParameter() { ParameterName = "UserID", Value = cpa.UserID };
                 SqlParameter DateOFBirth = new SqlParameter() { ParameterName = "DateOfBirth", Value = cpa.DateOfBirth };
                 SqlParameter Speciality = new SqlParameter() { ParameterName = "Speciality", Value = cpa.Speciality };
 
-                DBHelper.ExecuteStoredProcedure(StoredProcedure.UpdateCPA, Address1, Address2, City, State, ZipCode, PhoneNumber, FirstName, LastName, Gender, SpecialityID, Email, Password, CompanyName,DateOFBirth, CPAImage,UserID,Speciality);
+                DBHelper.ExecuteStoredProcedure(StoredProcedure.UpdateCPA, Address1, Address2, City, State, ZipCode, PhoneNumber, FirstName, LastName, Gender, SpecialityID, Email, CompanyName,DateOFBirth, CPAImage,UserID,Speciality);
             }
             catch (Exception ex)
             {

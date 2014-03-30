@@ -5,6 +5,9 @@
 <asp:Content ID="Content2" ContentPlaceHolderID="MainContent" runat="server">
     <ajaxToolkit:ToolkitScriptManager ID="ToolkitScriptManager1" runat="server"></ajaxToolkit:ToolkitScriptManager>
     <asp:UpdatePanel ID="UpdatePanel1" runat="server">
+        <Triggers>
+            <asp:PostBackTrigger ControlID="btnSave" />
+        </Triggers>
         <ContentTemplate>
             <div class="page-content">
                 <div class="page_border">
@@ -36,6 +39,7 @@
                                         <div class="row-fluid">
                                             <div class=" controls">
                                                 <asp:Image ID="imgCPA" runat="server" Height="62px" Width="62px" />
+                                                <br />
                                                 <asp:FileUpload ID="ImageUpload" runat="server" />
                                             </div>
                                         </div>
@@ -47,15 +51,29 @@
                                         </div>
                                     </div>
                                     <div class="control-group">
-                                        <label class="control-label" for="txtEmail">Email</label>
+                                        <label class="control-label">Practicing State</label>
+                                        <asp:DropDownList ID="ddlState" runat="server" AutoPostBack="true" CausesValidation="true" OnSelectedIndexChanged="ddlState_SelectedIndexChanged" AppendDataBoundItems="true">
+                                        </asp:DropDownList>
+                                        <asp:RequiredFieldValidator ID="reqValState" runat="server" ErrorMessage="Please Select State" ControlToValidate="ddlState"
+                                            ValidationGroup="signUpValidation" ForeColor="Red" InitialValue="--Please Select State--" Display="Dynamic"></asp:RequiredFieldValidator>
+                                    </div>
+                                    <div class="control-group">
+                                        <label class="control-label">Practicing City</label>
+                                        <asp:DropDownList ID="ddlCity" runat="server" AppendDataBoundItems="true" CausesValidation="true">
+                                        </asp:DropDownList>
+                                        <asp:RequiredFieldValidator ID="reqValCity" ValidationGroup="signUpValidation" runat="server" ErrorMessage="Please Select City"
+                                            ControlToValidate="ddlCity" InitialValue="--Please Select City--" ForeColor="Red"></asp:RequiredFieldValidator>
+                                    </div>
+                                    <div class="control-group">
+                                        <label class="control-label">Practicing Zip Code</label>
                                         <div class="controls">
-                                            <asp:TextBox ID="txtEmail" runat="server"></asp:TextBox>
+                                            <asp:TextBox ID="txtZipCode" runat="server"></asp:TextBox>
                                         </div>
                                     </div>
                                     <div class="control-group">
-                                        <label class="control-label" for="txtPassword">Generate Password</label>
+                                        <label class="control-label" for="txtEmail">Email</label>
                                         <div class="controls">
-                                            <asp:TextBox ID="txtPassword" TextMode="Password" runat="server"></asp:TextBox>
+                                            <asp:TextBox ID="txtEmail" runat="server"></asp:TextBox>
                                         </div>
                                     </div>
                                     <div class="control-group">
@@ -64,7 +82,7 @@
                                             <asp:TextBox ID="txtLastName" Text="Last Name" runat="server" class="input-large"></asp:TextBox>
 
                                             <asp:TextBox ID="txtFirstName" Text="First Name" runat="server" class="input-large"></asp:TextBox>
-                                            <br />
+
                                             <asp:RegularExpressionValidator ID="RegularExpressionValidator1" runat="server" ErrorMessage="Allow Only 1-25 Alphabet " ControlToValidate="txtFirstName"
                                                 ValidationExpression="^[a-zA-Z]{1,25}$" ForeColor="Red"></asp:RegularExpressionValidator>
                                             <asp:CustomValidator ID="CustValFisrtName" runat="server" ForeColor="Red" ControlToValidate="txtFirstName"></asp:CustomValidator>
@@ -109,16 +127,10 @@
                                         <label class="control-label">Phone Number</label>
                                         <div class="controls">
                                             <asp:TextBox ID="txtPhoneNumber" runat="server"></asp:TextBox>
-                                            <asp:CustomValidator ID="CustPhoneNumber" runat="server" ForeColor="Red" ErrorMessage="All Character are digit"></asp:CustomValidator>
+                                            <asp:CustomValidator ID="CustPhoneNumber" runat="server" ForeColor="Red" ErrorMessage="Invalid Phone number"></asp:CustomValidator>
                                         </div>
                                     </div>
-                                    <div class="control-group">
-                                        <label class="control-label">Practicing Zip Code</label>
-                                        <div class="controls">
-                                            <asp:TextBox ID="txtZipCode" runat="server"></asp:TextBox>
 
-                                        </div>
-                                    </div>
 
                                     <div class="control-group">
                                         <label class="control-label">Office Address Line 1</label>
@@ -134,20 +146,7 @@
 
                                         </div>
                                     </div>
-                                    <div class="control-group">
-                                        <label class="control-label">Practicing State</label>
-                                        <asp:DropDownList ID="ddlState" runat="server" AutoPostBack="true" CausesValidation="true" OnSelectedIndexChanged="ddlState_SelectedIndexChanged" AppendDataBoundItems="true">
-                                        </asp:DropDownList>
-                                        <asp:RequiredFieldValidator ID="reqValState" runat="server" ErrorMessage="Please Select State" ControlToValidate="ddlState"
-                                            ValidationGroup="signUpValidation" ForeColor="Red" InitialValue="--Please Select State--" Display="Dynamic"></asp:RequiredFieldValidator>
-                                    </div>
-                                    <div class="control-group">
-                                        <label class="control-label">Practicing City</label>
-                                        <asp:DropDownList ID="ddlCity" runat="server" AppendDataBoundItems="true" CausesValidation="true">
-                                        </asp:DropDownList>
-                                        <asp:RequiredFieldValidator ID="reqValCity" ValidationGroup="signUpValidation" runat="server" ErrorMessage="Please Select City"
-                                            ControlToValidate="ddlCity" InitialValue="--Please Select City--" ForeColor="Red"></asp:RequiredFieldValidator>
-                                    </div>
+
 
                                     <div class="control-group">
                                         <label class="control-label">Speciality</label>
@@ -158,10 +157,10 @@
 
 
                                 </div>
-                                <div style="margin-left:40px">
+                                <div style="margin-left: 40px">
 
                                     <asp:Button CssClass="buttonPink" ID="btnSave" runat="server" Text="Save" OnClick="btnSave_Click" />
-                                       <asp:Button ID="btnCancel" CssClass="buttonPink" runat="server" Text="Cancel" OnClick="btnCancel_Click" style="margin-left:50px"/>
+                                    <asp:Button ID="btnCancel" CssClass="buttonPink" runat="server" Text="Cancel" OnClick="btnCancel_Click" Style="margin-left: 50px" />
                                 </div>
                             </div>
                         </div>

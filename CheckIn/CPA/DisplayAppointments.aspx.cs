@@ -7,6 +7,7 @@ using System.Web.UI.WebControls;
 using System.Text;
 using System.IO;
 using System.Data;
+using System.Data.SqlClient;
 
 namespace CheckIn.Web_Pages
 {
@@ -29,6 +30,12 @@ namespace CheckIn.Web_Pages
 
         protected void Page_Load(object sender, EventArgs e)
         {
+            System.Web.UI.HtmlControls.HtmlGenericControl body = (System.Web.UI.HtmlControls.HtmlGenericControl)Master.FindControl("myBody");
+            if(body !=null)
+            {
+                body.Attributes.Add("onload", "initialize();");
+            }
+
             if (!IsPostBack)
             {
                 if (Request.QueryString.Count == 1)
@@ -566,6 +573,33 @@ namespace CheckIn.Web_Pages
             }
         }
 
+        public string ConvertDataTabletoString()
+        {
+            DataTable dt = new DataTable();
+            using (SqlConnection con = new SqlConnection(@"Data Source=localhost\sqlexpress;Initial Catalog=TestDB;Integrated Security=true"))
+            {
+                using (SqlCommand cmd = new SqlCommand("select title=City,lat=latitude,lng=longitude,description from LocationDetails", con))
+                {
+                    con.Open();
+                    SqlDataAdapter da = new SqlDataAdapter(cmd);
+                    da.Fill(dt);
+                    System.Web.Script.Serialization.JavaScriptSerializer serializer = new System.Web.Script.Serialization.JavaScriptSerializer();
+                    List<Dictionary<string, object>> rows = new List<Dictionary<string, object>>();
+                    Dictionary<string, object> row;
+                    foreach (DataRow dr in dt.Rows)
+                    {
+                        row = new Dictionary<string, object>();
+                        foreach (DataColumn col in dt.Columns)
+                        {
+                            row.Add(col.ColumnName, dr[col]);
+                        }
+                        rows.Add(row);
+                    }
+                    return serializer.Serialize(rows);
+                }
+            }
+            return string.Empty;
+        }
         #endregion
 
     }

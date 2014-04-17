@@ -37,6 +37,7 @@ namespace CheckIn
         internal const string GetCPAProfile = "[GetCPAProfile]";
         internal const string UpdateCPA = "[UpdateCPA]";
         internal const string CancelAppointment = "[CancelAppointment]";
+        internal const string GetCPALocations = "[GetCPALocations]";
 
 
     }

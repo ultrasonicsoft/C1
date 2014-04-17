@@ -8,6 +8,7 @@ using System.Text;
 using System.IO;
 using System.Data;
 using System.Data.SqlClient;
+using System.Net;
 
 namespace CheckIn.Web_Pages
 {
@@ -572,35 +573,66 @@ namespace CheckIn.Web_Pages
                 tempDate.Text = DateTime.Parse(tempDate.Text).AddDays(newDateUpdateValue).ToShortDateString();
             }
         }
-
-        public string ConvertDataTabletoString()
-        {
-            DataTable dt = new DataTable();
-            using (SqlConnection con = new SqlConnection(@"Data Source=localhost\sqlexpress;Initial Catalog=TestDB;Integrated Security=true"))
-            {
-                using (SqlCommand cmd = new SqlCommand("select title=City,lat=latitude,lng=longitude,description from LocationDetails", con))
-                {
-                    con.Open();
-                    SqlDataAdapter da = new SqlDataAdapter(cmd);
-                    da.Fill(dt);
-                    System.Web.Script.Serialization.JavaScriptSerializer serializer = new System.Web.Script.Serialization.JavaScriptSerializer();
-                    List<Dictionary<string, object>> rows = new List<Dictionary<string, object>>();
-                    Dictionary<string, object> row;
-                    foreach (DataRow dr in dt.Rows)
-                    {
-                        row = new Dictionary<string, object>();
-                        foreach (DataColumn col in dt.Columns)
-                        {
-                            row.Add(col.ColumnName, dr[col]);
-                        }
-                        rows.Add(row);
-                    }
-                    return serializer.Serialize(rows);
-                }
-            }
-            return string.Empty;
-        }
+      
         #endregion
 
+        #region Google Map Marker
+        //public string ConvertDataTabletoString()
+        //{
+
+        //    DataTable dt = new DataTable();
+        //    using (SqlConnection con = new SqlConnection(@"Data Source=localhost\sqlexpress;Initial Catalog=TestDB;Integrated Security=true"))
+        //    {
+        //        using (SqlCommand cmd = new SqlCommand("select title=City,lat=latitude,lng=longitude,description from LocationDetails", con))
+        //        {
+        //            con.Open();
+        //            SqlDataAdapter da = new SqlDataAdapter(cmd);
+        //            da.Fill(dt);
+        //            System.Web.Script.Serialization.JavaScriptSerializer serializer = new System.Web.Script.Serialization.JavaScriptSerializer();
+        //            List<Dictionary<string, object>> rows = new List<Dictionary<string, object>>();
+        //            Dictionary<string, object> row;
+        //            foreach (DataRow dr in dt.Rows)
+        //            {
+        //                row = new Dictionary<string, object>();
+        //                foreach (DataColumn col in dt.Columns)
+        //                {
+        //                    row.Add(col.ColumnName, dr[col]);
+        //                }
+        //                rows.Add(row);
+        //            }
+        //            return serializer.Serialize(rows);
+        //        }
+        //    }
+        //    return string.Empty;
+        //}
+
+        public string GetCPALocations()
+        {
+            DataTable dt = BusinessLogic.GetCPALocations() ;
+            if (dt != null && dt.Rows != null && dt.Rows.Count > 0)
+            {
+                System.Web.Script.Serialization.JavaScriptSerializer serializer = new System.Web.Script.Serialization.JavaScriptSerializer();
+                List<Dictionary<string, object>> rows = new List<Dictionary<string, object>>();
+                Dictionary<string, object> row;
+                foreach (DataRow dr in dt.Rows)
+                {
+                    row = new Dictionary<string, object>();
+                    foreach (DataColumn col in dt.Columns)
+                    {
+                        row.Add(col.ColumnName, dr[col]);
+                    }
+                    rows.Add(row);
+                }
+                return serializer.Serialize(rows);
+
+            }
+            else
+            {
+                return string.Empty;
+            }
+        }
+
+        
+        #endregion
     }
 }

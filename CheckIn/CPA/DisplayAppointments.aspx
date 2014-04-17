@@ -11,9 +11,10 @@
 
     <script type="text/javascript">
         function initialize() {
-         var markers = JSON.parse('<%=ConvertDataTabletoString() %>');
+            <%--var markers = JSON.parse('<%=ConvertDataTabletoString() %>');--%>
+            var markers = JSON.parse('<%=GetCPALocations() %>');
         var mapOptions = {
-            center: new google.maps.LatLng(markers[0].lat, markers[0].lng),
+            center: new google.maps.LatLng(markers[0].Latitude, markers[0].Longitude),
             zoom: 5,
             mapTypeId: google.maps.MapTypeId.ROADMAP
             //  marker:true
@@ -22,17 +23,17 @@
         var map = new google.maps.Map(document.getElementById("map_canvas"), mapOptions);
         for (i = 0; i < markers.length; i++) {
             var data = markers[i]
-            var myLatlng = new google.maps.LatLng(data.lat, data.lng);
+            var myLatlng = new google.maps.LatLng(data.Latitude, data.Longitude);
             var marker = new google.maps.Marker({
                 position: myLatlng,
                 map: map,
-                title: data.title
+                title: data.CompanyName
             });
             (function (marker, data) {
 
                 // Attaching a click event to the current marker
                 google.maps.event.addListener(marker, "click", function (e) {
-                    infoWindow.setContent(data.description);
+                    infoWindow.setContent(data.Description);
                     infoWindow.open(map, marker);
                 });
             })(marker, data);

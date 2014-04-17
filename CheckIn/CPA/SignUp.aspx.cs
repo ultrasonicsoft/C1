@@ -86,17 +86,15 @@ namespace CheckIn.Web_Pages
                 // newCustomer.PhoneNumber = txtPhoneNumber.Text;
                 newCustomer.PhoneNumber = txtPhNumberPart1.Text ;
                 newCustomer.Gender = rbtnMale.Checked ? "M" : "F";
-                if (ImageUpload.PostedFile != null)
-                {
-                    int len = ImageUpload.PostedFile.ContentLength;
-                    byte[] pic = new byte[len];
-                    ImageUpload.PostedFile.InputStream.Read(pic, 0, len);
-                    newCustomer.Image = pic;
-                }
+                //if (ImageUpload.PostedFile != null)
+                //{
+                //    int len = ImageUpload.PostedFile.ContentLength;
+                //    byte[] pic = new byte[len];
+                //    ImageUpload.PostedFile.InputStream.Read(pic, 0, len);
+                //    newCustomer.Image = pic;
+                //}
                 newCustomer.ActivationToken = userGuid.ToString();
                 newCustomer.CreatedDate = DateTime.Now;
-
-
 
                 bool result = BusinessLogic.CreateNewTempCustomer(newCustomer);
                 if (result)

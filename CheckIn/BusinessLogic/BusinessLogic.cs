@@ -288,11 +288,10 @@ namespace CheckIn
                 SqlParameter Password = new SqlParameter() {ParameterName = "Password", Value=newCPA.Password };
                 SqlParameter CPAImage = new SqlParameter() { ParameterName = "CPAImage", Value = newCPA.Image };
                 SqlParameter Speciality = new SqlParameter() { ParameterName = "Speciality", Value = newCPA.Speciality };
+                SqlParameter Latitude = new SqlParameter() { ParameterName = "Latitude", Value = newCPA.Latitude };
+                SqlParameter Longitude = new SqlParameter() { ParameterName = "Longitude", Value = newCPA.Longitude };
                
-                
-                
-
-                DBHelper.ExecuteStoredProcedure(StoredProcedure.SignUpNewCPA, Address1 , Address2 , City , State , ZipCode , Phone , FirstName , LastName ,DateOfBirth, Gender ,Email,Password,CompanyName,CPAImage,Speciality);
+                DBHelper.ExecuteStoredProcedure(StoredProcedure.SignUpNewCPA, Address1 , Address2 , City , State , ZipCode , Phone , FirstName , LastName ,DateOfBirth, Gender ,Email,Password,CompanyName,CPAImage,Speciality,Latitude,Longitude);
             }
             catch (Exception ex)
             {
@@ -324,10 +323,10 @@ namespace CheckIn
                 SqlParameter Speciality = new SqlParameter() { ParameterName = "Speciality", Value = newCPA.Speciality };
                 SqlParameter ActivationToken = new SqlParameter() { ParameterName = "ActivationToken", Value = newCPA.ActivationToken };
                 SqlParameter CreatedDate = new SqlParameter() { ParameterName = "CreatedDate", Value = newCPA.CreatedDate };
+                SqlParameter Latitude = new SqlParameter() { ParameterName = "Latitude", Value = newCPA.Latitude };
+                SqlParameter Longitude = new SqlParameter() { ParameterName = "Longitude", Value = newCPA.Longitude };
 
-                
-
-                DBHelper.ExecuteStoredProcedure(StoredProcedure.SignUpNewTempCPA, Address1 , Address2 , City , State , ZipCode , Phone , FirstName , LastName ,DateOfBirth, Gender , Email,Password,CompanyName,CPAImage,Speciality,ActivationToken,CreatedDate);
+                DBHelper.ExecuteStoredProcedure(StoredProcedure.SignUpNewTempCPA, Address1, Address2, City, State, ZipCode, Phone, FirstName, LastName, DateOfBirth, Gender, Email, Password, CompanyName, CPAImage, Speciality, ActivationToken, CreatedDate,Latitude, Longitude);
             }
             catch (Exception ex)
             {
@@ -534,6 +533,14 @@ namespace CheckIn
             if (result == DBNull.Value || result==null)
                 return false;
             return result.ToString().Equals("1");
+        }
+
+        internal static DataTable GetCPALocations()
+        {
+            DataSet result = DBHelper.ExecuteStoredProcedure(StoredProcedure.GetCPALocations);
+            //if (result == null || result.Tables[0].Rows.Count == 0)
+            //    return null;
+            return result.Tables[0];
         }
     }
 }

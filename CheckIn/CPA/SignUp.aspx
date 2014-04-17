@@ -109,12 +109,7 @@
                                                     ErrorTooltipEnabled="True" />
                                             </div>
                                         </div>
-                                        <div class="control-group">
-                                            <label class="control-label">Image</label>
-                                            <div class="controls">
-                                                <asp:FileUpload ID="ImageUpload" runat="server" Width="320px" />
-                                            </div>
-                                        </div>
+                                        
                                         <div class="control-group">
                                             <div class="controls">
                                                 <asp:CheckBox ID="cbTermCondition" Text="" runat="server" />

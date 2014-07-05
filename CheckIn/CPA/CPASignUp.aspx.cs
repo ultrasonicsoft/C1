@@ -205,8 +205,8 @@ namespace CheckIn.Web_Pages
             }
             catch (SmtpException se)
             {
-
                 CustomValidator2.IsValid = false;
+                CustomValidator2.ErrorMessage = se.Message;
                 result = false;
 
                 //Page.ClientScript.RegisterStartupScript(this.GetType(), "test", "alert('Message Sent ... ');", true);

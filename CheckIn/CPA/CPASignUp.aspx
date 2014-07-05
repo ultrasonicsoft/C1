@@ -109,7 +109,7 @@
                                 <label class="control-label">Image</label>
                                 <div class="controls">
                                     <asp:FileUpload ID="ImageUpload" runat="server" Width="320px" />
-                                     <asp:Label ID="lblFile" runat="server" Visible="false"></asp:Label>
+                                    <asp:Label ID="lblFile" runat="server" Visible="false"></asp:Label>
                                 </div>
                             </div>
                             <div class="control-group">
@@ -141,7 +141,7 @@
                             </div>
                             <div class="control-group">
                                 <label class="control-label">Practicing City</label>
-                                <asp:DropDownList ID="ddlCity" runat="server" AppendDataBoundItems="true"  CausesValidation="true">
+                                <asp:DropDownList ID="ddlCity" runat="server" AppendDataBoundItems="true" CausesValidation="true">
                                 </asp:DropDownList>
                                 <asp:RequiredFieldValidator ID="reqValCity" ValidationGroup="signUpValidation" runat="server" ErrorMessage="Please Select City"
                                     ControlToValidate="ddlCity" InitialValue="--Please Select City--" ForeColor="Red"></asp:RequiredFieldValidator>
@@ -164,22 +164,22 @@
                                     <asp:ValidationSummary ID="signUpValidation" runat="server" CssClass="validationSummary" DisplayMode="BulletList" ForeColor="Red" ValidationGroup="signUpValidation" />
                                 </div>
                             </div>
-                            <div align="center" width="40%" >
+                            <div align="center" width="40%">
                                 <asp:Button ID="btnSignUp" CssClass="buttonPink" runat="server" Text="Sign Up" OnClick="btnSignUp_Click" ValidationGroup="signUpValidation" CausesValidation="true" />
                                 <asp:UpdateProgress ID="updProgress"
-                                                    AssociatedUpdatePanelID="UpdatePanel1"
-                                                    runat="server">
-                                                    <ProgressTemplate>
-                                                        <img alt="progress" src="../Images/progress.gif" />
-                                                        Please wait while we are creating your account...          
-                                                    </ProgressTemplate>
-                                                </asp:UpdateProgress>
+                                    AssociatedUpdatePanelID="UpdatePanel1"
+                                    runat="server">
+                                    <ProgressTemplate>
+                                        <img alt="progress" src="../Images/progress.gif" />
+                                        Please wait while we are creating your account...          
+                                    </ProgressTemplate>
+                                </asp:UpdateProgress>
                             </div>
                         </div>
-                    <br />
-                </div>
+                        <br />
+                    </div>
 
-            </div>
+                </div>
 
             </div>
         </ContentTemplate>

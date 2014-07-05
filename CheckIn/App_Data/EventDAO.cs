@@ -67,11 +67,6 @@ public class EventDAO
     public static void updateEvent(int id, String title, String description, string purpose, string contactNumber)
     {
         SqlConnection con = new SqlConnection(connectionString);
-        //SqlCommand cmd = new SqlCommand("UPDATE event SET title=@title, description=@description, purpose=@purpose WHERE event_id=@event_id", con);
-        //cmd.Parameters.AddWithValue("@title", title);
-        //cmd.Parameters.AddWithValue("@purpose", purpose);
-        //cmd.Parameters.AddWithValue("@description", description);
-        //cmd.Parameters.AddWithValue("@event_id", id);
 
         SqlCommand cmd = new SqlCommand("UPDATE CPAAppointment SET CustomerName=@customerName, Note=@note, PurposeOfVisit=@purpose, ContactNumber=@contactNumber WHERE ID=@event_id", con);
         cmd.Parameters.AddWithValue("@customerName", title);
@@ -91,16 +86,16 @@ public class EventDAO
     //this method updates the event start and end time
     public static void updateEventTime(int id, DateTime start, DateTime end)
     {
-        SqlConnection con = new SqlConnection(connectionString);
-        SqlCommand cmd = new SqlCommand("UPDATE event SET event_start=@event_start, event_end=@event_end WHERE event_id=@event_id", con);
-        cmd.Parameters.AddWithValue("@event_start", start);
-        cmd.Parameters.AddWithValue("@event_end", end);
-        cmd.Parameters.AddWithValue("@event_id", id);
-        using (con)
-        {
-            con.Open();
-            cmd.ExecuteNonQuery();
-        }
+        //SqlConnection con = new SqlConnection(connectionString);
+        //SqlCommand cmd = new SqlCommand("UPDATE event SET event_start=@event_start, event_end=@event_end WHERE event_id=@event_id", con);
+        //cmd.Parameters.AddWithValue("@event_start", start);
+        //cmd.Parameters.AddWithValue("@event_end", end);
+        //cmd.Parameters.AddWithValue("@event_id", id);
+        //using (con)
+        //{
+        //    con.Open();
+        //    cmd.ExecuteNonQuery();
+        //}
     }
 
     //this mehtod deletes event with the id passed in.
@@ -124,29 +119,13 @@ public class EventDAO
 
         //insert
         SqlConnection con = new SqlConnection(connectionString);
-        SqlCommand cmd = new SqlCommand("INSERT INTO event(title, description, event_start, event_end,purpose) VALUES(@title, @description, @event_start, @event_end,@purpose)", con);
-        cmd.Parameters.AddWithValue("@title", cevent.title);
-        cmd.Parameters.AddWithValue("@purpose", cevent.purpose);
-        cmd.Parameters.AddWithValue("@description", cevent.description);
-        cmd.Parameters.AddWithValue("@event_start", cevent.start);
-        cmd.Parameters.AddWithValue("@event_end", cevent.end);
 
         int key = 0;
         using (con)
         {
             con.Open();
-            cmd.ExecuteNonQuery();
 
-            //get primary key of inserted row
-            cmd = new SqlCommand("SELECT max(event_id) FROM event where title=@title AND description=@description AND event_start=@event_start AND event_end=@event_end", con);
-            cmd.Parameters.AddWithValue("@title", cevent.title);
-            cmd.Parameters.AddWithValue("@description", cevent.description);
-            cmd.Parameters.AddWithValue("@event_start", cevent.start);
-            cmd.Parameters.AddWithValue("@event_end", cevent.end);
-
-            key = (int)cmd.ExecuteScalar();
-
-            cmd = new SqlCommand();
+            SqlCommand cmd = new SqlCommand();
             cmd.Connection = con;
             cmd.CommandType = CommandType.StoredProcedure;
             cmd.CommandText = "[OpenAppointments]";

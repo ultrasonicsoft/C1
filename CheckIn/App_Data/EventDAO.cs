@@ -27,38 +27,20 @@ public class EventDAO
 
         List<CalendarEvent> events = new List<CalendarEvent>();
         SqlConnection con = new SqlConnection(connectionString);
-        SqlCommand cmd = new SqlCommand("SELECT event_id, description, title, event_start, event_end,purpose FROM event where event_start>=@start AND event_end<=@end", con);
-        cmd.Parameters.AddWithValue("@start", start);
-        cmd.Parameters.AddWithValue("@end", end);
-
+       
         using (con)
         {
             con.Open();
-            SqlDataReader reader = cmd.ExecuteReader();
-            while (reader.Read())
-            {
-                CalendarEvent cevent = new CalendarEvent();
-                cevent.id = (int)reader["event_id"];
-                cevent.title = (string)reader["title"];
-                cevent.description = (string)reader["description"];
-                cevent.start = (DateTime)reader["event_start"];
-                cevent.end = (DateTime)reader["event_end"];
-                cevent.purpose = (string)reader["purpose"];
-                events.Add(cevent);
-            }
-
-            reader.Close();
-             events = new List<CalendarEvent>();
             string cpaID = HttpContext.Current.Session["UserID"].ToString();
             string getAllEventsQuery =
                 string.Format(
                     "select ID,CPAID,ISNULL(CustomerID,0)CustomerID,ISNULL(CustomerName,'')CustomerName,ISNULL(PurposeOfVisit,'')PurposeOfVisit,ISNULL(ContactNumber,'')ContactNumber,StartTime,EndTime,ISNULL(Note,'')Note,IsOpen from CPAAppointment where StartTime>=@start AND EndTime<=@end AND CPAID = {0}",
                     cpaID);
-            cmd = new SqlCommand(getAllEventsQuery, con);
+            SqlCommand cmd = new SqlCommand(getAllEventsQuery, con);
             cmd.Parameters.AddWithValue("@start", start);
             cmd.Parameters.AddWithValue("@end", end);
 
-            reader = cmd.ExecuteReader();
+            SqlDataReader reader = cmd.ExecuteReader();
             while (reader.Read())
             {
                 CalendarEvent cevent = new CalendarEvent();

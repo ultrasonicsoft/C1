@@ -117,7 +117,7 @@ namespace CheckIn
 
         internal static DataSet GetAllCityList(string State_Code)
         {
-            
+
             return DBHelper.GetSelectDataSet(string.Format(Constants.CITY_QUERY, State_Code.ToString()));
         }
         internal static DataSet GetAllScheduledAppointmentForCustomer(int customerID)
@@ -164,7 +164,7 @@ namespace CheckIn
                 SqlParameter password = new SqlParameter() { ParameterName = "Password", Value = newCustomer.Password };
                 SqlParameter image = new SqlParameter() { ParameterName = "UserImage", Value = newCustomer.Image };
 
-                DBHelper.ExecuteStoredProcedure(StoredProcedure.SignUpNewCustomer, email, firstName, lastName, dateOfBirth, gender, phoneNumber,password,image);
+                DBHelper.ExecuteStoredProcedure(StoredProcedure.SignUpNewCustomer, email, firstName, lastName, dateOfBirth, gender, phoneNumber, password, image);
             }
             catch (Exception ex)
             {
@@ -186,7 +186,7 @@ namespace CheckIn
                 SqlParameter phoneNumber = new SqlParameter() { ParameterName = "PhoneNumber", Value = newCustomer.PhoneNumber };
                 SqlParameter password = new SqlParameter() { ParameterName = "Password", Value = newCustomer.Password };
                 SqlParameter image = null;
-                if(newCustomer.Image == null)
+                if (newCustomer.Image == null)
                 {
                     image = new SqlParameter();
                     image.ParameterName = "UserImage";
@@ -200,7 +200,7 @@ namespace CheckIn
                 SqlParameter activationToken = new SqlParameter() { ParameterName = "ActivationToken", Value = newCustomer.ActivationToken };
                 SqlParameter createdDate = new SqlParameter() { ParameterName = "CreatedDate", Value = newCustomer.CreatedDate };
 
-                DBHelper.ExecuteStoredProcedure(StoredProcedure.SignUpNewTempCustomer, email, firstName, lastName, dateOfBirth, gender, phoneNumber, password, image,activationToken,createdDate);
+                DBHelper.ExecuteStoredProcedure(StoredProcedure.SignUpNewTempCustomer, email, firstName, lastName, dateOfBirth, gender, phoneNumber, password, image, activationToken, createdDate);
             }
             catch (Exception ex)
             {
@@ -209,7 +209,7 @@ namespace CheckIn
             }
             return result;
         }
-        
+
         internal static bool UpdateCustomerDetails(CustomerDetails customer)
         {
             bool result = true;
@@ -221,11 +221,11 @@ namespace CheckIn
                 SqlParameter dateOfBirth = new SqlParameter() { ParameterName = "DateOfBirth", Value = customer.DateOfBirth };
                 SqlParameter gender = new SqlParameter() { ParameterName = "Gender", Value = customer.Gender };
                 SqlParameter phoneNumber = new SqlParameter() { ParameterName = "PhoneNumber", Value = customer.PhoneNumber };
-                SqlParameter userID= new SqlParameter() { ParameterName="UserID",Value=customer.UserID };
+                SqlParameter userID = new SqlParameter() { ParameterName = "UserID", Value = customer.UserID };
                 SqlParameter userImage = new SqlParameter() { ParameterName = "UserImage", Value = customer.Image };
 
 
-                DBHelper.ExecuteStoredProcedure(StoredProcedure.UpdateCustomer, email, firstName, lastName, dateOfBirth, gender, phoneNumber,userID,userImage);
+                DBHelper.ExecuteStoredProcedure(StoredProcedure.UpdateCustomer, email, firstName, lastName, dateOfBirth, gender, phoneNumber, userID, userImage);
             }
             catch (Exception ex)
             {
@@ -257,7 +257,7 @@ namespace CheckIn
                 SqlParameter DateOFBirth = new SqlParameter() { ParameterName = "DateOfBirth", Value = cpa.DateOfBirth };
                 SqlParameter Speciality = new SqlParameter() { ParameterName = "Speciality", Value = cpa.Speciality };
 
-                DBHelper.ExecuteStoredProcedure(StoredProcedure.UpdateCPA, Address1, Address2, City, State, ZipCode, PhoneNumber, FirstName, LastName, Gender, SpecialityID, Email, CompanyName,DateOFBirth, CPAImage,UserID,Speciality);
+                DBHelper.ExecuteStoredProcedure(StoredProcedure.UpdateCPA, Address1, Address2, City, State, ZipCode, PhoneNumber, FirstName, LastName, Gender, SpecialityID, Email, CompanyName, DateOFBirth, CPAImage, UserID, Speciality);
             }
             catch (Exception ex)
             {
@@ -269,7 +269,7 @@ namespace CheckIn
 
         internal static bool CreateNewCPA(CPADetails newCPA)
         {
-            bool result =true;
+            bool result = true;
             try
             {
                 SqlParameter CompanyName = new SqlParameter() { ParameterName = "CompanyName", Value = newCPA.CompanyName };
@@ -285,13 +285,13 @@ namespace CheckIn
                 SqlParameter Gender = new SqlParameter() { ParameterName = "Gender", Value = newCPA.Gender };
                 //SqlParameter SpecialityID = new SqlParameter() { ParameterName = "SpecialityID", Value = newCPA.SpecialityID };
                 SqlParameter Email = new SqlParameter() { ParameterName = "Email", Value = newCPA.Email };
-                SqlParameter Password = new SqlParameter() {ParameterName = "Password", Value=newCPA.Password };
+                SqlParameter Password = new SqlParameter() { ParameterName = "Password", Value = newCPA.Password };
                 SqlParameter CPAImage = new SqlParameter() { ParameterName = "CPAImage", Value = newCPA.Image };
                 SqlParameter Speciality = new SqlParameter() { ParameterName = "Speciality", Value = newCPA.Speciality };
                 SqlParameter Latitude = new SqlParameter() { ParameterName = "Latitude", Value = newCPA.Latitude };
                 SqlParameter Longitude = new SqlParameter() { ParameterName = "Longitude", Value = newCPA.Longitude };
-               
-                DBHelper.ExecuteStoredProcedure(StoredProcedure.SignUpNewCPA, Address1 , Address2 , City , State , ZipCode , Phone , FirstName , LastName ,DateOfBirth, Gender ,Email,Password,CompanyName,CPAImage,Speciality,Latitude,Longitude);
+
+                DBHelper.ExecuteStoredProcedure(StoredProcedure.SignUpNewCPA, Address1, Address2, City, State, ZipCode, Phone, FirstName, LastName, DateOfBirth, Gender, Email, Password, CompanyName, CPAImage, Speciality, Latitude, Longitude);
             }
             catch (Exception ex)
             {
@@ -300,9 +300,9 @@ namespace CheckIn
             }
             return result;
         }
-            internal static bool CreateNewTempCPA(CPADetails newCPA)
+        internal static bool CreateNewTempCPA(CPADetails newCPA)
         {
-            bool result =true;
+            bool result = true;
             try
             {
                 SqlParameter CompanyName = new SqlParameter() { ParameterName = "CompanyName", Value = newCPA.CompanyName };
@@ -318,7 +318,7 @@ namespace CheckIn
                 SqlParameter Gender = new SqlParameter() { ParameterName = "Gender", Value = newCPA.Gender };
                 //SqlParameter SpecialityID = new SqlParameter() { ParameterName = "SpecialityID", Value = newCPA.SpecialityID };
                 SqlParameter Email = new SqlParameter() { ParameterName = "Email", Value = newCPA.Email };
-                SqlParameter Password = new SqlParameter() {ParameterName = "Password", Value=newCPA.Password };
+                SqlParameter Password = new SqlParameter() { ParameterName = "Password", Value = newCPA.Password };
                 SqlParameter CPAImage = new SqlParameter() { ParameterName = "CPAImage", Value = newCPA.Image };
                 SqlParameter Speciality = new SqlParameter() { ParameterName = "Speciality", Value = newCPA.Speciality };
                 SqlParameter ActivationToken = new SqlParameter() { ParameterName = "ActivationToken", Value = newCPA.ActivationToken };
@@ -326,7 +326,7 @@ namespace CheckIn
                 SqlParameter Latitude = new SqlParameter() { ParameterName = "Latitude", Value = newCPA.Latitude };
                 SqlParameter Longitude = new SqlParameter() { ParameterName = "Longitude", Value = newCPA.Longitude };
 
-                DBHelper.ExecuteStoredProcedure(StoredProcedure.SignUpNewTempCPA, Address1, Address2, City, State, ZipCode, Phone, FirstName, LastName, DateOfBirth, Gender, Email, Password, CompanyName, CPAImage, Speciality, ActivationToken, CreatedDate,Latitude, Longitude);
+                DBHelper.ExecuteStoredProcedure(StoredProcedure.SignUpNewTempCPA, Address1, Address2, City, State, ZipCode, Phone, FirstName, LastName, DateOfBirth, Gender, Email, Password, CompanyName, CPAImage, Speciality, ActivationToken, CreatedDate, Latitude, Longitude);
             }
             catch (Exception ex)
             {
@@ -334,20 +334,20 @@ namespace CheckIn
                 throw ex;
             }
             return result;
-            }
-        
-         internal static bool IsLoginSuccessful(string email, string password)
+        }
+
+        internal static bool IsLoginSuccessful(string email, string password)
         {
             bool isValidLogin = false;
-            string loginQuery = string.Format("select COUNT(1) from Users where Email = '{0}' and Password='{1}'",email,password);
-            isValidLogin =  int.Parse(DBHelper.GetScalarValue(loginQuery).ToString()) > 0;
+            string loginQuery = string.Format("select COUNT(1) from Users where Email = '{0}' and Password='{1}'", email, password);
+            isValidLogin = int.Parse(DBHelper.GetScalarValue(loginQuery).ToString()) > 0;
             return isValidLogin;
         }
 
-        internal static  int GetRoleID(string email, string password)
-        {   
+        internal static int GetRoleID(string email, string password)
+        {
             //bool isValidLogin = false;
-            string loginQuery = string.Format("select [RoleID] from Users where Email = '{0}' and Password='{1}'",email,password);
+            string loginQuery = string.Format("select [RoleID] from Users where Email = '{0}' and Password='{1}'", email, password);
             int role = int.Parse(DBHelper.GetScalarValue(loginQuery).ToString());
             return role;
         }
@@ -359,13 +359,13 @@ namespace CheckIn
 
         }
 
-        internal static  string GetLoggedInUserName(string email, string password )
-
-        { string UserQuery= string.Format("select C.FirstName from Customer C inner join Users U on U.UserID=C.CustomerID where  U.Email ='{0}' AND U.Password ='{1}'",email,password);
-         return (string)DBHelper.GetScalarValue(UserQuery);
+        internal static string GetLoggedInUserName(string email, string password)
+        {
+            string UserQuery = string.Format("select C.FirstName from Customer C inner join Users U on U.UserID=C.CustomerID where  U.Email ='{0}' AND U.Password ='{1}'", email, password);
+            return (string)DBHelper.GetScalarValue(UserQuery);
         }
 
-        internal static string GetLoggedInEmailID(int UserID )
+        internal static string GetLoggedInEmailID(int UserID)
         {
             string UserQuery = string.Format("select Email from  Users  where UserID={0}", UserID);
             return (string)DBHelper.GetScalarValue(UserQuery);
@@ -378,7 +378,24 @@ namespace CheckIn
         internal static string GetLoggedInCPAName(string email, string password)
         {
             string UserQuery = string.Format("select C.FirstName from CPA C inner join Users U on U.UserID=C.CPAID where  U.Email ='{0}' AND U.Password ='{1}'", email, password);
-            return DBHelper.GetScalarValue(UserQuery).ToString();
+            string userName = DBHelper.GetScalarValue(UserQuery) as string;
+            return userName ?? string.Empty;
+        }
+        internal static bool IsPaidRegistrationRequired(string userID)
+        {
+            SqlParameter paramUserID = new SqlParameter();
+            paramUserID.ParameterName = "userID";
+            paramUserID.Value = userID;
+
+            DataSet result = DBHelper.ExecuteStoredProcedure(StoredProcedure.IsPaidRegistrationRequired, paramUserID);
+            if (result == null || result.Tables[0].Rows.Count == 0)
+                return false;
+            bool isRequired = false;
+            if (bool.TryParse(result.Tables[0].Rows[0][0].ToString(), out isRequired))
+            {
+                return isRequired;
+            }
+            return false;
         }
         internal static int GetNewUserID()
         {
@@ -401,10 +418,10 @@ namespace CheckIn
         }
 
         internal static string GetSpeciatityByID(string SpecialityID)
-         {
-             return DBHelper.GetScalarValue(string.Format(Constants.SPECIALITY_BYID_QUERY, SpecialityID)).ToString();
+        {
+            return DBHelper.GetScalarValue(string.Format(Constants.SPECIALITY_BYID_QUERY, SpecialityID)).ToString();
         }
-        internal static DataSet GetSCheduleCPACustomerDetails(string CPAID ,string customerID )
+        internal static DataSet GetSCheduleCPACustomerDetails(string CPAID, string customerID)
         {
             string format = string.Format("SELECT PurposeOfVisit ,CustomerName,ContactNumber from CPAAppointment where (CPAID={0} and CustomerID={1} and StartTime>=GETUTCDATE()) ", CPAID, customerID);
             return DBHelper.GetSelectDataSet(format);
@@ -419,7 +436,7 @@ namespace CheckIn
             string format = string.Format("SELECT datename(weekday,StartTime)+', '+dateName(month,StartTime)+' '+DATEname(day,StartTime)+', '+dateName(year,StarTtime)+'-'+CONVERT(varchar(15),CAST(StartTime AS TIME),100) as 'Time' ,CPAID,ID from CPAAppointment where CPAID={0} and CustomerID={1} and StartTime>=GETUTCDATE() ", CPAID, customerID);
             return DBHelper.GetSelectDataSet(format);
         }
-        internal static DataSet GetSCheduleCPACustomerDetails2( string customerID)
+        internal static DataSet GetSCheduleCPACustomerDetails2(string customerID)
         {
             string format = string.Format("SELECT  c.CPAID, c.CompanyName, c.Address1,c.Address2, c.City, c.State, c.ZipCode  , ca.PurposeOfVisit ,ca.CustomerName,ca.ContactNumber,datename(weekday,ca.StartTime)+', '+dateName(month,ca.StartTime)+' '+DATEname(day,ca.StartTime)+', '+dateName(year,ca.StarTtime)+'-'+CONVERT(varchar(15),CAST(ca.StartTime AS TIME),100) as 'Time' ,ca.ID from CPA c  join  CPAAppointment ca  on c.CPAID=ca.CPAID where ca.CustomerID={0} and ca.StartTime>=GETUTCDATE() order by StartTime ", customerID);
             return DBHelper.GetSelectDataSet(format);
@@ -427,7 +444,7 @@ namespace CheckIn
         internal static int GetSCheduleMaxAppointment(string customerID)
         {
             string format = string.Format("SELECT  count(*)  from [dbo].[CPAAppointment]   where CustomerID={0} and StartTime>=GETDATE() ", customerID);
-           
+
             return int.Parse(DBHelper.GetScalarValue(format).ToString());
         }
         internal static int GetFirmSettingValue(string Key)
@@ -471,7 +488,7 @@ namespace CheckIn
         }
         internal static DataSet GetEmailDetail(string EmailSpecificationId)
         {
-            string format = string.Format("Select * from EmailSpecification where EmailSpecificationId={0}",EmailSpecificationId);
+            string format = string.Format("Select * from EmailSpecification where EmailSpecificationId={0}", EmailSpecificationId);
             return DBHelper.GetSelectDataSet(format);
         }
         internal static DataSet GetPassword(string EmailSpecificationId, string email)
@@ -480,8 +497,8 @@ namespace CheckIn
             return DBHelper.GetSelectDataSet(format);
         }
         internal static int ReScheduleAppointment(string ID)
-        { 
-            string format=string.Format(" UPDATE [CPAAppointment] SET [CustomerID] = null,[CustomerName] = '',[PurposeOfVisit] ='',[ContactNumber] = '',[Note] = '',[IsOpen] = 'true' WHERE ID= {0}",ID);
+        {
+            string format = string.Format(" UPDATE [CPAAppointment] SET [CustomerID] = null,[CustomerName] = '',[PurposeOfVisit] ='',[ContactNumber] = '',[Note] = '',[IsOpen] = 'true' WHERE ID= {0}", ID);
             int result = DBHelper.ExecuteNonQuery(format);
             return result;
         }
@@ -493,7 +510,7 @@ namespace CheckIn
         //    return result;
         //}
 
-        internal static DataSet CancelAppointment(int ID) 
+        internal static DataSet CancelAppointment(int ID)
         {
             SqlParameter paramUserID = new SqlParameter();
             paramUserID.ParameterName = "ID";
@@ -510,7 +527,7 @@ namespace CheckIn
             try
             {
                 SqlParameter paramAppointmentID = new SqlParameter() { ParameterName = "AppointmentID", Value = appointmentID };
-                SqlParameter paramUserID = new SqlParameter() { ParameterName = "CustomerID", Value = userID};
+                SqlParameter paramUserID = new SqlParameter() { ParameterName = "CustomerID", Value = userID };
                 SqlParameter paramPurpose = new SqlParameter() { ParameterName = "PurposeOfVisit", Value = purposeOfVisit };
                 SqlParameter paramCPAID = new SqlParameter() { ParameterName = "CPAID", Value = CPAID };
                 SqlParameter paramNote = new SqlParameter() { ParameterName = "Note", Value = string.Empty };
@@ -530,7 +547,7 @@ namespace CheckIn
             string strQuery = string.Format(Constants.IS_VALID_EMAIL, email);
 
             var result = DBHelper.GetScalarValue(strQuery);
-            if (result == DBNull.Value || result==null)
+            if (result == DBNull.Value || result == null)
                 return false;
             return result.ToString().Equals("1");
         }

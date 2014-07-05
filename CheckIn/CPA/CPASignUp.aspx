@@ -64,7 +64,7 @@
                                 <div class="controls">
                                     <asp:TextBox ID="txtDateOfBirth" runat="server" class="input-medium"></asp:TextBox>
                                     <ajaxToolkit:CalendarExtender
-                                        ID="CalendarExtender1"
+                                        ID="CalendarExtender1" Format="dd/MM/yyyy"
                                         TargetControlID="txtDateOfBirth"
                                         runat="server" />
                                 </div>

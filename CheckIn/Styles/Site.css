@@ -29,7 +29,8 @@ form {
 }
 
 .loginDisplay {
-    float: right;
+    /*float: right;*/
+    margin-left:350px;
 }
 
     .loginDisplay a {
@@ -49,7 +50,7 @@ form {
 .container {
     /*padding: 0px 12px;
     margin: 12px 8px 8px 8px;*/
-    min-height: 420px;
+    min-height: 520px;
     margin: 0px !important;
     padding: 0px !important;
 }
@@ -251,8 +252,9 @@ body {
     }
 
 .main {
-    /*width:1000px;*/
-    margin: 0 auto;
+   /* width:1000px;*/
+    /*margin: 0 125px;*/
+    min-height:520px;
 }
 
 .page_border {

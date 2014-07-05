@@ -21,6 +21,7 @@ namespace CheckIn
         internal const string TEMP_CPA_DETAILS_QUERY = "SELECT * FROM TempCPA where ActivationToken='{0}'";
         internal const string TEMP_CPA_DELETE_QUERY = "Delete  from TempCPA where ActivationToken='{0}'";
         internal const string IS_VALID_EMAIL = "SELECT 1 FROM Users WHERE Email = '{0}'";
+        internal const string IS_FREE_CPA = "SELECT IsFreeCPA FROM cpa WHERE CPAID = {0}";
     }
 
     internal class StoredProcedure
@@ -38,7 +39,6 @@ namespace CheckIn
         internal const string UpdateCPA = "[UpdateCPA]";
         internal const string CancelAppointment = "[CancelAppointment]";
         internal const string GetCPALocations = "[GetCPALocations]";
-
-
+        internal const string IsPaidRegistrationRequired = "[IsPaidRegistrationRequired]";
     }
 }

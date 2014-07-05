@@ -38,12 +38,21 @@ namespace CheckIn.Web_Pages
                     {
                         if ((user = BusinessLogic.GetLoggedInCPAName(txtEmail.Text, txtPassword.Text)) != null)
                         {
-                            Session["userName"] = user;
-                            Response.Redirect("~/CPA/ManageAppointment.aspx");
+                            if (BusinessLogic.IsPaidRegistrationRequired(Session["userID"].ToString()))
+                            {
+                                Response.Redirect("~/CPA/Packages.aspx"); 
+
+                            }
+                            else
+                            {
+                                Session["userName"] = user;
+                                Response.Redirect("~/CPA/ManageAppointment.aspx");
+                            }
                         }
                     }
                     if (role == 3)
                     {
+                        // TODO: add logic for administrator login
                     }
                 }
             }

@@ -3,6 +3,11 @@
 
 
 <asp:Content ID="Content1" ContentPlaceHolderID="HeadContent" runat="server">
+    <style type="text/css">
+        ul ol {
+            margin: 1px 0 0px 5px;
+        }
+    </style>
 </asp:Content>
 <asp:Content ID="Content2" ContentPlaceHolderID="MainContent" runat="server">
     <script type="text/javascript" src="https://maps.googleapis.com/maps/api/js?key=AIzaSyC6v5-2uaq_wusHDktM9ILcqIrlPtnZgEk&sensor=false">
@@ -40,14 +45,16 @@
         }
     }
     </script>
+
+   
     <asp:ScriptManager ID="ScriptManager1" runat="server">
     </asp:ScriptManager>
     <asp:UpdatePanel ID="UpdatePanel1" runat="server" ChildrenAsTriggers="true">
         <ContentTemplate>
-            <body>
+           <%-- <body>--%>
 
                 <div class="breadcrumbs" id="Div1">
-                    <ul class="breadcrumb">
+                    <ul class="breadcrumb1" style="margin: 1px 0 0px 5px;">
                         <li class="breadcrumb">
                             <i class="icon-home home-icon"></i>
                             <a href="../Default.aspx" class="pink">Home</a>
@@ -306,7 +313,7 @@
                         </div>
                     </div>
                 </div>
-            </body>
+            <%--</body>--%>
 
         </ContentTemplate>
     </asp:UpdatePanel>

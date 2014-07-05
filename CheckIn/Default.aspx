@@ -8,7 +8,8 @@
     </asp:ScriptManager>
     <asp:UpdatePanel ID="UpdatePanel1" runat="server">
         <ContentTemplate>
-            <table width="100%">
+            <div style="width:900px;margin:auto 200px;">
+                <table width="100%" style="margin: auto;">
                 <tr valign="middle">
                     <td colspan="4" align="center">&nbsp;</td>
                 </tr>
@@ -22,8 +23,9 @@
                         <asp:DropDownList ID="ddlState" CssClass="select2" Style="margin-bottom: 7px;" ClientIDMode="Static" runat="server" OnSelectedIndexChanged="ddlState_SelectedIndexChanged" AutoPostBack="true" AppendDataBoundItems="True">
                         </asp:DropDownList>
                     </td>
-                    <td align="center" width="25%">
+                    <td align="left" width="15%">
                         <asp:DropDownList ID="ddlCity" CssClass="select2" Style="margin-bottom: 7px;" ClientIDMode="Static" runat="server" OnSelectedIndexChanged="ddlCity_SelectedIndexChanged" AutoPostBack="true" AppendDataBoundItems="True">
+                            <asp:ListItem>-No Options-</asp:ListItem>
                         </asp:DropDownList>
                     </td>
 
@@ -43,6 +45,8 @@
                         <br />
                 </tr>
             </table>
+            </div>
+            
         </ContentTemplate>
     </asp:UpdatePanel>
 </asp:Content>

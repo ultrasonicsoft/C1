@@ -49,7 +49,12 @@ public class EventDAO
 
             reader.Close();
              events = new List<CalendarEvent>();
-            cmd = new SqlCommand("select ID,CPAID,ISNULL(CustomerID,0)CustomerID,ISNULL(CustomerName,'')CustomerName,ISNULL(PurposeOfVisit,'')PurposeOfVisit,ISNULL(ContactNumber,'')ContactNumber,StartTime,EndTime,ISNULL(Note,'')Note,IsOpen from CPAAppointment where StartTime>=@start AND EndTime<=@end", con);
+            string cpaID = HttpContext.Current.Session["UserID"].ToString();
+            string getAllEventsQuery =
+                string.Format(
+                    "select ID,CPAID,ISNULL(CustomerID,0)CustomerID,ISNULL(CustomerName,'')CustomerName,ISNULL(PurposeOfVisit,'')PurposeOfVisit,ISNULL(ContactNumber,'')ContactNumber,StartTime,EndTime,ISNULL(Note,'')Note,IsOpen from CPAAppointment where StartTime>=@start AND EndTime<=@end AND CPAID = {0}",
+                    cpaID);
+            cmd = new SqlCommand(getAllEventsQuery, con);
             cmd.Parameters.AddWithValue("@start", start);
             cmd.Parameters.AddWithValue("@end", end);
 

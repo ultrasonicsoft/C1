@@ -11,11 +11,18 @@ namespace CheckIn.CPA
     {
         protected void Page_Load(object sender, EventArgs e)
         {
+            CheckUserLoggedIn();
+
             Session["userName"] = null;
             Session["userID"] = null;
             Session["roleID"] = null;
             Response.Redirect("~/Default.aspx");
           
+        }
+        private void CheckUserLoggedIn()
+        {
+            if (Session["UserID"] == null)
+                Response.Redirect("~/default.aspx");
         }
     }
 }

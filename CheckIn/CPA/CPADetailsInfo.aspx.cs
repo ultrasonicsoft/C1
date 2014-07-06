@@ -12,6 +12,8 @@ namespace CheckIn.CPA
         public string cpaid = string.Empty;
         protected void Page_Load(object sender, EventArgs e)
         {
+            CheckUserLoggedIn();
+
             if (!IsPostBack)
             {
                 if (Request.QueryString.Count == 1)
@@ -24,6 +26,11 @@ namespace CheckIn.CPA
                 }
                 RefreshUserDetail();
             }
+        }
+        private void CheckUserLoggedIn()
+        {
+            if (Session["UserID"] == null)
+                Response.Redirect("~/default.aspx");
         }
         private void RefreshUserDetail()
         {

@@ -18,10 +18,17 @@ namespace CheckIn.CPA
         #endregion
         protected void Page_Load(object sender, EventArgs e)
         {
+            CheckUserLoggedIn();
+
             if (!Page.IsPostBack && Request.QueryString.Count > 0)
             { 
                 RefreshAppointment();
             }
+        }
+        private void CheckUserLoggedIn()
+        {
+            if (Session["UserID"] == null)
+                Response.Redirect("~/default.aspx");
         }
         private void RefreshAppointment()
         {

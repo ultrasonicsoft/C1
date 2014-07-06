@@ -12,6 +12,15 @@ namespace CheckIn.CPA
 {
     public partial class ManageAppointment : System.Web.UI.Page
     {
+        protected void Page_Load(object sender, EventArgs e)
+        {
+            CheckUserLoggedIn();
+        }
+        private void CheckUserLoggedIn()
+        {
+            if (Session["UserID"] == null)
+                Response.Redirect("~/default.aspx");
+        }
 
     //    public string sessionUserID();
     //{

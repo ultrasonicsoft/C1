@@ -13,20 +13,13 @@ namespace CheckIn
         {
             if (!IsPostBack)
             {
-                FillAllSpeciality();
+                FillState();
             }
             // RegZipCode.ValidationExpression=
         }
 
-        private void FillAllSpeciality()
+        private void FillState()
         {
-            //var result = BusinessLogic.GetAllSpecializationList();
-            //ddlSpeciality.DataSource = result.Tables[0];
-            //ddlSpeciality.DataTextField = result.Tables[0].Columns["Speciality"].ColumnName.ToString();
-            //ddlSpeciality.DataValueField = result.Tables[0].Columns["ID"].ColumnName.ToString();
-            //ddlSpeciality.DataBind();
-
-
             var result = BusinessLogic.GetAllStateList();
             ddlState.DataSource = result.Tables[0];
             ddlState.Items.Clear();

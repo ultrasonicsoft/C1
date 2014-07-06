@@ -42,6 +42,8 @@ namespace CheckIn.CPA
         public string CPAIDLink { get; set; }
         protected void Page_Load(object sender, EventArgs e)
         {
+            CheckUserLoggedIn();
+
             if (!IsPostBack && Request.QueryString.Count > 0)
             {
                 cpid = Request.QueryString["CPAID"];
@@ -61,6 +63,12 @@ namespace CheckIn.CPA
                 CPAIDLink = cpid;
             }// pnlAppointment.Visible = true;
         }
+        private void CheckUserLoggedIn()
+        {
+            if (Session["UserID"] == null)
+                Response.Redirect("~/default.aspx");
+        }
+
         private void FillAllSpeciality()
         {
             var result = BusinessLogic.GetAllSpecializationList();

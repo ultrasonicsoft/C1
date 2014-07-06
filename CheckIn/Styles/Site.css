@@ -205,8 +205,9 @@ form {
 }
 
 .nav-search {
-    width: 328px;
+    width: 1000px;
     float: right;
+    height: 34px;
 }
 
     .nav-search .nav-search-input {

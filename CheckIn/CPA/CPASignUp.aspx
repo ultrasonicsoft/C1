@@ -153,6 +153,11 @@
                                 </asp:DropDownList>
                             </div>
                             <div class="control-group">
+                                <label class="control-label">Time Zone</label>
+                                <asp:DropDownList ID="ddlTimeZone" runat="server" AppendDataBoundItems="true" CausesValidation="true">
+                                </asp:DropDownList>
+                            </div>
+                            <div class="control-group">
                                 <div class="controls">
                                     <asp:CheckBox ID="cbTermCondition" Text="" runat="server" />
                                     <label class="lbl" for="cbTermCondition">I accept Terms and Conditions</label>

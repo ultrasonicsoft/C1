@@ -12,12 +12,20 @@ namespace CheckIn.CPA
     {
         protected void Page_Load(object sender, EventArgs e)
         {
+            CheckUserLoggedIn();
+
             if (!IsPostBack)
             {
                 RefreshUserDetails();
                 txtSpeciality.Visible = false;
             }
         }
+        private void CheckUserLoggedIn()
+        {
+            if (Session["UserID"] == null)
+                Response.Redirect("~/default.aspx");
+        }
+
         private void RefreshUserDetails()
         {
             var result = BusinessLogic.GetCPAProfileDetail(int.Parse(Session["userID"].ToString()));

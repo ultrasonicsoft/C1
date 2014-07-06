@@ -12,9 +12,13 @@ namespace CheckIn.Web_Pages
     {
         protected void Page_Load(object sender, EventArgs e)
         {
-
+            CheckUserLoggedIn();
         }
-
+        private void CheckUserLoggedIn()
+        {
+            if (Session["UserID"] == null)
+                Response.Redirect("~/default.aspx");
+        }
         protected void btnResetPassword_Click(object sender, EventArgs e)
         {
             bool isValidEmail = BusinessLogic.IsValidEmail(txtEmail.Text);

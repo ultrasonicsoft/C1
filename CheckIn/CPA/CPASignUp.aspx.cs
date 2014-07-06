@@ -24,6 +24,7 @@ namespace CheckIn.Web_Pages
                 FillAllState();
                 txtSpeciality.Visible = false;
                 FillSpeciality();
+                FillTimeZone();
             }
             if (Session["FileUpload"] == null && ImageUpload.HasFile)
             {
@@ -46,6 +47,17 @@ namespace CheckIn.Web_Pages
             }
         }
 
+        private void FillTimeZone()
+        {
+            var result = TimeZoneInfo.GetSystemTimeZones();
+            ddlTimeZone.DataSource = result;
+            ddlTimeZone.Items.Clear();
+            ddlTimeZone.Items.Add("--Please Select Time Zone--");
+            ddlTimeZone.DataTextField = "DisplayName";
+            ddlTimeZone.DataValueField = "ID";
+            ddlTimeZone.DataBind(); 
+        }
+      
         private void FillAllState()
         {
             var result = BusinessLogic.GetAllStateList();
@@ -101,7 +113,7 @@ namespace CheckIn.Web_Pages
                 newCPA.State = ddlState.SelectedItem.Text;
                 newCPA.City = ddlCity.SelectedItem.Text;
                 newCPA.PhoneNumber = txtPhNumberPart1.Text;
-                
+                newCPA.TimeZoneID = ddlTimeZone.SelectedValue?? string.Empty;
                 // Find Latitude longitude of CPA from address
                 string address = string.Concat(newCPA.Address1, " ", newCPA.Address2, " ", newCPA.City , " " , newCPA.State, " ", newCPA.ZipCode);
                 FindCoordinatesOfCPA(address,newCPA);

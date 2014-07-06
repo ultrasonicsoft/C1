@@ -22,6 +22,8 @@ namespace CheckIn.CPA
 
         protected void Page_Load(object sender, EventArgs e)
         {
+            CheckUserLoggedIn();
+
             if (!IsPostBack && Request.QueryString.Count > 0)
             {
                 cpid = Request.QueryString["CPAID"];
@@ -32,6 +34,11 @@ namespace CheckIn.CPA
                 pnlMaxBook.Visible = false;
 
             }
+        }
+        private void CheckUserLoggedIn()
+        {
+            if (Session["UserID"] == null)
+                Response.Redirect("~/default.aspx");
         }
         private void FillAllSpeciality()
         {

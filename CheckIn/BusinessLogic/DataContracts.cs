@@ -116,5 +116,8 @@ namespace CheckIn
         public double Latitude { get; set; }
         public double Longitude { get; set; }
 
+        [DataMember]
+        public string TimeZoneID { get; set; }
+
     }
 }

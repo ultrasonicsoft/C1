@@ -35,6 +35,8 @@ namespace CheckIn.CPA
 
         protected void Page_Load(object sender, EventArgs e)
         {
+            CheckUserLoggedIn();
+
             if (!IsPostBack)
             {
                 if (Request.QueryString["UserID"] != null)
@@ -49,6 +51,12 @@ namespace CheckIn.CPA
                 FillAllSpeciality();
                 RefreshSearchResult();
             }
+        }
+
+        private void CheckUserLoggedIn()
+        {
+            if (Session["UserID"] == null)
+                Response.Redirect("~/default.aspx");
         }
 
         #endregion

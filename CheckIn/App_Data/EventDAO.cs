@@ -47,8 +47,8 @@ public class EventDAO
                 cevent.id = (int)reader["ID"];
                 cevent.title = (string)reader["CustomerName"];
                 cevent.description = (string)reader["Note"];
-                cevent.start = (DateTime)reader["StartTime"];
-                cevent.end = (DateTime)reader["EndTime"];
+                cevent.start = ((DateTime)reader["StartTime"]).ToLocalTime();
+                cevent.end = ((DateTime)reader["EndTime"]).ToLocalTime();
                 cevent.purpose = (string)reader["PurposeOfVisit"];
                 cevent.contactNumber = (string)reader["ContactNumber"];
                 events.Add(cevent);
@@ -129,8 +129,8 @@ public class EventDAO
             cmd.Connection = con;
             cmd.CommandType = CommandType.StoredProcedure;
             cmd.CommandText = "[OpenAppointments]";
-            cmd.Parameters.AddWithValue("@start", cevent.start);
-            cmd.Parameters.AddWithValue("@end", cevent.end);
+            cmd.Parameters.AddWithValue("@start", cevent.start.ToUniversalTime());
+            cmd.Parameters.AddWithValue("@end", cevent.end.ToUniversalTime());
             cmd.Parameters.AddWithValue("@interval", cevent.interval);
             cmd.Parameters.AddWithValue("@CPAID", cevent.CPAID);
             cmd.Parameters.AddWithValue("@customerName", cevent.title);

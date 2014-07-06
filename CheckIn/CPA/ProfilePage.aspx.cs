@@ -11,6 +11,8 @@ namespace CheckIn.CPA
     {
         protected void Page_Load(object sender, EventArgs e)
         {
+            CheckUserLoggedIn();
+
             if (int.Parse(Session["roleID"].ToString()) == 1)
             {
                 Response.Redirect("~/CPA/UserProfile.aspx?UserID="+Session["userID"]);
@@ -21,6 +23,11 @@ namespace CheckIn.CPA
 
             }
 
+        }
+        private void CheckUserLoggedIn()
+        {
+            if (Session["UserID"] == null)
+                Response.Redirect("~/default.aspx");
         }
     }
 }

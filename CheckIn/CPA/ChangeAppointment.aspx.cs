@@ -35,6 +35,8 @@ namespace CheckIn.CPA
 
         protected void Page_Load(object sender, EventArgs e)
         {
+            CheckUserLoggedIn();
+
             if (!IsPostBack)
             {
 
@@ -42,6 +44,11 @@ namespace CheckIn.CPA
             }
         }
 
+        private void CheckUserLoggedIn()
+        {
+            if (Session["UserID"] == null)
+                Response.Redirect("~/default.aspx");
+        }
         #endregion
 
         #region Private Methods

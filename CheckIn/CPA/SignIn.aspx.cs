@@ -11,9 +11,8 @@ namespace CheckIn.Web_Pages
     {
         protected void Page_Load(object sender, EventArgs e)
         {
-
         }
-
+       
         protected void btnSignIn_Click(object sender, EventArgs e)
         {
             bool result= BusinessLogic.IsLoginSuccessful(txtEmail.Text, txtPassword.Text);

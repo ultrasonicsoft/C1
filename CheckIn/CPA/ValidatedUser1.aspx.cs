@@ -67,8 +67,8 @@ namespace CheckIn.CPA
                 newCustomer.Speciality = result.Tables[0].Rows[0]["Speciality"].ToString();
                 newCustomer.Latitude = double.Parse(result.Tables[0].Rows[0]["Latitude"].ToString());
                 newCustomer.Longitude = double.Parse(result.Tables[0].Rows[0]["Longitude"].ToString());
+                newCustomer.TimeZoneID = result.Tables[0].Rows[0]["TimeZoneID"].ToString();
 
-                
                bool result1 = BusinessLogic.CreateNewCPA(newCustomer);
                 if (result1)
                     {

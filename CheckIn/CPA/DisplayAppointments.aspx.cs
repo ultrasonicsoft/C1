@@ -31,14 +31,18 @@ namespace CheckIn.Web_Pages
 
         protected void Page_Load(object sender, EventArgs e)
         {
+            //TODO: Based on query string redirect to default page if user directly type url
+
             System.Web.UI.HtmlControls.HtmlGenericControl body = (System.Web.UI.HtmlControls.HtmlGenericControl)Master.FindControl("myBody");
-            if(body !=null)
+            if (body != null)
             {
                 body.Attributes.Add("onload", "initialize();");
             }
 
             if (!IsPostBack)
             {
+                //body.Attributes.Add("onload", "initialize();");
+
                 if (Request.QueryString.Count == 1)
                 {
                     if (Request.QueryString["City"] != null)
@@ -60,10 +64,12 @@ namespace CheckIn.Web_Pages
                     Session["city"] = city;
                     Session["zipCode"] = zipCode;
 
-                    lblSerchCriteria.Text = "Showing result for ";
+                    //lblSerchCriteria.Text = "Showing result for ";
                 }
                 FillSerchCriteria();
                 FillAllSpeciality();
+                FillState();
+
                 RefreshSearchResult();
             }
         }
@@ -71,27 +77,39 @@ namespace CheckIn.Web_Pages
         #endregion
 
         #region Private Methods
+        private void FillState()
+        {
+            var result = BusinessLogic.GetAllStateList();
+            ddlState.DataSource = result.Tables[0];
+            ddlState.Items.Clear();
+            ddlState.Items.Add("Please Select State");
+
+            ddlState.DataTextField = result.Tables[0].Columns["StateName"].ColumnName.ToString();
+            ddlState.DataValueField = result.Tables[0].Columns["State_Code"].ColumnName.ToString();
+            ddlState.DataBind();
+
+        }
         private void FillSerchCriteria()
         {
             //txtCity.Value = city;
             //txtZipCode.Value = zipCode;
             if ((city == null || city == "" || city == "Enter City" || city == "--Please Select city--") && (zipCode == null || zipCode == "" || zipCode == "Enter Zip Code"))
             {
-                lblSerchCriteria.Text = "";
+                //lblSerchCriteria.Text = "";
             }
             else if (city == null || city == "" || city == "Enter City" || city == "--Please Select city--")
             {
                 //cityCriteria = "";
-                lblSerchCriteria.Text = "Showing result for : Zipcode=" + zipCode;//txtZipCode.Value;
+                //lblSerchCriteria.Text = "Showing result for : Zipcode=" + zipCode;//txtZipCode.Value;
             }
             else if (zipCode == null || zipCode == "" || zipCode == "Enter Zip Code")
             {
                 //zipCodeCriteria = "";
-                lblSerchCriteria.Text = "Showing result for : City=" + city;// txtCity.Value;
+                //lblSerchCriteria.Text = "Showing result for : City=" + city;// txtCity.Value;
             }
             else
             {
-                lblSerchCriteria.Text = "Showing result for : City=" + city + " and Zipcode=" + zipCode;//txtCity.Value + " and Zipcode=" + txtZipCode.Value;
+                //lblSerchCriteria.Text = "Showing result for : City=" + city + " and Zipcode=" + zipCode;//txtCity.Value + " and Zipcode=" + txtZipCode.Value;
             }
             txtCity.Value = "Enter City";
             txtZipCode.Value = "Enter Zip Code";
@@ -130,10 +148,10 @@ namespace CheckIn.Web_Pages
         private void FillAllSpeciality()
         {
             var result = BusinessLogic.GetAllSpecializationList();
-            //ddlSpeciality.DataSource = result.Tables[0];
-            //ddlSpeciality.DataTextField = result.Tables[0].Columns["Speciality"].ColumnName.ToString();
-            //ddlSpeciality.DataValueField = result.Tables[0].Columns["ID"].ColumnName.ToString();
-            //ddlSpeciality.DataBind();
+            ddlSpeciality.DataSource = result.Tables[0];
+            ddlSpeciality.DataTextField = result.Tables[0].Columns["Speciality"].ColumnName.ToString();
+            ddlSpeciality.DataValueField = result.Tables[0].Columns["ID"].ColumnName.ToString();
+            ddlSpeciality.DataBind();
         }
 
 
@@ -486,6 +504,27 @@ namespace CheckIn.Web_Pages
         {
             city = Session["city"].ToString();
              zipCode=Session["zipCode"].ToString();
+        }
+
+        protected void ddlState_SelectedIndexChanged(object sender, EventArgs e)
+        {
+            string stateCode = ddlState.SelectedItem.Value.ToString();
+
+            var result = BusinessLogic.GetAllCityList(stateCode);
+            ddlCity.DataSource = result.Tables[0];
+            ddlCity.Items.Clear();
+            ddlCity.Items.Add("Please Select city");
+            ddlCity.DataTextField = result.Tables[0].Columns["CityName"].ColumnName.ToString();
+            ddlCity.DataValueField = result.Tables[0].Columns["CityID"].ColumnName.ToString();
+            ddlCity.DataBind();
+        }
+
+        protected void ddlCity_SelectedIndexChanged(object sender, EventArgs e)
+        {
+
+            Session["city"] = ddlCity.SelectedItem.Text;
+
+
         }
         #endregion
 

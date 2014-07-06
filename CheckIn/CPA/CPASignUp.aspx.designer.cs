@@ -310,6 +310,15 @@ namespace CheckIn.Web_Pages {
         protected global::System.Web.UI.WebControls.DropDownList ddlSpeciality;
         
         /// <summary>
+        /// ddlTimeZone control.
+        /// </summary>
+        /// <remarks>
+        /// Auto-generated field.
+        /// To modify move field declaration from designer file to code-behind file.
+        /// </remarks>
+        protected global::System.Web.UI.WebControls.DropDownList ddlTimeZone;
+        
+        /// <summary>
         /// cbTermCondition control.
         /// </summary>
         /// <remarks>

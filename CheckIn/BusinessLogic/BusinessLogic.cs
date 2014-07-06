@@ -290,8 +290,11 @@ namespace CheckIn
                 SqlParameter Speciality = new SqlParameter() { ParameterName = "Speciality", Value = newCPA.Speciality };
                 SqlParameter Latitude = new SqlParameter() { ParameterName = "Latitude", Value = newCPA.Latitude };
                 SqlParameter Longitude = new SqlParameter() { ParameterName = "Longitude", Value = newCPA.Longitude };
+                SqlParameter TimeZoneID = new SqlParameter() { ParameterName = "TimeZoneID", Value = newCPA.TimeZoneID };
 
-                DBHelper.ExecuteStoredProcedure(StoredProcedure.SignUpNewCPA, Address1, Address2, City, State, ZipCode, Phone, FirstName, LastName, DateOfBirth, Gender, Email, Password, CompanyName, CPAImage, Speciality, Latitude, Longitude);
+                DBHelper.ExecuteStoredProcedure(StoredProcedure.SignUpNewCPA, Address1, Address2, City, State, ZipCode, Phone,
+                    FirstName, LastName, DateOfBirth, Gender, Email, Password, CompanyName, CPAImage,
+                    Speciality, Latitude, Longitude, TimeZoneID);
             }
             catch (Exception ex)
             {
@@ -325,8 +328,11 @@ namespace CheckIn
                 SqlParameter CreatedDate = new SqlParameter() { ParameterName = "CreatedDate", Value = newCPA.CreatedDate };
                 SqlParameter Latitude = new SqlParameter() { ParameterName = "Latitude", Value = newCPA.Latitude };
                 SqlParameter Longitude = new SqlParameter() { ParameterName = "Longitude", Value = newCPA.Longitude };
+                SqlParameter TimeZoneID = new SqlParameter() { ParameterName = "TimeZoneID", Value = newCPA.TimeZoneID };
 
-                DBHelper.ExecuteStoredProcedure(StoredProcedure.SignUpNewTempCPA, Address1, Address2, City, State, ZipCode, Phone, FirstName, LastName, DateOfBirth, Gender, Email, Password, CompanyName, CPAImage, Speciality, ActivationToken, CreatedDate, Latitude, Longitude);
+                DBHelper.ExecuteStoredProcedure(StoredProcedure.SignUpNewTempCPA, Address1, Address2, City, State, ZipCode, Phone,
+                                FirstName, LastName, DateOfBirth, Gender, Email, Password, CompanyName,
+                                CPAImage, Speciality, ActivationToken, CreatedDate, Latitude, Longitude, TimeZoneID);
             }
             catch (Exception ex)
             {

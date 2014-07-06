@@ -36,6 +36,8 @@ namespace CheckIn.Web_Pages
 
         protected void Page_Load(object sender, EventArgs e)
         {
+            CheckUserLoggedIn();
+
             if (!IsPostBack)
             {
                 if (Request.QueryString["UserID"] != null)
@@ -52,6 +54,12 @@ namespace CheckIn.Web_Pages
                 FillAllSpeciality();
                 RefreshSearchResult();
             }
+        }
+
+        private void CheckUserLoggedIn()
+        {
+            if (Session["UserID"] == null)
+                Response.Redirect("~/default.aspx");
         }
 
         #endregion
@@ -297,8 +305,5 @@ namespace CheckIn.Web_Pages
         }
 
         #endregion
-
-       
-
     }
 }

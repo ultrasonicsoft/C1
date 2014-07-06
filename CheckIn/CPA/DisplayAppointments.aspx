@@ -15,7 +15,18 @@
     </script>
 
     <script type="text/javascript">
+        var prm = Sys.WebForms.PageRequestManager.getInstance();
+        prm.add_initializeRequest(initialize);
+        prm.add_endRequest(EndRequest);
+
         function initialize() {
+            LoadMap();
+        }
+        function EndRequest(sender, args) {
+            LoadMap();
+        }
+        var map = null;
+        function LoadMap() {
             <%--var markers = JSON.parse('<%=ConvertDataTabletoString() %>');--%>
             var markers = JSON.parse('<%=GetCPALocations() %>');
             var mapOptions = {

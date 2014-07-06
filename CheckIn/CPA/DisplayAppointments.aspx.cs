@@ -305,7 +305,28 @@ namespace CheckIn.Web_Pages
 
             if (e.Row.RowType == DataControlRowType.DataRow)
             {
+                AdjustGoogleMapPosition(sender, e);
                 FillAllAppointmentsForCurrentWeek(e);
+            }
+        }
+
+        private void AdjustGoogleMapPosition(object sender, GridViewRowEventArgs e)
+        {
+            try
+            {
+                int paginationCount = gvCPASearchResult.PageSize;
+                if (e.Row.RowIndex % paginationCount == 0)
+                {
+                    e.Row.Cells[e.Row.Cells.Count-1].Attributes.Add("rowspan", paginationCount.ToString());
+                }
+                else
+                {
+                    e.Row.Cells[e.Row.Cells.Count - 1].Visible = false;
+                }
+            }
+            catch (Exception exception)
+            {
+                throw exception;
             }
         }
 

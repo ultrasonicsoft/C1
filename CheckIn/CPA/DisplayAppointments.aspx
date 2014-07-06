@@ -76,8 +76,7 @@
                         <asp:LinkButton class="search_btn" ID="btnRefineSearch" runat="server" Text="" OnClick="btnRefineSearch_Click" />
                     </div>
                 </div>
-                <br />
-                <div id="map_canvas" style="width: 500px; height: 400px"></div>
+                <%--<div id="map_canvas123" style="width: 300px; height: 300px"></div>--%>
                 <table width="100%">
                     <tr>
                         <td align="center">
@@ -86,8 +85,6 @@
                     </tr>
                 </table>
 
-                <br />
-                <br />
                 <div class="page-content">
                     <!--PAGE CONTENT BEGINS-->
                     <div class="page_border">
@@ -116,7 +113,7 @@
                                 </EmptyDataTemplate>
 
                                 <Columns>
-                                    <asp:TemplateField HeaderStyle-HorizontalAlign="Left">
+                                    <asp:TemplateField HeaderStyle-HorizontalAlign="Left" >
                                         <HeaderTemplate>
                                             &nbsp;&nbsp;&nbsp;<h4>Certified Public Accountant</h4>
                                         </HeaderTemplate>
@@ -126,10 +123,9 @@
                                                     <td rowspan="3">
                                                         <a href='<%# "CPADetailsInfo.aspx?CPAID="+Eval("CPAID") %>' class="">
                                                             <span class="profile-picture">
-                                                                <asp:Image ID="Image1" Height="150" Width="150" runat="server" ImageUrl='<%# Eval("CPAID", "ImageCSharp.aspx?QueryCPAID={0}")%>'></asp:Image>
+                                                                <asp:Image ID="Image1" Height="100" Width="100" runat="server" ImageUrl='<%# Eval("CPAID", "ImageCSharp.aspx?QueryCPAID={0}")%>'></asp:Image>
                                                             </span>
                                                         </a>
-
                                                     </td>
                                                 </tr>
                                                 <tr>
@@ -152,6 +148,7 @@
                                                 </tr>
                                             </table>
                                         </ItemTemplate>
+                                        <ItemStyle Width="30%" />
                                         <HeaderStyle HorizontalAlign="Left" />
                                     </asp:TemplateField>
                                     <asp:TemplateField HeaderText="" HeaderStyle-HorizontalAlign="Center" SortExpression="Make">
@@ -160,7 +157,6 @@
                                                 <%-- <asp:Button ID="btnPrevWeek" CssClass="prev inactive" runat="server" Text="" OnClick="btnPrevWeek_Click"  />--%>
                                                 <asp:LinkButton CssClass="prev" Text="" runat="server" ID="btnPrevWeek" OnClick="btnPrevWeek_Click" />
                                             </div>
-
                                         </HeaderTemplate>
                                         <HeaderStyle HorizontalAlign="Left" CssClass="AppDayAlternate" />
                                         <ItemStyle CssClass="AppDayAlternate" />
@@ -302,6 +298,13 @@
                                         </HeaderTemplate>
                                         <HeaderStyle HorizontalAlign="Left" CssClass="AppDayAlternate" />
                                         <ItemStyle CssClass="AppDayAlternate" />
+                                    </asp:TemplateField>
+                                     <asp:TemplateField HeaderText="" HeaderStyle-HorizontalAlign="Center"  SortExpression="Make">
+                                        <ItemTemplate>
+                                            <div id="map_canvas" style="width: 100%; height: 300px"></div>
+                                        </ItemTemplate>
+                                         <ItemStyle Width="30%"  />
+                                         <ItemStyle Height="100%"  />
                                     </asp:TemplateField>
                                 </Columns>
                             </asp:GridView>

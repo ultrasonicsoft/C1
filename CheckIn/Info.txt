@@ -6,3 +6,5 @@
 
  SMTP Server Test using Telnet on Windows Server OS
  http://blog.nicholasrogoff.com/2011/09/16/testing-an-smtp-service-using-telnet/
+
+ testing
